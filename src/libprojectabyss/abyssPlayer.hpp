@@ -1,12 +1,13 @@
 #pragma once
-#include "abyssGame.hpp"
+
+#include "abyssBullet.hpp"
 
 
 class Player
 {
     private:
     Texture *texture;
-    Sprite shape;
+    Sprite sprite;
     RectangleShape hitbox;
 
     int level, exp, nextLevelExp;
@@ -18,10 +19,13 @@ class Player
     int score;
 
 
+
     public:
 
-    Player();
+    Player(Texture *texture);
     virtual ~Player();
-    void update();
-    void Draw();
+
+    void Movement();
+    void Update();
+    void Draw(RenderTarget &target);
 };
