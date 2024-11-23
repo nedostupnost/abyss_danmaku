@@ -3,7 +3,8 @@
 // Конструктор класса Player
 Player::Player(Texture *texture, Vector2u windowSize)
 {
-    this->HPMax = 10; // Максимальные жизни
+    this->shootTimer = 10; // скорострельность
+    this->HPMax = 3; // Максимальные жизни
     this->HP = this->HPMax; // Инициализация текущих жизней
     this->texture = texture; // Сохранение текстуры
     this->shape.setTexture(*texture); // Установка текстуры на спрайт
