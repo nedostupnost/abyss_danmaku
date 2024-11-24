@@ -1,4 +1,4 @@
-#include "../libprojectabyss/aLibs.h"  // Включаем заголовочный файл класса Bullet
+#include "../libprojectabyss/aLibs.h" // Включаем заголовочный файл класса Bullet
 
 using namespace sf;
 
@@ -8,146 +8,174 @@ int main(void)
     RenderWindow window(VideoMode(800, 600), "Abyss Danmaku", Style::Default);
     window.setFramerateLimit(60);
 
-
-
-    // говно старт *******************************************************************************
-
+    // Загрузка ресурсов
     Font font;
     font.loadFromFile("assets/arial.ttf");
 
     Texture playerTexture;
-    playerTexture.loadFromFile("assets/image/player.png");
+    playerTexture.loadFromFile("assets/image/reimu.png"); // Используем новый спрайтлист
 
     Texture enemyTexture;
-    enemyTexture.loadFromFile("assets/image/enemy.png");
+    enemyTexture.loadFromFile("assets/image/marisa.png"); // Используем новый спрайтлист
 
     Texture bulletTexture;
     bulletTexture.loadFromFile("assets/image/bullet.png");
 
-    // говно енд *******************************************************************************
+    // Инициализация
+    Player player(&playerTexture, window.getSize());
+    int enemySpawnTimer = 0;
+    std::vector<Enemy> enemies;
 
-
-
-    // ну херня для инициализации старт *******************************************************************************
-
-    Player player(&playerTexture, window.getSize()); // Инициализация игрока
-    int enemySpawnTimer = 0; // Таймер для спавна противников
-    std::vector<Enemy> enemies; // Вектор для хранения противников
-
-    // ну херня для инициализации енд *******************************************************************************
-
-
-
-
-    while (window.isOpen()) // Основной цикл игры 
+    while (window.isOpen())
     {
         Event event;
         while (window.pollEvent(event))
         {
             if (event.type == Event::Closed)
-                window.close(); // Закрытие окна
+                window.close();
+
+            // Обработка нажатий клавиш для анимации
+            if (event.type == Event::KeyPressed)
+            {
+                switch (event.key.code)
+                {
+                case Keyboard::Numpad4:
+                    player.set_move_state(3, true); // DIR_LEFT
+                    break;
+                case Keyboard::Numpad6:
+                    player.set_move_state(1, true); // DIR_RIGHT
+                    break;
+                case Keyboard::Numpad8:
+                    player.set_move_state(0, true); // DIR_UP
+                    break;
+                case Keyboard::Numpad5:
+                    player.set_move_state(2, true); // DIR_DOWN
+                    break;
+                }
+            }
+            // Обработка отпускания клавиш для анимации
+            if (event.type == Event::KeyReleased)
+            {
+                switch (event.key.code)
+                {
+                case Keyboard::Numpad4:
+                    player.set_move_state(3, false); // DIR_LEFT
+                    break;
+                case Keyboard::Numpad6:
+                    player.set_move_state(1, false); // DIR_RIGHT
+                    break;
+                case Keyboard::Numpad8:
+                    player.set_move_state(0, false); // DIR_UP
+                    break;
+                case Keyboard::Numpad5:
+                    player.set_move_state(2, false); // DIR_DOWN
+                    break;
+                }
+            }
         }
 
-
-
-        // Управление игроком
-        if (Keyboard::isKeyPressed(Keyboard::Numpad8)) { player.shape.move(0.f, -5.f); } // Вверх
-        if (Keyboard::isKeyPressed(Keyboard::Numpad4)) { player.shape.move(-5.f, 0.f); } // Влево
-        if (Keyboard::isKeyPressed(Keyboard::Numpad5)) { player.shape.move(0.f, 5.f); } // Вниз
-        if (Keyboard::isKeyPressed(Keyboard::Numpad6)) { player.shape.move(5.f, 0.f); } // Вправо
-
-
-
-        // Проверка границ окна
-        if (player.shape.getPosition().x <= 0) { player.shape.setPosition(0.f, player.shape.getPosition().y); } // Левая граница
-        if (player.shape.getPosition().x >= window.getSize().x - player.shape.getGlobalBounds().width) { player.shape.setPosition(window.getSize().x - player.shape.getGlobalBounds().width, player.shape.getPosition().y); } // Правая граница
-        if (player.shape.getPosition().y <= 0) { player.shape.setPosition(player.shape.getPosition().x, 0.f); } // Верхняя граница
-        if (player.shape.getPosition().y >= window.getSize().y - player.shape.getGlobalBounds().height) { player.shape.setPosition(player.shape.getPosition().x, window.getSize().y - player.shape.getGlobalBounds().height); } // Нижняя граница
-
-
+        // Обновление анимации
+        player.update();
+        for (auto &enemy : enemies)
+        {
+            enemy.update();
+        }
 
         // Таймер стрельбы
-        if (player.shootTimer < 10) { player.shootTimer++; }
+        if (player.shootTimer < 10)
+        {
+            player.shootTimer++;
+        }
 
         // Стрельба
         if (Keyboard::isKeyPressed(Keyboard::Z) && player.shootTimer >= 10)
         {
-            player.bullets.push_back(Bullet(&bulletTexture, player.shape.getPosition())); // Создание новой пули
-            player.shootTimer = 0; // Сброс таймера
+            Vector2f playerPos = player.get_center(); // Используем новый метод получения позиции
+            player.bullets.push_back(Bullet(&bulletTexture, playerPos));
+            player.shootTimer = 0;
         }
-
-
 
         // Движение и обработка пуль
         for (size_t i = 0; i < player.bullets.size(); i++)
         {
-            player.bullets[i].shape.move(0.f, -10.f); // Перемещение пули вверх
+            player.bullets[i].shape.move(0.f, -10.f);
 
             // Удаление пули за экраном
             if (player.bullets[i].shape.getPosition().y < 0)
             {
-                player.bullets.erase(player.bullets.begin() + i); // Удалить пулю
+                player.bullets.erase(player.bullets.begin() + i);
                 break;
             }
 
             // Проверка коллизии пуль с противниками
             for (size_t k = 0; k < enemies.size(); k++)
             {
-                if (player.bullets[i].shape.getGlobalBounds().intersects(enemies[k].shape.getGlobalBounds()))
+                // Создаем прямоугольники для проверки коллизий
+                sf::FloatRect bulletBounds = player.bullets[i].shape.getGlobalBounds();
+                sf::FloatRect enemyBounds(enemies[k].get_left(), enemies[k].get_top(),
+                                          enemies[k].get_width(), enemies[k].get_height());
+
+                if (bulletBounds.intersects(enemyBounds))
                 {
-                    enemies.erase(enemies.begin() + k); // Удаление противника
-                    player.bullets.erase(player.bullets.begin() + i); // Удаление пули
+                    enemies.erase(enemies.begin() + k);
+                    player.bullets.erase(player.bullets.begin() + i);
                     break;
                 }
             }
         }
 
-
-
         // Спавн противников
-        if (enemySpawnTimer < 20) { enemySpawnTimer++; }
+        if (enemySpawnTimer < 20)
+        {
+            enemySpawnTimer++;
+        }
         if (enemySpawnTimer >= 20)
         {
-            enemies.push_back(Enemy(&enemyTexture, window.getSize())); // Создание нового противника
-            enemySpawnTimer = 0; // Сброс таймера
+            float randomX = rand() % int(window.getSize().x - 32);
+            enemies.push_back(Enemy(&enemyTexture, Vector2f(randomX, 50.f)));
+            enemySpawnTimer = 0;
         }
-
-
-
 
         // Движение и обработка противников
         for (size_t i = 0; i < enemies.size(); i++)
         {
-            enemies[i].shape.move(0.f, 3.f); // Движение вниз
+            // Проверка коллизии противника с игроком
+            sf::FloatRect enemyBounds(enemies[i].get_left(), enemies[i].get_top(),
+                                      enemies[i].get_width(), enemies[i].get_height());
+            sf::FloatRect playerBounds(player.get_left(), player.get_top(),
+                                       player.get_width(), player.get_height());
 
-            // Удаление противника за экраном
-            if (enemies[i].shape.getPosition().y > window.getSize().y)
+            if (enemyBounds.intersects(playerBounds))
             {
-                enemies.erase(enemies.begin() + i); // Удалить противника
+                enemies.erase(enemies.begin() + i);
+                player.HP--;
                 break;
             }
 
-            // Проверка коллизии противника с игроком
-            if (enemies[i].shape.getGlobalBounds().intersects(player.shape.getGlobalBounds()))
+            // Удаление противника за экраном
+            if (enemies[i].get_top() > window.getSize().y)
             {
-                enemies.erase(enemies.begin() + i); // Удаление противника
-                player.HP--; // Уменьшение здоровья игрока
+                enemies.erase(enemies.begin() + i);
                 break;
             }
         }
 
-        window.clear(); // Очистка окна
-
-
-        
+        // Отрисовка
+        window.clear();
 
         // Отрисовка игрока, пуль и противников
-        window.draw(player.shape);
-        for (auto& bullet : player.bullets) { window.draw(bullet.shape); }
-        for (auto& enemy : enemies) { window.draw(enemy.shape); }
+        player.draw(window);
+        for (auto &bullet : player.bullets)
+        {
+            window.draw(bullet.shape);
+        }
+        for (auto &enemy : enemies)
+        {
+            enemy.draw(window);
+        }
 
-        window.display(); // Вывод в окно
+        window.display();
     }
 
-    return 0; // Завершение программы
+    return 0;
 }

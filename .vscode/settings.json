@@ -3,6 +3,8 @@
         "stdexcept": "cpp",
         "*.tcc": "cpp",
         "fstream": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "chrono": "cpp",
+        "span": "cpp"
     }
 }
