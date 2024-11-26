@@ -1,11 +1,11 @@
-#include "../libprojectabyss/aLibs.h" // Включаем заголовочный файл класса Bullet
+#include "../libprojectabyss/aLibs.h"
 
 using namespace sf;
 
 int main(void)
 {
-    srand(static_cast<unsigned int>(time(NULL))); // Инициализация генератора случайных чисел
-    RenderWindow window(VideoMode(800, 600), "Abyss Danmaku", Style::Default);
+    // Создание окна
+    RenderWindow window(VideoMode(800, 600), "Abyss Danmaku");
     window.setFramerateLimit(60);
 
     // Загрузка ресурсов
@@ -13,19 +13,20 @@ int main(void)
     font.loadFromFile("assets/arial.ttf");
 
     Texture playerTexture;
-    playerTexture.loadFromFile("assets/image/reimu.png"); // Используем новый спрайтлист
+    playerTexture.loadFromFile("assets/image/reimu.png"); // спрайтлист персонажа
 
     Texture enemyTexture;
-    enemyTexture.loadFromFile("assets/image/marisa.png"); // Используем новый спрайтлист
+    enemyTexture.loadFromFile("assets/image/marisa.png"); // спрайтлист противника
 
     Texture bulletTexture;
-    bulletTexture.loadFromFile("assets/image/bullet.png");
+    bulletTexture.loadFromFile("assets/image/bullet.png"); // просто спрайт пули
 
     // Инициализация
     Player player(&playerTexture, window.getSize());
     int enemySpawnTimer = 0;
     std::vector<Enemy> enemies;
 
+    // Игровой цикл
     while (window.isOpen())
     {
         Event event;
@@ -76,9 +77,13 @@ int main(void)
 
         // Обновление анимации
         player.update();
+        player.move();
+
+        // Обновление врагов
         for (auto &enemy : enemies)
         {
             enemy.update();
+            enemy.shoot(&bulletTexture); // Враги теперь стреляют
         }
 
         // Таймер стрельбы
@@ -87,15 +92,15 @@ int main(void)
             player.shootTimer++;
         }
 
-        // Стрельба
+        // Стрельба игрока
         if (Keyboard::isKeyPressed(Keyboard::Z) && player.shootTimer >= 10)
         {
-            Vector2f playerPos = player.get_center(); // Используем новый метод получения позиции
+            Vector2f playerPos = player.get_center();
             player.bullets.push_back(Bullet(&bulletTexture, playerPos));
             player.shootTimer = 0;
         }
 
-        // Движение и обработка пуль
+        // Движение и обработка пуль игрока
         for (size_t i = 0; i < player.bullets.size(); i++)
         {
             player.bullets[i].shape.move(0.f, -10.f);
@@ -107,13 +112,13 @@ int main(void)
                 break;
             }
 
-            // Проверка коллизии пуль с противниками
+            // Проверка коллизии пуль игрока с противниками
             for (size_t k = 0; k < enemies.size(); k++)
             {
                 // Создаем прямоугольники для проверки коллизий
                 sf::FloatRect bulletBounds = player.bullets[i].shape.getGlobalBounds();
                 sf::FloatRect enemyBounds(enemies[k].get_left(), enemies[k].get_top(),
-                                          enemies[k].get_width(), enemies[k].get_height());
+                                        enemies[k].get_width(), enemies[k].get_height());
 
                 if (bulletBounds.intersects(enemyBounds))
                 {
@@ -132,7 +137,9 @@ int main(void)
         if (enemySpawnTimer >= 20)
         {
             float randomX = rand() % int(window.getSize().x - 32);
-            enemies.push_back(Enemy(&enemyTexture, Vector2f(randomX, 50.f)));
+            // EnemyMovementPattern pattern = static_cast<EnemyMovementPattern>(3);
+            EnemyMovementPattern pattern = PATTERN_CIRCLE;
+            enemies.push_back(Enemy(&enemyTexture, Vector2f(randomX, 50.f), pattern));
             enemySpawnTimer = 0;
         }
 
@@ -141,15 +148,27 @@ int main(void)
         {
             // Проверка коллизии противника с игроком
             sf::FloatRect enemyBounds(enemies[i].get_left(), enemies[i].get_top(),
-                                      enemies[i].get_width(), enemies[i].get_height());
+                                    enemies[i].get_width(), enemies[i].get_height());
             sf::FloatRect playerBounds(player.get_left(), player.get_top(),
-                                       player.get_width(), player.get_height());
+                                     player.get_width(), player.get_height());
 
             if (enemyBounds.intersects(playerBounds))
             {
                 enemies.erase(enemies.begin() + i);
                 player.HP--;
                 break;
+            }
+
+            // Проверка коллизии пуль врага с игроком
+            for (size_t j = 0; j < enemies[i].bullets.size(); j++)
+            {
+                sf::FloatRect bulletBounds = enemies[i].bullets[j].shape.getGlobalBounds();
+                if (bulletBounds.intersects(playerBounds))
+                {
+                    enemies[i].bullets.erase(enemies[i].bullets.begin() + j);
+                    player.HP--;
+                    break;
+                }
             }
 
             // Удаление противника за экраном
@@ -163,12 +182,14 @@ int main(void)
         // Отрисовка
         window.clear();
 
-        // Отрисовка игрока, пуль и противников
+        // Отрисовка игрока и его пуль
         player.draw(window);
         for (auto &bullet : player.bullets)
         {
             window.draw(bullet.shape);
         }
+
+        // Отрисовка врагов и их пуль
         for (auto &enemy : enemies)
         {
             enemy.draw(window);

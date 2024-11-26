@@ -38,7 +38,7 @@ Player::Player(Texture* texture, Vector2u windowSize) {
     
     // Инициализация параметров движения
     animation_state = STATE_IDLE;
-    move_velocity = 5.0f;
+    move_velocity = 3.0f;
     for (int i = DIR_UP; i <= DIR_LEFT; i++) {
         movement_direction[i] = false;
     }
