@@ -24,7 +24,7 @@ const float MOVE_VECTOR[4][2] = {
     {-1.0f, 0.0f}   // LEFT
 };
 
-Player::Player(Texture* texture, Vector2u windowSize) {
+Player::Player(sf::Texture* texture, sf::Vector2u windowSize) {
     this->shootTimer = 10;
     this->HPMax = 3;
     this->HP = this->HPMax;

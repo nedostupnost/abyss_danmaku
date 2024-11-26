@@ -27,7 +27,7 @@ public:
     int shootTimer;
     std::vector<Bullet> bullets;
 
-    Player(Texture* texture, Vector2u windowSize);
+    Player(sf::Texture* texture, sf::Vector2u windowSize);
     void update();
     void move();
     void check_animation_state();

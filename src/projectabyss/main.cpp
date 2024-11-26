@@ -24,7 +24,14 @@ int main(void)
     // Инициализация
     Player player(&playerTexture, window.getSize());
     int enemySpawnTimer = 0;
+    int waveTimer = 0;  // Таймер для волн врагов
+    int currentWave = 0;  // Текущая волна
     std::vector<Enemy> enemies;
+
+    // Функция для создания врага с определенным паттерном
+    auto spawnEnemy = [&](float x, float y, EnemyMovementPattern movePattern, EnemyShootPattern shootPattern) {
+        enemies.push_back(Enemy(&enemyTexture, Vector2f(x, y), movePattern, shootPattern));
+    };
 
     // Игровой цикл
     while (window.isOpen())
@@ -83,7 +90,7 @@ int main(void)
         for (auto &enemy : enemies)
         {
             enemy.update();
-            enemy.shoot(&bulletTexture); // Враги теперь стреляют
+            enemy.shoot(&bulletTexture, player.get_center()); // Передаем позицию игрока для прицельной стрельбы
         }
 
         // Таймер стрельбы
@@ -118,7 +125,7 @@ int main(void)
                 // Создаем прямоугольники для проверки коллизий
                 sf::FloatRect bulletBounds = player.bullets[i].shape.getGlobalBounds();
                 sf::FloatRect enemyBounds(enemies[k].get_left(), enemies[k].get_top(),
-                                        enemies[k].get_width(), enemies[k].get_height());
+                                          enemies[k].get_width(), enemies[k].get_height());
 
                 if (bulletBounds.intersects(enemyBounds))
                 {
@@ -134,13 +141,53 @@ int main(void)
         {
             enemySpawnTimer++;
         }
-        if (enemySpawnTimer >= 20)
+        
+        // Система волн врагов в стиле Touhou
+        if (enemySpawnTimer >= 20 && enemies.size() < 10) // Ограничиваем количество врагов на экране
         {
-            float randomX = rand() % int(window.getSize().x - 32);
-            // EnemyMovementPattern pattern = static_cast<EnemyMovementPattern>(3);
-            EnemyMovementPattern pattern = PATTERN_CIRCLE;
-            enemies.push_back(Enemy(&enemyTexture, Vector2f(randomX, 50.f), pattern));
+            waveTimer++;
+            float windowWidth = window.getSize().x;
+            
+            switch(currentWave % 5) { // 5 разных типов волн
+                case 0: { // Линейная волна
+                    float spacing = windowWidth / 6;
+                    for(int i = 1; i <= 5; i++) {
+                        spawnEnemy(spacing * i, 50.f, PATTERN_STRAIGHT, SHOOT_SPREAD);
+                    }
+                    break;
+                }
+                case 1: { // Спиральная волна
+                    for(int i = 0; i < 4; i++) {
+                        float angle = i * 90.0f;
+                        float x = windowWidth/2 + cos(angle * 3.14159f/180.0f) * 100.f;
+                        float y = 300 + sin(angle * 3.14159f/180.0f) * 100.f;
+                        spawnEnemy(x, y, PATTERN_SPIRAL, SHOOT_SPIRAL);
+                    }
+                    break;
+                }
+                case 2: { // Волновая атака
+                    for(int i = 0; i < 3; i++) {
+                        spawnEnemy(windowWidth * 0.25f + i * windowWidth * 0.25f, 50.f, 
+                                 PATTERN_WAVE, SHOOT_CIRCLE);
+                    }
+                    break;
+                }
+                case 3: { // Охотники
+                    float randomX = rand() % int(windowWidth - 32);
+                    spawnEnemy(randomX, 50.f, PATTERN_SINE, SHOOT_AIMED);
+                    break;
+                }
+                case 4: { // Смешанная волна
+                    spawnEnemy(windowWidth * 0.2f, 50.f, PATTERN_ZIGZAG, SHOOT_SPREAD);
+                    spawnEnemy(windowWidth * 0.8f, 50.f, PATTERN_ZIGZAG, SHOOT_SPREAD);
+                    spawnEnemy(windowWidth * 0.5f, 50.f, PATTERN_STRAIGHT, SHOOT_CIRCLE);
+                    break;
+                }
+            }
+            
+            currentWave++;
             enemySpawnTimer = 0;
+            waveTimer = 0;
         }
 
         // Движение и обработка противников
@@ -148,9 +195,9 @@ int main(void)
         {
             // Проверка коллизии противника с игроком
             sf::FloatRect enemyBounds(enemies[i].get_left(), enemies[i].get_top(),
-                                    enemies[i].get_width(), enemies[i].get_height());
+                                      enemies[i].get_width(), enemies[i].get_height());
             sf::FloatRect playerBounds(player.get_left(), player.get_top(),
-                                     player.get_width(), player.get_height());
+                                       player.get_width(), player.get_height());
 
             if (enemyBounds.intersects(playerBounds))
             {

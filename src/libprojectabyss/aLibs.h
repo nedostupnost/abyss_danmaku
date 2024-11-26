@@ -4,3 +4,5 @@
 #include "Player.h"
 #include "AnimatedSprite.h"
 #include "BoundedSprite.h"
+
+using namespace sf;

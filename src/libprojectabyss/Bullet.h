@@ -1,21 +1,23 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/System.hpp>
-#include <vector>
-#include <cstdlib>
-#include <ctime>
+#include <cmath>
 
-using namespace sf;
-
-// Класс Bullet представляет пулю в игре
-class Bullet
-{
+class Bullet {
 public:
-    Sprite shape; // Спрайт пули
+    sf::CircleShape shape;
+    sf::Vector2f velocity;
+    float rotation;  // Скорость вращения пули
+    float speed;     // Скорость движения пули
 
-    // Конструктор, принимает указатель на текстуру и позицию
-    Bullet(Texture *texture, Vector2f pos);
-    ~Bullet(){}; // Деструктор
+    Bullet(sf::Texture* texture, sf::Vector2f pos);
+    
+    void update();
+    void setVelocity(float speedX, float speedY);
+    void setVelocity(const sf::Vector2f& vel);
+    void setSpeed(float newSpeed);
+    void setRotation(float rotationSpeed);
+    
+    sf::Vector2f getPosition() const;
+    bool isOffscreen(const sf::Vector2u& windowSize) const;
+    sf::FloatRect getBounds() const;
 };
