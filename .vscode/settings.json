@@ -5,6 +5,7 @@
         "fstream": "cpp",
         "cstdlib": "cpp",
         "chrono": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "cmath": "cpp"
     }
 }

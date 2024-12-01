@@ -2,25 +2,19 @@
 #include "AnimatedSprite.h"
 #include "Bullet.h"
 
-// Константы для анимации
-const sf::IntRect BOUND_IDLE(32 * 4, 0, 32, 48);
-const std::pair<int, int> SPRITE_DATA_IDLE(0, 4);
-const sf::IntRect BOUND_FORWARD(0, 0, 32, 48);
-const std::pair<int, int> SPRITE_DATA_FORWARD(0, 4);
-const sf::IntRect BOUND_LEFT(32 * 4, 48 * 1, 32, 48);
-const std::pair<int, int> SPRITE_DATA_LEFT(-4, 4);
-const sf::IntRect BOUND_RIGHT(32 * 4, 48 * 2, 32, 48);
-const std::pair<int, int> SPRITE_DATA_RIGHT(-4, 4);
-
-const int SPRITE_FRAME_RATE = 6;
+enum Direction {
+    DIR_UP = 0,
+    DIR_RIGHT,
+    DIR_DOWN,
+    DIR_LEFT
+};
 
 class Player {
 private:
     AnimatedSprite sprite;
-    int animation_state;
-    bool movement_direction[4];
-    double move_velocity;
-    
+    bool move_states[4];  // Состояния движения для каждого направления
+    sf::Vector2f lastMoveDirection;  // Последнее направление движения для стрельбы
+
 public:
     int HP;
     int HPMax;
@@ -28,14 +22,15 @@ public:
     std::vector<Bullet> bullets;
 
     Player(sf::Texture* texture, sf::Vector2u windowSize);
-    void update();
     void move();
-    void check_animation_state();
-    void set_move_state(int dir, bool state);
+    void update();
     void draw(sf::RenderTarget& target);
+    void shoot(sf::Texture* bulletTexture);
+    void set_move_state(int dir, bool state);
+    sf::Vector2f getShootDirection() const;
 
-    // Добавляем методы для доступа к позиции и размерам
-    double get_left() { return sprite.get_left(); }
+    // Методы для доступа к позиции и размерам
+    double get_left() const { return sprite.get_left(); }
     double get_right() { return sprite.get_right(); }
     double get_top() { return sprite.get_top(); }
     double get_bottom() { return sprite.get_bottom(); }

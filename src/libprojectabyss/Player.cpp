@@ -1,127 +1,104 @@
 #include "Player.h"
-
-// Состояния анимации
-enum AnimationState {
-    STATE_IDLE,
-    STATE_FORWARD,
-    STATE_LEFT,
-    STATE_RIGHT
-};
-
-// Направления движения
-enum Direction {
-    DIR_UP,
-    DIR_RIGHT,
-    DIR_DOWN,
-    DIR_LEFT
-};
-
-// Векторы движения для каждого направления
-const float MOVE_VECTOR[4][2] = {
-    {0.0f, -1.0f},  // UP
-    {1.0f, 0.0f},   // RIGHT
-    {0.0f, 1.0f},   // DOWN
-    {-1.0f, 0.0f}   // LEFT
-};
+#include <cmath>
+#include <algorithm>
 
 Player::Player(sf::Texture* texture, sf::Vector2u windowSize) {
-    this->shootTimer = 10;
-    this->HPMax = 3;
+    this->HPMax = 10;
     this->HP = this->HPMax;
+    this->shootTimer = 0;
     
-    // Инициализация анимированного спрайта
+    // Инициализация спрайта
     sprite.init_texture(texture);
-    sprite.init(BOUND_IDLE, SPRITE_DATA_IDLE.first, SPRITE_DATA_IDLE.second, SPRITE_FRAME_RATE);
+    sprite.init(sf::IntRect(0, 0, 32, 48), 0, 4, 8);
+    sprite.set_center(windowSize.x / 2.f, windowSize.y - 100.f);
     
-    // Установка начальной позиции
-    sprite.set_center(windowSize.x / 2.0f, windowSize.y - sprite.get_height());
+    // Инициализация состояний движения
+    for(int i = 0; i < 4; i++) {
+        move_states[i] = false;
+    }
     
-    // Инициализация параметров движения
-    animation_state = STATE_IDLE;
-    move_velocity = 3.0f;
-    for (int i = DIR_UP; i <= DIR_LEFT; i++) {
-        movement_direction[i] = false;
+    lastMoveDirection = sf::Vector2f(0.f, -1.f);  // По умолчанию смотрим вверх
+}
+
+void Player::move() {
+    float dx = 0.f, dy = 0.f;
+    float speed = 5.f;
+
+    // Определяем направление движения на основе нажатых клавиш
+    if (move_states[0]) dy -= speed;
+    if (move_states[1]) dx += speed;
+    if (move_states[2]) dy += speed;
+    if (move_states[3]) dx -= speed;
+
+    // Если есть движение, обновляем lastMoveDirection
+    if (dx != 0.f || dy != 0.f) {
+        lastMoveDirection = sf::Vector2f(dx, dy);
+        float length = std::sqrt(lastMoveDirection.x * lastMoveDirection.x + 
+                          lastMoveDirection.y * lastMoveDirection.y);
+        lastMoveDirection /= length;
+    }
+
+    // Ограничиваем движение в пределах экрана
+    sf::Vector2f newPos = sprite.get_center();
+    newPos.x += dx;
+    newPos.y += dy;
+    
+    // Проверяем границы экрана
+    float halfWidth = sprite.get_width() / 2.f;
+    float halfHeight = sprite.get_height() / 2.f;
+    newPos.x = std::max(halfWidth, std::min<float>(newPos.x, 800.f - halfWidth));
+    newPos.y = std::max(halfHeight, std::min<float>(newPos.y, 600.f - halfHeight));
+    
+    sprite.set_center(newPos.x, newPos.y);
+}
+
+sf::Vector2f Player::getShootDirection() const {
+    // Если игрок не двигается, стреляем вверх
+    if (lastMoveDirection.x == 0.f && lastMoveDirection.y == 0.f) {
+        return sf::Vector2f(0.f, -1.f);
+    }
+    return lastMoveDirection;
+}
+
+void Player::shoot(sf::Texture* bulletTexture) {
+    if (shootTimer >= 10) {  // Задержка между выстрелами
+        sf::Vector2f pos = sprite.get_center();
+        
+        // Создаем пулю, летящую вверх
+        Bullet b(bulletTexture, pos);
+        float bulletSpeed = 10.f;
+        b.velocity = sf::Vector2f(0.f, -bulletSpeed);  // Всегда стреляем вверх
+        bullets.push_back(b);
+        
+        shootTimer = 0;
     }
 }
 
 void Player::update() {
-    // Обновление анимации
     sprite.tick();
-    
-    // Обновление позиции
-    move();
-    
-    // Проверка и обновление состояния анимации
-    check_animation_state();
-}
+    shootTimer++;
 
-void Player::move() {
-    // Движение игрока
-    for (int i = DIR_UP; i <= DIR_LEFT; i++) {
-        if (movement_direction[i]) {
-            sprite.move(MOVE_VECTOR[i][0] * move_velocity, 
-                       MOVE_VECTOR[i][1] * move_velocity);
-        }
-    }
-    
-    // Проверка границ экрана
-    const float sizeMultiplier = 0.15f;
-    if (sprite.get_left() < -sprite.get_width() * sizeMultiplier) {
-        sprite.set_center(sprite.get_width() / 2.0f - sprite.get_width() * sizeMultiplier,
-                         sprite.get_center().y);
-    }
-    else if (sprite.get_right() > 800 + sprite.get_width() * sizeMultiplier) {
-        sprite.set_center(800 - sprite.get_width() / 2.0f + sprite.get_width() * sizeMultiplier,
-                         sprite.get_center().y);
-    }
-    if (sprite.get_top() < -sprite.get_height() * sizeMultiplier) {
-        sprite.set_center(sprite.get_center().x,
-                         sprite.get_height() / 2.0f - sprite.get_height() * sizeMultiplier);
-    }
-    else if (sprite.get_bottom() > 600 + sprite.get_height() * sizeMultiplier) {
-        sprite.set_center(sprite.get_center().x,
-                         600 - sprite.get_height() / 2.0f + sprite.get_height() * sizeMultiplier);
-    }
-}
-
-void Player::check_animation_state() {
-    int new_state = STATE_IDLE;
-    
-    if (movement_direction[DIR_LEFT]) {
-        new_state = STATE_LEFT;
-    }
-    else if (movement_direction[DIR_RIGHT]) {
-        new_state = STATE_RIGHT;
-    }
-    else if (movement_direction[DIR_UP] || movement_direction[DIR_DOWN]) {
-        new_state = STATE_FORWARD;
-    }
-    
-    if (new_state != animation_state) {
-        animation_state = new_state;
-        switch (animation_state) {
-            case STATE_IDLE:
-                sprite.init(BOUND_IDLE, SPRITE_DATA_IDLE.first, SPRITE_DATA_IDLE.second, SPRITE_FRAME_RATE);
-                break;
-            case STATE_FORWARD:
-                sprite.init(BOUND_FORWARD, SPRITE_DATA_FORWARD.first, SPRITE_DATA_FORWARD.second, SPRITE_FRAME_RATE);
-                break;
-            case STATE_LEFT:
-                sprite.init(BOUND_LEFT, SPRITE_DATA_LEFT.first, SPRITE_DATA_LEFT.second, SPRITE_FRAME_RATE);
-                break;
-            case STATE_RIGHT:
-                sprite.init(BOUND_RIGHT, SPRITE_DATA_RIGHT.first, SPRITE_DATA_RIGHT.second, SPRITE_FRAME_RATE);
-                break;
+    // Обновляем пули
+    for (size_t i = 0; i < bullets.size(); i++) {
+        bullets[i].update();
+        
+        // Удаляем пули за пределами экрана
+        if (bullets[i].isOffscreen(sf::Vector2u(800, 600))) {
+            bullets.erase(bullets.begin() + i);
+            i--;
         }
     }
 }
 
 void Player::set_move_state(int dir, bool state) {
-    if (dir >= DIR_UP && dir <= DIR_LEFT) {
-        movement_direction[dir] = state;
+    if (dir >= 0 && dir < 4) {
+        move_states[dir] = state;
     }
 }
 
 void Player::draw(sf::RenderTarget& target) {
     sprite.draw(target);
+    for (auto& bullet : bullets) {
+        target.draw(bullet.shape);
+    }
 }

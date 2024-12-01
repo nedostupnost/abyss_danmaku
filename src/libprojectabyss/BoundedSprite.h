@@ -12,14 +12,14 @@ public:
     void init(sf::IntRect bound);
     void set_center(double x, double y);
     void move(double x, double y);
-    sf::Vector2f get_center();
+    sf::Vector2f get_center() const;
     
-    double get_left();
-    double get_right();
-    double get_top();
-    double get_bottom();
-    double get_width();
-    double get_height();
+    double get_left() const;
+    double get_right() const;
+    double get_top() const;
+    double get_bottom() const;
+    double get_width() const;
+    double get_height() const;
     
-    void draw(sf::RenderTarget& target);
+    void draw(sf::RenderTarget& target) const;
 };

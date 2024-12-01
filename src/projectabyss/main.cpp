@@ -1,6 +1,13 @@
 #include "../libprojectabyss/aLibs.h"
+#include <sstream>
+#include <array>
 
 using namespace sf;
+
+struct WaveData {
+    int enemyCount;
+    std::vector<std::pair<EnemyMovementPattern, EnemyShootPattern>> patterns;
+};
 
 int main(void)
 {
@@ -8,25 +15,64 @@ int main(void)
     RenderWindow window(VideoMode(800, 600), "Abyss Danmaku");
     window.setFramerateLimit(60);
 
+    // Инициализация систем
+    ParticleSystem particleSystem;
+    int score = 0;
+
     // Загрузка ресурсов
     Font font;
     font.loadFromFile("assets/arial.ttf");
 
     Texture playerTexture;
-    playerTexture.loadFromFile("assets/image/reimu.png"); // спрайтлист персонажа
+    playerTexture.loadFromFile("assets/image/reimu.png");
 
     Texture enemyTexture;
-    enemyTexture.loadFromFile("assets/image/marisa.png"); // спрайтлист противника
+    enemyTexture.loadFromFile("assets/image/enemy.png");
 
     Texture bulletTexture;
-    bulletTexture.loadFromFile("assets/image/bullet.png"); // просто спрайт пули
+    bulletTexture.loadFromFile("assets/image/bullet.png");
 
     // Инициализация
     Player player(&playerTexture, window.getSize());
     int enemySpawnTimer = 0;
-    int waveTimer = 0;  // Таймер для волн врагов
-    int currentWave = 0;  // Текущая волна
+    int waveTimer = 0;
+    int currentWave = 0;
+    bool waveInProgress = false;
+    int enemiesSpawned = 0;
+    bool gameOver = false;
     std::vector<Enemy> enemies;
+    std::vector<Bullet> enemyBullets;  // Отдельный вектор для пуль врагов
+
+    // Определяем волны противников
+    std::array<WaveData, 5> waves = {{
+        // Волна 1: 8 врагов, движущихся синусоидально
+        {8, {{PATTERN_SINE, SHOOT_SINGLE}, {PATTERN_SINE, SHOOT_SPREAD}}},
+        
+        // Волна 2: 12 врагов, движущихся по кругу и зигзагом
+        {12, {{PATTERN_CIRCLE, SHOOT_CIRCLE}, {PATTERN_ZIGZAG, SHOOT_AIMED}}},
+        
+        // Волна 3: 15 врагов со смешанными паттернами
+        {15, {{PATTERN_WAVE, SHOOT_SPIRAL}, {PATTERN_STRAIGHT, SHOOT_SPREAD}, {PATTERN_SINE, SHOOT_CIRCLE}}},
+        
+        // Волна 4: 18 врагов с более сложными паттернами
+        {18, {{PATTERN_SPIRAL, SHOOT_CIRCLE}, {PATTERN_CIRCLE, SHOOT_SPIRAL}, {PATTERN_WAVE, SHOOT_AIMED}}},
+        
+        // Волна 5: 20 врагов с самыми сложными паттернами
+        {20, {{PATTERN_SPIRAL, SHOOT_SPIRAL}, {PATTERN_WAVE, SHOOT_CIRCLE}, {PATTERN_CIRCLE, SHOOT_SPREAD}}}
+    }};
+
+    // Создаем текст для отображения очков и HP
+    sf::Text scoreText;
+    scoreText.setFont(font);
+    scoreText.setCharacterSize(20);
+    scoreText.setFillColor(sf::Color::White);
+    scoreText.setPosition(10.f, 10.f);
+    
+    sf::Text hpText;
+    hpText.setFont(font);
+    hpText.setCharacterSize(20);
+    hpText.setFillColor(sf::Color::White);
+    hpText.setPosition(10.f, 40.f);
 
     // Функция для создания врага с определенным паттерном
     auto spawnEnemy = [&](float x, float y, EnemyMovementPattern movePattern, EnemyShootPattern shootPattern) {
@@ -82,168 +128,135 @@ int main(void)
             }
         }
 
-        // Обновление анимации
-        player.update();
+        // Обновление игрока
         player.move();
-
-        // Обновление врагов
-        for (auto &enemy : enemies)
-        {
-            enemy.update();
-            enemy.shoot(&bulletTexture, player.get_center()); // Передаем позицию игрока для прицельной стрельбы
-        }
-
-        // Таймер стрельбы
-        if (player.shootTimer < 10)
-        {
-            player.shootTimer++;
-        }
+        player.update();
 
         // Стрельба игрока
-        if (Keyboard::isKeyPressed(Keyboard::Z) && player.shootTimer >= 10)
+        if (Keyboard::isKeyPressed(Keyboard::Z))
         {
-            Vector2f playerPos = player.get_center();
-            player.bullets.push_back(Bullet(&bulletTexture, playerPos));
-            player.shootTimer = 0;
+            player.shoot(&bulletTexture);
         }
 
-        // Движение и обработка пуль игрока
-        for (size_t i = 0; i < player.bullets.size(); i++)
-        {
-            player.bullets[i].shape.move(0.f, -10.f);
-
-            // Удаление пули за экраном
-            if (player.bullets[i].shape.getPosition().y < 0)
-            {
-                player.bullets.erase(player.bullets.begin() + i);
-                break;
+        // Обновление игры
+        if (!gameOver) {
+            if (!waveInProgress && enemies.empty() && currentWave < waves.size()) {
+                // Начинаем новую волну
+                waveInProgress = true;
+                enemiesSpawned = 0;
+                enemySpawnTimer = 0;
             }
 
-            // Проверка коллизии пуль игрока с противниками
-            for (size_t k = 0; k < enemies.size(); k++)
-            {
-                // Создаем прямоугольники для проверки коллизий
-                sf::FloatRect bulletBounds = player.bullets[i].shape.getGlobalBounds();
-                sf::FloatRect enemyBounds(enemies[k].get_left(), enemies[k].get_top(),
-                                          enemies[k].get_width(), enemies[k].get_height());
+            // Спавн врагов текущей волны
+            if (waveInProgress && enemiesSpawned < waves[currentWave].enemyCount) {
+                if (enemySpawnTimer >= 30) {  // Спавним врага каждые 30 кадров
+                    float x = 100.f + (rand() % 600);  // Случайная позиция по X между 100 и 700
+                    
+                    // Выбираем случайный паттерн из доступных для текущей волны
+                    auto& patterns = waves[currentWave].patterns;
+                    auto& pattern = patterns[rand() % patterns.size()];
+                    
+                    // Спавним врага за пределами экрана сверху
+                    spawnEnemy(x, -50.f, pattern.first, pattern.second);
+                    enemiesSpawned++;
+                    enemySpawnTimer = 0;
+                }
+                enemySpawnTimer++;
+            } else if (waveInProgress && enemies.empty()) {
+                // Волна закончилась
+                waveInProgress = false;
+                currentWave++;
+            }
 
-                if (bulletBounds.intersects(enemyBounds))
-                {
-                    enemies.erase(enemies.begin() + k);
-                    player.bullets.erase(player.bullets.begin() + i);
-                    break;
+            // Сохраняем пули врагов перед их уничтожением
+            for (auto& enemy : enemies) {
+                enemyBullets.insert(enemyBullets.end(), enemy.bullets.begin(), enemy.bullets.end());
+                enemy.bullets.clear();
+            }
+
+            // Проверка столкновений игрока с врагами и их пулями
+            if (player.HP > 0) {  // Проверяем только если игрок жив
+                sf::FloatRect playerBounds(player.get_left(), player.get_top(),
+                                         player.get_width(), player.get_height());
+                
+                // Проверка столкновений с врагами
+                for (const auto& enemy : enemies) {
+                    if (playerBounds.intersects(sf::FloatRect(enemy.get_left(), enemy.get_top(),
+                                                            enemy.get_width(), enemy.get_height()))) {
+                        player.HP--;
+                        if (player.HP <= 0) {
+                            gameOver = true;
+                        }
+                        break;
+                    }
+                }
+                
+                // Проверка столкновений с пулями врагов
+                for (size_t i = 0; i < enemyBullets.size(); i++) {
+                    if (playerBounds.intersects(enemyBullets[i].shape.getGlobalBounds())) {
+                        player.HP--;
+                        enemyBullets.erase(enemyBullets.begin() + i);
+                        i--;
+                        if (player.HP <= 0) {
+                            gameOver = true;
+                        }
+                    }
+                }
+            }
+
+            // Обновление пуль врагов
+            for (size_t i = 0; i < enemyBullets.size(); i++) {
+                enemyBullets[i].update();
+                if (enemyBullets[i].isOffscreen(window.getSize())) {
+                    enemyBullets.erase(enemyBullets.begin() + i);
+                    i--;
                 }
             }
         }
 
-        // Спавн противников
-        if (enemySpawnTimer < 20)
-        {
-            enemySpawnTimer++;
-        }
+        // Обновление частиц
+        particleSystem.update(1.0f / 60.0f);
+
+        // Обновление текста очков и HP
+        std::stringstream ss;
+        ss << "Score: " << score;
+        scoreText.setString(ss.str());
         
-        // Система волн врагов в стиле Touhou
-        if (enemySpawnTimer >= 20 && enemies.size() < 10) // Ограничиваем количество врагов на экране
-        {
-            waveTimer++;
-            float windowWidth = window.getSize().x;
-            
-            switch(currentWave % 5) { // 5 разных типов волн
-                case 0: { // Линейная волна
-                    float spacing = windowWidth / 6;
-                    for(int i = 1; i <= 5; i++) {
-                        spawnEnemy(spacing * i, 50.f, PATTERN_STRAIGHT, SHOOT_SPREAD);
-                    }
-                    break;
-                }
-                case 1: { // Спиральная волна
-                    for(int i = 0; i < 4; i++) {
-                        float angle = i * 90.0f;
-                        float x = windowWidth/2 + cos(angle * 3.14159f/180.0f) * 100.f;
-                        float y = 300 + sin(angle * 3.14159f/180.0f) * 100.f;
-                        spawnEnemy(x, y, PATTERN_SPIRAL, SHOOT_SPIRAL);
-                    }
-                    break;
-                }
-                case 2: { // Волновая атака
-                    for(int i = 0; i < 3; i++) {
-                        spawnEnemy(windowWidth * 0.25f + i * windowWidth * 0.25f, 50.f, 
-                                 PATTERN_WAVE, SHOOT_CIRCLE);
-                    }
-                    break;
-                }
-                case 3: { // Охотники
-                    float randomX = rand() % int(windowWidth - 32);
-                    spawnEnemy(randomX, 50.f, PATTERN_SINE, SHOOT_AIMED);
-                    break;
-                }
-                case 4: { // Смешанная волна
-                    spawnEnemy(windowWidth * 0.2f, 50.f, PATTERN_ZIGZAG, SHOOT_SPREAD);
-                    spawnEnemy(windowWidth * 0.8f, 50.f, PATTERN_ZIGZAG, SHOOT_SPREAD);
-                    spawnEnemy(windowWidth * 0.5f, 50.f, PATTERN_STRAIGHT, SHOOT_CIRCLE);
-                    break;
-                }
-            }
-            
-            currentWave++;
-            enemySpawnTimer = 0;
-            waveTimer = 0;
-        }
-
-        // Движение и обработка противников
-        for (size_t i = 0; i < enemies.size(); i++)
-        {
-            // Проверка коллизии противника с игроком
-            sf::FloatRect enemyBounds(enemies[i].get_left(), enemies[i].get_top(),
-                                      enemies[i].get_width(), enemies[i].get_height());
-            sf::FloatRect playerBounds(player.get_left(), player.get_top(),
-                                       player.get_width(), player.get_height());
-
-            if (enemyBounds.intersects(playerBounds))
-            {
-                enemies.erase(enemies.begin() + i);
-                player.HP--;
-                break;
-            }
-
-            // Проверка коллизии пуль врага с игроком
-            for (size_t j = 0; j < enemies[i].bullets.size(); j++)
-            {
-                sf::FloatRect bulletBounds = enemies[i].bullets[j].shape.getGlobalBounds();
-                if (bulletBounds.intersects(playerBounds))
-                {
-                    enemies[i].bullets.erase(enemies[i].bullets.begin() + j);
-                    player.HP--;
-                    break;
-                }
-            }
-
-            // Удаление противника за экраном
-            if (enemies[i].get_top() > window.getSize().y)
-            {
-                enemies.erase(enemies.begin() + i);
-                break;
-            }
-        }
+        ss.str("");
+        ss << "HP: " << player.HP << "/" << player.HPMax;
+        hpText.setString(ss.str());
 
         // Отрисовка
         window.clear();
-
-        // Отрисовка игрока и его пуль
+        
+        // Отрисовка игровых объектов
         player.draw(window);
-        for (auto &bullet : player.bullets)
-        {
+        for (auto& enemy : enemies) {
+            enemy.draw(window);
+        }
+        for (auto& bullet : enemyBullets) {
             window.draw(bullet.shape);
         }
+        
+        // Отрисовка UI
+        window.draw(scoreText);
+        window.draw(hpText);
 
-        // Отрисовка врагов и их пуль
-        for (auto &enemy : enemies)
-        {
-            enemy.draw(window);
+        // Отображение экрана окончания игры
+        if (gameOver) {
+            sf::Text gameOverText;
+            gameOverText.setFont(font);
+            gameOverText.setCharacterSize(50);
+            gameOverText.setFillColor(sf::Color::Red);
+            gameOverText.setString("GAME OVER");
+            gameOverText.setPosition(
+                window.getSize().x / 2.f - gameOverText.getGlobalBounds().width / 2.f,
+                window.getSize().y / 2.f - gameOverText.getGlobalBounds().height / 2.f
+            );
+            window.draw(gameOverText);
         }
 
         window.display();
     }
-
     return 0;
 }
