@@ -15,7 +15,7 @@ void Game::loadResources()
     font.loadFromFile("assets/arial.ttf");
     playerTexture.loadFromFile("assets/image/reimu.png");
     enemyTexture.loadFromFile("assets/image/marisa.png");
-    bulletTexture.loadFromFile("assets/image/bullet.png");
+    bulletTexture.loadFromFile("assets/image/enemies_bullet.png");  // Обновляем путь к спрайтлисту пуль
     hitboxTexture.loadFromFile("assets/image/hit_box_player.png");
     hitboxSprite.setTexture(hitboxTexture);
 }
@@ -160,14 +160,39 @@ void Game::updateBullets()
 
 void Game::spawnEnemies()
 {
-    if (enemySpawnTimer < 20)
+    if (enemySpawnTimer < 60)  // Увеличиваем интервал спавна
         enemySpawnTimer++;
 
-    if (enemySpawnTimer >= 20)
+    if (enemySpawnTimer >= 60)
     {
         float randomX = rand() % int(window.getSize().x - 32);
-        EnemyMovementPattern pattern = PATTERN_CIRCLE;
-        enemies.push_back(Enemy(&enemyTexture, sf::Vector2f(randomX, 50.f), pattern));
+        
+        // Выбираем случайный паттерн движения
+        EnemyMovementPattern movePattern;
+        switch(rand() % 4) {
+            case 0: movePattern = PATTERN_STRAIGHT; break;
+            case 1: movePattern = PATTERN_SINE; break;
+            case 2: movePattern = PATTERN_ZIGZAG; break;
+            case 3: movePattern = PATTERN_CIRCLE; break;
+            default: movePattern = PATTERN_STRAIGHT;
+        }
+        
+        // Создаем врага
+        Enemy enemy(&enemyTexture, sf::Vector2f(randomX, 50.f), movePattern);
+        
+        // Выбираем случайный тип врага
+        EnemyType enemyType;
+        switch(rand() % 5) {
+            case 0: enemyType = ENEMY_BASIC; break;
+            case 1: enemyType = ENEMY_SPINNER; break;
+            case 2: enemyType = ENEMY_SPIRAL; break;
+            case 3: enemyType = ENEMY_SNIPER; break;
+            case 4: enemyType = ENEMY_WAVE; break;
+            default: enemyType = ENEMY_BASIC;
+        }
+        
+        enemy.setType(enemyType);
+        enemies.push_back(enemy);
         enemySpawnTimer = 0;
     }
 }

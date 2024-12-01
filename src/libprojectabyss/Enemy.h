@@ -16,6 +16,24 @@ enum EnemyMovementPattern {
     PATTERN_CIRCLE       // Круговое движение
 };
 
+// Типы паттернов стрельбы
+enum BulletPattern {
+    BULLET_SINGLE,     // Одиночный выстрел
+    BULLET_CIRCLE,     // Круговой паттерн
+    BULLET_SPIRAL,     // Спиральный паттерн
+    BULLET_FAN,        // Веерный паттерн
+    BULLET_WAVE        // Волновой паттерн
+};
+
+// Типы врагов
+enum EnemyType {
+    ENEMY_BASIC,      // Базовый враг с простой стрельбой
+    ENEMY_SPINNER,    // Враг с круговой стрельбой
+    ENEMY_SPIRAL,     // Враг со спиральной стрельбой
+    ENEMY_SNIPER,     // Враг с веерной стрельбой
+    ENEMY_WAVE        // Враг с волновой стрельбой
+};
+
 class Enemy {
 private:
     AnimatedSprite sprite;
@@ -23,8 +41,13 @@ private:
     float speed;
     float time;         // Время для расчета движения
     EnemyMovementPattern pattern;
+    BulletPattern bulletPattern;  // Тип паттерна стрельбы
+    float bulletAngle;            // Текущий угол для спирального и кругового паттернов
+    float bulletSpeed;            // Скорость пуль
+    int bulletsPerShot;          // Количество пуль за один выстрел
     Vector2f startPos;  // Начальная позиция для расчета движения
-    
+    EnemyType type;
+
 public:
     int HP;
     int HPMax;
@@ -37,6 +60,7 @@ public:
     void draw(sf::RenderTarget& target);
     void shoot(Texture* bulletTexture);
     void updateMovement();
+    void setType(EnemyType newType);
 
     // Методы для доступа к позиции и размерам
     double get_left() { return sprite.get_left(); }
