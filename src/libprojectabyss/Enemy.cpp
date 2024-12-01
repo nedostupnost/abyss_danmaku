@@ -201,6 +201,10 @@ void Enemy::setType(EnemyType newType) {
     HP = HPMax;  // Восстанавливаем здоровье при смене типа
 }
 
+void Enemy::setBulletPattern(BulletPattern pattern) {
+    bulletPattern = pattern;
+}
+
 void Enemy::draw(sf::RenderTarget& target) {
     sprite.draw(target);
     for (auto& bullet : bullets) {

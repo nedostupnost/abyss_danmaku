@@ -160,10 +160,15 @@ void Game::updateBullets()
 
 void Game::spawnEnemies()
 {
-    if (enemySpawnTimer < 60)  // Увеличиваем интервал спавна
+    static int wave = 0;
+    static int enemiesSpawned = 0;
+    static int enemiesPerWave = 0;
+    static BulletPattern currentPattern = BULLET_SINGLE;
+
+    if (enemySpawnTimer < 20)  // Увеличиваем интервал спавна
         enemySpawnTimer++;
 
-    if (enemySpawnTimer >= 60)
+    if (enemySpawnTimer >= 20 && enemiesSpawned < enemiesPerWave)
     {
         float randomX = rand() % int(window.getSize().x - 32);
         
@@ -179,21 +184,41 @@ void Game::spawnEnemies()
         
         // Создаем врага
         Enemy enemy(&enemyTexture, sf::Vector2f(randomX, 50.f), movePattern);
-        
-        // Выбираем случайный тип врага
-        EnemyType enemyType;
-        switch(rand() % 5) {
-            case 0: enemyType = ENEMY_BASIC; break;
-            case 1: enemyType = ENEMY_SPINNER; break;
-            case 2: enemyType = ENEMY_SPIRAL; break;
-            case 3: enemyType = ENEMY_SNIPER; break;
-            case 4: enemyType = ENEMY_WAVE; break;
-            default: enemyType = ENEMY_BASIC;
-        }
-        
-        enemy.setType(enemyType);
+        enemy.setType(static_cast<EnemyType>(rand() % 5));
+        enemy.setBulletPattern(currentPattern);
         enemies.push_back(enemy);
+        enemiesSpawned++;
         enemySpawnTimer = 0;
+    }
+
+    // Переход к следующей волне
+    if (enemiesSpawned >= enemiesPerWave)
+    {
+        wave++;
+        enemiesSpawned = 0;
+        switch (wave) {
+            case 1:
+                currentPattern = BULLET_CIRCLE;
+                enemiesPerWave = 15;
+                break;
+            case 2:
+                currentPattern = BULLET_SPIRAL;
+                enemiesPerWave = 18;
+                break;
+            case 3:
+                currentPattern = BULLET_FAN;
+                enemiesPerWave = 20;
+                break;
+            case 4:
+                currentPattern = BULLET_WAVE;
+                enemiesPerWave = 12;
+                break;
+            default:
+                currentPattern = BULLET_SINGLE;
+                enemiesPerWave = 14;
+                wave = 0;
+                break;
+        }
     }
 }
 

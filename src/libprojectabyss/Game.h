@@ -5,7 +5,7 @@
 #include "../libprojectabyss/Bullet.h"
 
 class Game {
-private:
+protected:
     sf::RenderWindow window;
     Player player;
     std::vector<Enemy> enemies;

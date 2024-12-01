@@ -61,6 +61,7 @@ public:
     void shoot(Texture* bulletTexture);
     void updateMovement();
     void setType(EnemyType newType);
+    void setBulletPattern(BulletPattern pattern);  // Новый метод для установки паттерна стрельбы
 
     // Методы для доступа к позиции и размерам
     double get_left() { return sprite.get_left(); }
