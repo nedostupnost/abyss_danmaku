@@ -5,7 +5,7 @@ Enemy::Enemy(Texture* texture, Vector2f pos,
     this->HP = 1;
     this->damageTimer = 10;
     this->shootTimer = 0;
-    this->shootInterval = 20; // Добавляем переменную shootInterval
+    this->shootInterval = 40;
     
     // Инициализация параметров стрельбы
     this->bulletPattern = shootPattern;

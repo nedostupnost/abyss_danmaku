@@ -120,11 +120,11 @@ void Game::spawnEnemies()
 
 
         // Таймер выстрелов врага
-        if (enemy.shootTimer < 20)  // Примерно каждые 2 секунды
+        if (enemy.shootTimer < 40)  // Примерно каждые 2 секунды
             enemy.shootTimer++;
 
         // Если таймер достиг лимита, враг стреляет
-        if (enemy.shootTimer >= 20)
+        if (enemy.shootTimer >= 40)
         {
             enemy.shoot(&bulletTexture, player.get_center());
             enemy.shootTimer = 0;
