@@ -73,7 +73,4 @@ public:
     double get_height() { return sprite.get_height(); }
     sf::Vector2f get_center() { return sprite.get_center(); }
 
-    // Удаляем неиспользуемые методы
-    // void setMovementPattern(EnemyMovementPattern pattern);
-    // void setBulletPattern(BulletPattern pattern);
 };
