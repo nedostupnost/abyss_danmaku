@@ -1,0 +1,53 @@
+PROJECT_NAME           = "Abyss Danmaku"
+PROJECT_NUMBER         = 1.0
+OUTPUT_DIRECTORY       = docs
+CREATE_SUBDIRS         = YES
+ALWAYS_DETAILED_SEC    = YES
+BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = YES
+FULL_PATH_NAMES        = YES
+STRIP_FROM_PATH        = src
+JAVADOC_AUTOBRIEF      = YES
+QT_AUTOBRIEF           = YES
+MULTILINE_CPP_IS_BRIEF = YES
+INHERIT_DOCS           = YES
+SEPARATE_MEMBER_PAGES  = NO
+TAB_SIZE               = 4
+OPTIMIZE_OUTPUT_FOR_C  = NO
+OPTIMIZE_OUTPUT_JAVA   = NO
+BUILTIN_STL_SUPPORT    = YES
+
+# Источники документации
+INPUT                  = src README.md
+FILE_PATTERNS          = *.cpp *.h *.md
+RECURSIVE              = YES
+
+# Генерация HTML документации
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+HTML_COLORSTYLE_HUE    = 220
+HTML_COLORSTYLE_SAT    = 100
+HTML_COLORSTYLE_GAMMA  = 80
+
+# Генерация LaTeX документации
+GENERATE_LATEX         = NO
+
+# Графики и диаграммы
+HAVE_DOT               = YES
+CLASS_DIAGRAMS         = YES
+COLLABORATION_GRAPH    = YES
+GROUP_GRAPHS           = YES
+UML_LOOK               = YES
+TEMPLATE_RELATIONS     = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+
+# Настройки извлечения документации
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+
+# Языковые настройки
+LANGUAGE               = Russian
+OUTPUT_LANGUAGE        = Russian

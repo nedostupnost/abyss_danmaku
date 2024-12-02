@@ -1,13 +1,19 @@
 #include "Game.h"
 #include <cstdlib>
+#include <ctime>
 
 Game::Game(unsigned int width, unsigned int height, const std::string &title)
     : window(sf::VideoMode(width, height), title),
       player(&playerTexture, window.getSize()),
-      enemySpawnTimer(0)
+      enemySpawnTimer(0),
+      currentWave(0),
+      enemiesSpawned(0),
+      currentWaveDesc(nullptr)
 {
     window.setFramerateLimit(60);
+    srand(time(nullptr));
     loadResources();
+    initializeWaves();
 }
 
 void Game::loadResources()
@@ -15,9 +21,171 @@ void Game::loadResources()
     font.loadFromFile("assets/arial.ttf");
     playerTexture.loadFromFile("assets/image/reimu.png");
     enemyTexture.loadFromFile("assets/image/marisa.png");
-    bulletTexture.loadFromFile("assets/image/enemies_bullet.png");  // Обновляем путь к спрайтлисту пуль
+    bulletTexture.loadFromFile("assets/image/enemies_bullet.png");
+    playerBulletTexture.loadFromFile("assets/image/bullet.png");
     hitboxTexture.loadFromFile("assets/image/hit_box_player.png");
     hitboxSprite.setTexture(hitboxTexture);
+}
+
+void Game::initializeWaves()
+{
+    // Волна 1: Простые враги с прямым движением и одиночными выстрелами
+    waveQueue.push(createWaveDescription(
+        20,  // количество врагов
+        {PATTERN_STRAIGHT},
+        {BULLET_SINGLE},
+        5.f,  // интервал спавна
+        2.f    // скорость
+    ));
+
+    // Волна 2: Смешанные враги с синусоидальным движением и круговыми выстрелами
+    waveQueue.push(createWaveDescription(
+        20,
+        {PATTERN_SINE, PATTERN_ZIGZAG},
+        {BULLET_CIRCLE, BULLET_FAN},
+        5.f,
+        2.5f,
+        2  // HP
+    ));
+
+    // Волна 3: Сложные враги с разными паттернами
+    waveQueue.push(createWaveDescription(
+        20,
+        {PATTERN_CIRCLE, PATTERN_EIGHT, PATTERN_SINE},
+        {BULLET_SPIRAL, BULLET_WAVE, BULLET_AIMED},
+        5.f,
+        3.f,
+        3
+    ));
+}
+
+WaveDescription Game::createWaveDescription(
+    int enemyCount,
+    const std::vector<EnemyMovementPattern>& movePatterns,
+    const std::vector<BulletPattern>& shootPatterns,
+    float spawnInterval,
+    float enemySpeed,
+    int enemyHP)
+{
+    WaveDescription wave;
+    wave.enemyCount = enemyCount;
+    wave.movePatterns = movePatterns;
+    wave.shootPatterns = shootPatterns;
+    wave.spawnInterval = spawnInterval;
+    wave.enemySpeed = enemySpeed;
+    wave.enemyHP = enemyHP;
+    return wave;
+}
+
+void Game::updateWaveSystem()
+{
+    // Если текущая волна закончилась и очередь не пуста
+    if (enemies.empty() && enemiesSpawned >= (currentWaveDesc ? currentWaveDesc->enemyCount : 0))
+    {
+        if (!waveQueue.empty())
+        {
+            delete currentWaveDesc;
+            currentWaveDesc = new WaveDescription(waveQueue.front());
+            waveQueue.pop();
+            currentWave++;
+            enemiesSpawned = 0;
+            enemySpawnTimer = 0;
+        }
+    }
+}
+
+void Game::spawnEnemies()
+{
+    // Увеличиваем таймер спавна
+    enemySpawnTimer++;
+
+    // Спавним нового врага каждые 60 кадров (примерно 1 секунда)
+    if (enemySpawnTimer >= 10)
+    {
+        // Рандомизируем паттерны движения и стрельбы
+        EnemyMovementPattern movePattern = static_cast<EnemyMovementPattern>(rand() % NUM_MOVEMENT_PATTERNS);
+        BulletPattern shootPattern = static_cast<BulletPattern>(rand() % NUM_BULLET_PATTERNS);
+
+        // Создаем нового врага
+        enemies.emplace_back(&enemyTexture, Vector2f(rand() % window.getSize().x, 0), movePattern, shootPattern);
+
+        // Сбрасываем таймер спавна
+        enemySpawnTimer = 0;
+    }
+
+    // Обновляем всех врагов
+    for (auto& enemy : enemies)
+    {
+        enemy.update(player.get_center(), &bulletTexture);  // Передаем текстуру пули
+
+
+        // Таймер выстрелов врага
+        if (enemy.shootTimer < 20)  // Примерно каждые 2 секунды
+            enemy.shootTimer++;
+
+        // Если таймер достиг лимита, враг стреляет
+        if (enemy.shootTimer >= 20)
+        {
+            enemy.shoot(&bulletTexture, player.get_center());
+            enemy.shootTimer = 0;
+        }
+    }
+}
+
+void Game::updateEnemies()
+{
+    Vector2f playerPos = player.get_center();
+    for (auto it = enemies.begin(); it != enemies.end();) {
+        it->update(playerPos, &bulletTexture);  // Передаем текстуру пули
+
+        // Добавляем пули врагов в общий вектор
+        enemyBullets.insert(enemyBullets.end(), 
+                          it->bullets.begin(), 
+                          it->bullets.end());
+        it->bullets.clear();
+
+        // Удаляем врагов, вышедших за пределы экрана
+        if (it->get_top() > window.getSize().y) {
+            it = enemies.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}
+
+void Game::updateBullets()
+{
+    // Обновление пуль игрока
+    for (size_t i = 0; i < player.bullets.size();)
+    {
+        player.bullets[i].update();
+        
+        if (player.bullets[i].shape.getPosition().y < 0)
+        {
+            player.bullets.erase(player.bullets.begin() + i);
+        }
+        else
+        {
+            ++i;
+        }
+    }
+
+    // Обновление пуль врагов
+    for (size_t i = 0; i < enemyBullets.size();)
+    {
+        enemyBullets[i].update();
+        
+        Vector2f pos = enemyBullets[i].shape.getPosition();
+        if (pos.y > window.getSize().y || pos.y < 0 ||
+            pos.x < 0 || pos.x > window.getSize().x)
+        {
+            enemyBullets.erase(enemyBullets.begin() + i);
+        }
+        else
+        {
+            ++i;
+        }
+    }
 }
 
 void Game::processEvents()
@@ -83,142 +251,8 @@ void Game::updatePlayer()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && player.shootTimer >= 10)
     {
         sf::Vector2f playerPos = player.get_center();
-        player.bullets.push_back(Bullet(&bulletTexture, playerPos));
+        player.bullets.push_back(Bullet(&playerBulletTexture, playerPos, BULLET_SINGLE_TYPE, true));  // Добавляем true для пуль игрока
         player.shootTimer = 0;
-    }
-
-    // Движение пуль игрока
-    for (size_t i = 0; i < player.bullets.size();)
-    {
-        player.bullets[i].shape.move(0.f, -10.f);
-
-        // Удаление пули за экраном
-        if (player.bullets[i].shape.getPosition().y < 0)
-        {
-            player.bullets.erase(player.bullets.begin() + i);
-        }
-        else
-        {
-            ++i;
-        }
-    }
-}
-
-void Game::updateEnemies()
-{
-    for (auto it = enemies.begin(); it != enemies.end(); ++it)
-    {
-        it->update();
-        it->shoot(&bulletTexture);
-
-        // Добавляем пули врагов в общий вектор
-        for (auto &bullet : it->bullets)
-        {
-            enemyBullets.push_back(bullet);
-        }
-        it->bullets.clear(); // Очищаем локальный вектор пуль врага
-    }
-}
-
-void Game::updateBullets()
-{
-    // Обновление пуль игрока
-    for (size_t i = 0; i < player.bullets.size();)
-    {
-        player.bullets[i].shape.move(0.f, -10.f);
-
-        // Удаление пули за экраном
-        if (player.bullets[i].shape.getPosition().y < 0)
-        {
-            player.bullets.erase(player.bullets.begin() + i);
-        }
-        else
-        {
-            ++i;
-        }
-    }
-
-    // Обновление пуль врагов
-    for (size_t i = 0; i < enemyBullets.size();)
-    {
-        enemyBullets[i].shape.move(0.f, 10.f);
-
-        // Удаление пули за экраном
-        if (enemyBullets[i].shape.getPosition().y > window.getSize().y ||
-            enemyBullets[i].shape.getPosition().y < 0 ||
-            enemyBullets[i].shape.getPosition().x < 0 ||
-            enemyBullets[i].shape.getPosition().x > window.getSize().x)
-        {
-            enemyBullets.erase(enemyBullets.begin() + i);
-        }
-        else
-        {
-            ++i;
-        }
-    }
-}
-
-void Game::spawnEnemies()
-{
-    static int wave = 0;
-    static int enemiesSpawned = 0;
-    static int enemiesPerWave = 0;
-    static BulletPattern currentPattern = BULLET_SINGLE;
-
-    if (enemySpawnTimer < 20)  // Увеличиваем интервал спавна
-        enemySpawnTimer++;
-
-    if (enemySpawnTimer >= 20 && enemiesSpawned < enemiesPerWave)
-    {
-        float randomX = rand() % int(window.getSize().x - 32);
-        
-        // Выбираем случайный паттерн движения
-        EnemyMovementPattern movePattern;
-        switch(rand() % 4) {
-            case 0: movePattern = PATTERN_STRAIGHT; break;
-            case 1: movePattern = PATTERN_SINE; break;
-            case 2: movePattern = PATTERN_ZIGZAG; break;
-            case 3: movePattern = PATTERN_CIRCLE; break;
-            default: movePattern = PATTERN_STRAIGHT;
-        }
-        
-        // Создаем врага
-        Enemy enemy(&enemyTexture, sf::Vector2f(randomX, 50.f), movePattern);
-        enemy.setType(static_cast<EnemyType>(rand() % 5));
-        enemy.setBulletPattern(currentPattern);
-        enemies.push_back(enemy);
-        enemiesSpawned++;
-        enemySpawnTimer = 0;
-    }
-
-    // Переход к следующей волне
-    if (enemiesSpawned >= enemiesPerWave)
-    {
-        wave++;
-        enemiesSpawned = 0;
-        switch (wave) {
-            case 1:
-                currentPattern = BULLET_CIRCLE;
-                enemiesPerWave = 15;
-                break;
-            case 2:
-                currentPattern = BULLET_SPIRAL;
-                enemiesPerWave = 18;
-                break;
-            case 3:
-                currentPattern = BULLET_FAN;
-                enemiesPerWave = 20;
-                break;
-            case 4:
-                currentPattern = BULLET_WAVE;
-                enemiesPerWave = 12;
-                break;
-            default:
-                currentPattern = BULLET_SINGLE;
-                enemiesPerWave = 14;
-                wave = 0;
-                break;
-        }
     }
 }
 
@@ -239,11 +273,20 @@ void Game::checkCollisions()
         {
             sf::FloatRect bulletBounds = player.bullets[i].shape.getGlobalBounds();
             sf::FloatRect enemyBounds(enemies[k].get_left(), enemies[k].get_top(),
-                                      enemies[k].get_width(), enemies[k].get_height());
+                                    enemies[k].get_width(), enemies[k].get_height());
 
             if (bulletBounds.intersects(enemyBounds))
             {
-                enemies.erase(enemies.begin() + k);
+                // Уменьшаем HP врага
+                enemies[k].HP--;
+                
+                // Если HP врага достиг нуля, удаляем его
+                if (enemies[k].HP <= 0) {
+                    enemies.erase(enemies.begin() + k);
+                } else {
+                    ++k;
+                }
+                
                 player.bullets.erase(player.bullets.begin() + i);
                 bulletDestroyed = true;
                 break;
@@ -264,7 +307,7 @@ void Game::checkCollisions()
     for (size_t i = 0; i < enemies.size();)
     {
         sf::FloatRect enemyBounds(enemies[i].get_left(), enemies[i].get_top(),
-                                  enemies[i].get_width(), enemies[i].get_height());
+                                enemies[i].get_width(), enemies[i].get_height());
 
         if (enemyBounds.intersects(hitboxBounds))
         {
@@ -272,26 +315,24 @@ void Game::checkCollisions()
             player.HP--;
             continue;
         }
-
-        // Проверка коллизии пуль врага с игроком
-        for (size_t j = 0; j < enemyBullets.size();)
-        {
-            sf::FloatRect bulletBounds = enemyBullets[j].shape.getGlobalBounds();
-            
-            // Проверка столкновения с хитбоксом
-            if (bulletBounds.intersects(hitboxBounds))
-            {
-                enemyBullets.erase(enemyBullets.begin() + j);
-                player.HP--;
-                break;
-            }
-            else
-            {
-                ++j;
-            }
-        }
-
         ++i;
+    }
+
+    // Проверка коллизии пуль врага с игроком
+    for (size_t j = 0; j < enemyBullets.size();)
+    {
+        sf::FloatRect bulletBounds = enemyBullets[j].shape.getGlobalBounds();
+        
+        // Проверка столкновения с хитбоксом
+        if (bulletBounds.intersects(hitboxBounds))
+        {
+            enemyBullets.erase(enemyBullets.begin() + j);
+            player.HP--;
+        }
+        else
+        {
+            ++j;
+        }
     }
 }
 
@@ -325,11 +366,14 @@ void Game::run()
     while (window.isOpen())
     {
         processEvents();
+        
         updatePlayer();
+        updateWaveSystem();
+        spawnEnemies();
         updateEnemies();
         updateBullets();
-        spawnEnemies();
         checkCollisions();
+        
         render();
     }
 }

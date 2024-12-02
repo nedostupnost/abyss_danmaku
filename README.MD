@@ -16,7 +16,7 @@
 - **Arch Linux**:
 
   ```bash
-  sudo pacman -S sfml
+  sudo pacman -S sfml cmake clang
   ```
 
 ### 2. Клонирование репозитория
@@ -28,11 +28,12 @@ git clone https://github.com/nedostupnost/abyss_danmaku.git
 cd abyss_danmaku
 ```
 
-### 3. Компиляция проекта
-
-Для компиляции используй MakeFile:
+### 3. Компиляция проектаДля компиляции используй MakeFile:
 
 ```bash
+mkdir build
+cd build
+cmake ..
 make
 ```
 
