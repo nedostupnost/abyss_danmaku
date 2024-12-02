@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Abyss Danmaku: Класс Bullet</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Abyss Danmaku<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="../../d3/dcb/classBullet-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Bullet</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../d4/d9a/Bullet_8h_source.html">Bullet.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф связей класса Bullet:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/dc4/classBullet__coll__graph.png" border="0" usemap="#aBullet_coll__map" alt="Collaboration graph"/></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a72de89773b29629ce756555c315e0a78" id="r_a72de89773b29629ce756555c315e0a78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72de89773b29629ce756555c315e0a78">Bullet</a> (Texture *texture, Vector2f pos, <a class="el" href="../../d4/d9a/Bullet_8h.html#af524a199c4115d84e9cc11cb9c5ffc05">BulletType</a> bulletType=<a class="el" href="../../d4/d9a/Bullet_8h.html#af524a199c4115d84e9cc11cb9c5ffc05a14c4bd9f2f42026a7ad5b9ca04941008">BULLET_SINGLE_TYPE</a>, bool playerBullet=false)</td></tr>
+<tr class="separator:a72de89773b29629ce756555c315e0a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32f4a0611fe2dd245fee955d14ca1f68" id="r_a32f4a0611fe2dd245fee955d14ca1f68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32f4a0611fe2dd245fee955d14ca1f68">update</a> ()</td></tr>
+<tr class="separator:a32f4a0611fe2dd245fee955d14ca1f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a9841a494161e1a2f381761b1a65d4a01" id="r_a9841a494161e1a2f381761b1a65d4a01"><td class="memItemLeft" align="right" valign="top">Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9841a494161e1a2f381761b1a65d4a01">shape</a></td></tr>
+<tr class="separator:a9841a494161e1a2f381761b1a65d4a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ba4ee5eab7025899fc58ef3c84c06d6" id="r_a8ba4ee5eab7025899fc58ef3c84c06d6"><td class="memItemLeft" align="right" valign="top">Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ba4ee5eab7025899fc58ef3c84c06d6">direction</a></td></tr>
+<tr class="separator:a8ba4ee5eab7025899fc58ef3c84c06d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac30bfa3eaf80f82b5ae82c50203981c3" id="r_ac30bfa3eaf80f82b5ae82c50203981c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac30bfa3eaf80f82b5ae82c50203981c3">wavePattern</a></td></tr>
+<tr class="separator:ac30bfa3eaf80f82b5ae82c50203981c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae129144dc11fbdc9f3051df5fbab8efd" id="r_ae129144dc11fbdc9f3051df5fbab8efd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae129144dc11fbdc9f3051df5fbab8efd">waveTime</a></td></tr>
+<tr class="separator:ae129144dc11fbdc9f3051df5fbab8efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fbd5204eec00c8285686abeb4547f16" id="r_a5fbd5204eec00c8285686abeb4547f16"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fbd5204eec00c8285686abeb4547f16">speed</a></td></tr>
+<tr class="separator:a5fbd5204eec00c8285686abeb4547f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a068dc589d28fbf036582e0b3b153fe" id="r_a9a068dc589d28fbf036582e0b3b153fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d9a/Bullet_8h.html#af524a199c4115d84e9cc11cb9c5ffc05">BulletType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a068dc589d28fbf036582e0b3b153fe">type</a></td></tr>
+<tr class="separator:a9a068dc589d28fbf036582e0b3b153fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54e0a76e656bc8e0f63e844dbd5bbb4c" id="r_a54e0a76e656bc8e0f63e844dbd5bbb4c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54e0a76e656bc8e0f63e844dbd5bbb4c">isPlayerBullet</a></td></tr>
+<tr class="separator:a54e0a76e656bc8e0f63e844dbd5bbb4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Конструктор(ы)</h2>
+<a id="a72de89773b29629ce756555c315e0a78" name="a72de89773b29629ce756555c315e0a78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72de89773b29629ce756555c315e0a78">&#9670;&#160;</a></span>Bullet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Bullet::Bullet </td>
+          <td>(</td>
+          <td class="paramtype">Texture *</td>          <td class="paramname"><span class="paramname"><em>texture</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2f</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d4/d9a/Bullet_8h.html#af524a199c4115d84e9cc11cb9c5ffc05">BulletType</a></td>          <td class="paramname"><span class="paramname"><em>bulletType</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="../../d4/d9a/Bullet_8h.html#af524a199c4115d84e9cc11cb9c5ffc05a14c4bd9f2f42026a7ad5b9ca04941008">BULLET_SINGLE_TYPE</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>playerBullet</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="a32f4a0611fe2dd245fee955d14ca1f68" name="a32f4a0611fe2dd245fee955d14ca1f68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32f4a0611fe2dd245fee955d14ca1f68">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bullet::update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a8ba4ee5eab7025899fc58ef3c84c06d6" name="a8ba4ee5eab7025899fc58ef3c84c06d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ba4ee5eab7025899fc58ef3c84c06d6">&#9670;&#160;</a></span>direction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2f Bullet::direction</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a54e0a76e656bc8e0f63e844dbd5bbb4c" name="a54e0a76e656bc8e0f63e844dbd5bbb4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54e0a76e656bc8e0f63e844dbd5bbb4c">&#9670;&#160;</a></span>isPlayerBullet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Bullet::isPlayerBullet</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9841a494161e1a2f381761b1a65d4a01" name="a9841a494161e1a2f381761b1a65d4a01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9841a494161e1a2f381761b1a65d4a01">&#9670;&#160;</a></span>shape</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sprite Bullet::shape</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5fbd5204eec00c8285686abeb4547f16" name="a5fbd5204eec00c8285686abeb4547f16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fbd5204eec00c8285686abeb4547f16">&#9670;&#160;</a></span>speed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Bullet::speed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a068dc589d28fbf036582e0b3b153fe" name="a9a068dc589d28fbf036582e0b3b153fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a068dc589d28fbf036582e0b3b153fe">&#9670;&#160;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d9a/Bullet_8h.html#af524a199c4115d84e9cc11cb9c5ffc05">BulletType</a> Bullet::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac30bfa3eaf80f82b5ae82c50203981c3" name="ac30bfa3eaf80f82b5ae82c50203981c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac30bfa3eaf80f82b5ae82c50203981c3">&#9670;&#160;</a></span>wavePattern</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Bullet::wavePattern</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae129144dc11fbdc9f3051df5fbab8efd" name="ae129144dc11fbdc9f3051df5fbab8efd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae129144dc11fbdc9f3051df5fbab8efd">&#9670;&#160;</a></span>waveTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Bullet::waveTime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>libprojectabyss/<a class="el" href="../../d4/d9a/Bullet_8h_source.html">Bullet.h</a></li>
+<li>libprojectabyss/<a class="el" href="../../d4/d0c/Bullet_8cpp.html">Bullet.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

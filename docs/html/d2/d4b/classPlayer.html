@@ -1,0 +1,707 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Abyss Danmaku: Класс Player</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Abyss Danmaku<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="#pri-attribs">Закрытые данные</a> &#124;
+<a href="../../dc/dc5/classPlayer-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Player</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../da/dbf/Player_8h_source.html">Player.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф связей класса Player:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/d25/classPlayer__coll__graph.png" border="0" usemap="#aPlayer_coll__map" alt="Collaboration graph"/></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a7bd721e5262303fcf2fef5c8cb5f587a" id="r_a7bd721e5262303fcf2fef5c8cb5f587a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bd721e5262303fcf2fef5c8cb5f587a">Player</a> (Texture *texture, Vector2u windowSize)</td></tr>
+<tr class="separator:a7bd721e5262303fcf2fef5c8cb5f587a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82c3476f3e65a4e2ac6bcd040771bdd4" id="r_a82c3476f3e65a4e2ac6bcd040771bdd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82c3476f3e65a4e2ac6bcd040771bdd4">update</a> ()</td></tr>
+<tr class="separator:a82c3476f3e65a4e2ac6bcd040771bdd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae02ee46d8c20dd0697b975f935b09839" id="r_ae02ee46d8c20dd0697b975f935b09839"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae02ee46d8c20dd0697b975f935b09839">move</a> ()</td></tr>
+<tr class="separator:ae02ee46d8c20dd0697b975f935b09839"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa76d9cd306da920b3a7aeb641a2d3b8e" id="r_aa76d9cd306da920b3a7aeb641a2d3b8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa76d9cd306da920b3a7aeb641a2d3b8e">check_animation_state</a> ()</td></tr>
+<tr class="separator:aa76d9cd306da920b3a7aeb641a2d3b8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab34876d55eee63af23116c29884ac5bc" id="r_ab34876d55eee63af23116c29884ac5bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab34876d55eee63af23116c29884ac5bc">set_move_state</a> (int dir, bool state)</td></tr>
+<tr class="separator:ab34876d55eee63af23116c29884ac5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66cced4bf106e98e8caf33a5d1b05930" id="r_a66cced4bf106e98e8caf33a5d1b05930"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66cced4bf106e98e8caf33a5d1b05930">draw</a> (sf::RenderTarget &amp;target)</td></tr>
+<tr class="separator:a66cced4bf106e98e8caf33a5d1b05930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d13b5650b50b5b0104bbe44373cd148" id="r_a8d13b5650b50b5b0104bbe44373cd148"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d13b5650b50b5b0104bbe44373cd148">get_left</a> ()</td></tr>
+<tr class="separator:a8d13b5650b50b5b0104bbe44373cd148"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac011d63090edfc45f38d6877ac686f26" id="r_ac011d63090edfc45f38d6877ac686f26"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac011d63090edfc45f38d6877ac686f26">get_right</a> ()</td></tr>
+<tr class="separator:ac011d63090edfc45f38d6877ac686f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a018a8183285c0897e4969e3eaca16046" id="r_a018a8183285c0897e4969e3eaca16046"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a018a8183285c0897e4969e3eaca16046">get_top</a> ()</td></tr>
+<tr class="separator:a018a8183285c0897e4969e3eaca16046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7059a9f59ad76b3dbc7034b33dcb75df" id="r_a7059a9f59ad76b3dbc7034b33dcb75df"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7059a9f59ad76b3dbc7034b33dcb75df">get_bottom</a> ()</td></tr>
+<tr class="separator:a7059a9f59ad76b3dbc7034b33dcb75df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf54cb59388de18c9a482b7051de431e" id="r_abf54cb59388de18c9a482b7051de431e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf54cb59388de18c9a482b7051de431e">get_width</a> ()</td></tr>
+<tr class="separator:abf54cb59388de18c9a482b7051de431e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8649b2bbf5b83fe8ecdd0d8f0996ef01" id="r_a8649b2bbf5b83fe8ecdd0d8f0996ef01"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8649b2bbf5b83fe8ecdd0d8f0996ef01">get_height</a> ()</td></tr>
+<tr class="separator:a8649b2bbf5b83fe8ecdd0d8f0996ef01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1bdd9ef8e413551ad255ef4dac2d0ea" id="r_aa1bdd9ef8e413551ad255ef4dac2d0ea"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1bdd9ef8e413551ad255ef4dac2d0ea">get_center</a> ()</td></tr>
+<tr class="separator:aa1bdd9ef8e413551ad255ef4dac2d0ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a37f28593206fab69d338e1e15928c0f0" id="r_a37f28593206fab69d338e1e15928c0f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37f28593206fab69d338e1e15928c0f0">HP</a></td></tr>
+<tr class="separator:a37f28593206fab69d338e1e15928c0f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4df502a197bc441ff897efe04429159" id="r_ad4df502a197bc441ff897efe04429159"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4df502a197bc441ff897efe04429159">HPMax</a></td></tr>
+<tr class="separator:ad4df502a197bc441ff897efe04429159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a956f059c8784084bba4cc7863f69e05e" id="r_a956f059c8784084bba4cc7863f69e05e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a956f059c8784084bba4cc7863f69e05e">shootTimer</a></td></tr>
+<tr class="separator:a956f059c8784084bba4cc7863f69e05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3a5e0ecf92b18749d4c026b90d04a0d" id="r_ac3a5e0ecf92b18749d4c026b90d04a0d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d6/da1/classBullet.html">Bullet</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3a5e0ecf92b18749d4c026b90d04a0d">bullets</a></td></tr>
+<tr class="separator:ac3a5e0ecf92b18749d4c026b90d04a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr class="memitem:a0473801bcc84ae5338e12c7de2402eaa" id="r_a0473801bcc84ae5338e12c7de2402eaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/df0/classAnimatedSprite.html">AnimatedSprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0473801bcc84ae5338e12c7de2402eaa">sprite</a></td></tr>
+<tr class="separator:a0473801bcc84ae5338e12c7de2402eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c374349340a46368ee46a771232a259" id="r_a1c374349340a46368ee46a771232a259"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c374349340a46368ee46a771232a259">animation_state</a></td></tr>
+<tr class="separator:a1c374349340a46368ee46a771232a259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f29abce549a360af788b4b732920b9c" id="r_a3f29abce549a360af788b4b732920b9c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f29abce549a360af788b4b732920b9c">movement_direction</a> [4]</td></tr>
+<tr class="separator:a3f29abce549a360af788b4b732920b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a759ef6954cc0c06ff717efc9e0d4bb" id="r_a8a759ef6954cc0c06ff717efc9e0d4bb"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a759ef6954cc0c06ff717efc9e0d4bb">move_velocity</a></td></tr>
+<tr class="separator:a8a759ef6954cc0c06ff717efc9e0d4bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Конструктор(ы)</h2>
+<a id="a7bd721e5262303fcf2fef5c8cb5f587a" name="a7bd721e5262303fcf2fef5c8cb5f587a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bd721e5262303fcf2fef5c8cb5f587a">&#9670;&#160;</a></span>Player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Player::Player </td>
+          <td>(</td>
+          <td class="paramtype">Texture *</td>          <td class="paramname"><span class="paramname"><em>texture</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2u</td>          <td class="paramname"><span class="paramname"><em>windowSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a7bd721e5262303fcf2fef5c8cb5f587a_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a7bd721e5262303fcf2fef5c8cb5f587a_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="aa76d9cd306da920b3a7aeb641a2d3b8e" name="aa76d9cd306da920b3a7aeb641a2d3b8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa76d9cd306da920b3a7aeb641a2d3b8e">&#9670;&#160;</a></span>check_animation_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::check_animation_state </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_aa76d9cd306da920b3a7aeb641a2d3b8e_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_aa76d9cd306da920b3a7aeb641a2d3b8e_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_aa76d9cd306da920b3a7aeb641a2d3b8e_icgraph.png" border="0" usemap="#ad2/d4b/classPlayer_aa76d9cd306da920b3a7aeb641a2d3b8e_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a66cced4bf106e98e8caf33a5d1b05930" name="a66cced4bf106e98e8caf33a5d1b05930"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66cced4bf106e98e8caf33a5d1b05930">&#9670;&#160;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::draw </td>
+          <td>(</td>
+          <td class="paramtype">sf::RenderTarget &amp;</td>          <td class="paramname"><span class="paramname"><em>target</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a66cced4bf106e98e8caf33a5d1b05930_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a66cced4bf106e98e8caf33a5d1b05930_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a66cced4bf106e98e8caf33a5d1b05930_icgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a66cced4bf106e98e8caf33a5d1b05930_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a7059a9f59ad76b3dbc7034b33dcb75df" name="a7059a9f59ad76b3dbc7034b33dcb75df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7059a9f59ad76b3dbc7034b33dcb75df">&#9670;&#160;</a></span>get_bottom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Player::get_bottom </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a7059a9f59ad76b3dbc7034b33dcb75df_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a7059a9f59ad76b3dbc7034b33dcb75df_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="aa1bdd9ef8e413551ad255ef4dac2d0ea" name="aa1bdd9ef8e413551ad255ef4dac2d0ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1bdd9ef8e413551ad255ef4dac2d0ea">&#9670;&#160;</a></span>get_center()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Vector2f Player::get_center </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_aa1bdd9ef8e413551ad255ef4dac2d0ea_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_aa1bdd9ef8e413551ad255ef4dac2d0ea_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_aa1bdd9ef8e413551ad255ef4dac2d0ea_icgraph.png" border="0" usemap="#ad2/d4b/classPlayer_aa1bdd9ef8e413551ad255ef4dac2d0ea_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a8649b2bbf5b83fe8ecdd0d8f0996ef01" name="a8649b2bbf5b83fe8ecdd0d8f0996ef01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8649b2bbf5b83fe8ecdd0d8f0996ef01">&#9670;&#160;</a></span>get_height()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Player::get_height </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a8649b2bbf5b83fe8ecdd0d8f0996ef01_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a8649b2bbf5b83fe8ecdd0d8f0996ef01_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a8649b2bbf5b83fe8ecdd0d8f0996ef01_icgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a8649b2bbf5b83fe8ecdd0d8f0996ef01_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a8d13b5650b50b5b0104bbe44373cd148" name="a8d13b5650b50b5b0104bbe44373cd148"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d13b5650b50b5b0104bbe44373cd148">&#9670;&#160;</a></span>get_left()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Player::get_left </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a8d13b5650b50b5b0104bbe44373cd148_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a8d13b5650b50b5b0104bbe44373cd148_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a8d13b5650b50b5b0104bbe44373cd148_icgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a8d13b5650b50b5b0104bbe44373cd148_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ac011d63090edfc45f38d6877ac686f26" name="ac011d63090edfc45f38d6877ac686f26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac011d63090edfc45f38d6877ac686f26">&#9670;&#160;</a></span>get_right()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Player::get_right </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_ac011d63090edfc45f38d6877ac686f26_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_ac011d63090edfc45f38d6877ac686f26_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a018a8183285c0897e4969e3eaca16046" name="a018a8183285c0897e4969e3eaca16046"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a018a8183285c0897e4969e3eaca16046">&#9670;&#160;</a></span>get_top()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Player::get_top </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a018a8183285c0897e4969e3eaca16046_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a018a8183285c0897e4969e3eaca16046_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a018a8183285c0897e4969e3eaca16046_icgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a018a8183285c0897e4969e3eaca16046_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="abf54cb59388de18c9a482b7051de431e" name="abf54cb59388de18c9a482b7051de431e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf54cb59388de18c9a482b7051de431e">&#9670;&#160;</a></span>get_width()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Player::get_width </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_abf54cb59388de18c9a482b7051de431e_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_abf54cb59388de18c9a482b7051de431e_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_abf54cb59388de18c9a482b7051de431e_icgraph.png" border="0" usemap="#ad2/d4b/classPlayer_abf54cb59388de18c9a482b7051de431e_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ae02ee46d8c20dd0697b975f935b09839" name="ae02ee46d8c20dd0697b975f935b09839"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae02ee46d8c20dd0697b975f935b09839">&#9670;&#160;</a></span>move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::move </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_ae02ee46d8c20dd0697b975f935b09839_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_ae02ee46d8c20dd0697b975f935b09839_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_ae02ee46d8c20dd0697b975f935b09839_icgraph.png" border="0" usemap="#ad2/d4b/classPlayer_ae02ee46d8c20dd0697b975f935b09839_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ab34876d55eee63af23116c29884ac5bc" name="ab34876d55eee63af23116c29884ac5bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab34876d55eee63af23116c29884ac5bc">&#9670;&#160;</a></span>set_move_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::set_move_state </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>dir</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_ab34876d55eee63af23116c29884ac5bc_icgraph.png" border="0" usemap="#ad2/d4b/classPlayer_ab34876d55eee63af23116c29884ac5bc_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a82c3476f3e65a4e2ac6bcd040771bdd4" name="a82c3476f3e65a4e2ac6bcd040771bdd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82c3476f3e65a4e2ac6bcd040771bdd4">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a82c3476f3e65a4e2ac6bcd040771bdd4_cgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a82c3476f3e65a4e2ac6bcd040771bdd4_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d4b/classPlayer_a82c3476f3e65a4e2ac6bcd040771bdd4_icgraph.png" border="0" usemap="#ad2/d4b/classPlayer_a82c3476f3e65a4e2ac6bcd040771bdd4_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a1c374349340a46368ee46a771232a259" name="a1c374349340a46368ee46a771232a259"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c374349340a46368ee46a771232a259">&#9670;&#160;</a></span>animation_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player::animation_state</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3a5e0ecf92b18749d4c026b90d04a0d" name="ac3a5e0ecf92b18749d4c026b90d04a0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3a5e0ecf92b18749d4c026b90d04a0d">&#9670;&#160;</a></span>bullets</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../d6/da1/classBullet.html">Bullet</a>&gt; Player::bullets</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a37f28593206fab69d338e1e15928c0f0" name="a37f28593206fab69d338e1e15928c0f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37f28593206fab69d338e1e15928c0f0">&#9670;&#160;</a></span>HP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player::HP</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4df502a197bc441ff897efe04429159" name="ad4df502a197bc441ff897efe04429159"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4df502a197bc441ff897efe04429159">&#9670;&#160;</a></span>HPMax</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player::HPMax</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a759ef6954cc0c06ff717efc9e0d4bb" name="a8a759ef6954cc0c06ff717efc9e0d4bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a759ef6954cc0c06ff717efc9e0d4bb">&#9670;&#160;</a></span>move_velocity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Player::move_velocity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f29abce549a360af788b4b732920b9c" name="a3f29abce549a360af788b4b732920b9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f29abce549a360af788b4b732920b9c">&#9670;&#160;</a></span>movement_direction</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player::movement_direction[4]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a956f059c8784084bba4cc7863f69e05e" name="a956f059c8784084bba4cc7863f69e05e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a956f059c8784084bba4cc7863f69e05e">&#9670;&#160;</a></span>shootTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player::shootTimer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0473801bcc84ae5338e12c7de2402eaa" name="a0473801bcc84ae5338e12c7de2402eaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0473801bcc84ae5338e12c7de2402eaa">&#9670;&#160;</a></span>sprite</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/df0/classAnimatedSprite.html">AnimatedSprite</a> Player::sprite</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>libprojectabyss/<a class="el" href="../../da/dbf/Player_8h_source.html">Player.h</a></li>
+<li>libprojectabyss/<a class="el" href="../../d5/d11/Player_8cpp.html">Player.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

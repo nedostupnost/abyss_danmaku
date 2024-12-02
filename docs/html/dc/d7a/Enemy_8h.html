@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Abyss Danmaku: Файл libprojectabyss/Enemy.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Abyss Danmaku<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_11392f057e7d19d2e6807bc19a59a4b6.html">libprojectabyss</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Классы</a> &#124;
+<a href="#enum-members">Перечисления</a> &#124;
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle"><div class="title">Файл Enemy.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;cmath&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../dd/d6f/AnimatedSprite_8h_source.html">AnimatedSprite.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d4/d9a/Bullet_8h_source.html">Bullet.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../da/dbf/Player_8h_source.html">Player.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для Enemy.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d5/d8d/Enemy_8h__incl.png" border="0" usemap="#alibprojectabyss_2Enemy_8h" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Граф файлов, в которые включается этот файл:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/d9e/Enemy_8h__dep__incl.png" border="0" usemap="#alibprojectabyss_2Enemy_8hdep" alt=""/></div>
+</div>
+</div>
+<p><a href="../../dc/d7a/Enemy_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d4a/classEnemy.html">Enemy</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a081413463efc54d9cab5c82328454db6" id="r_a081413463efc54d9cab5c82328454db6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a081413463efc54d9cab5c82328454db6">EnemyMovementPattern</a> { <br />
+&#160;&#160;<a class="el" href="#a081413463efc54d9cab5c82328454db6aefb0ab2e2902f3b2dfcc0f59a0bf6a59">PATTERN_STRAIGHT</a>
+, <a class="el" href="#a081413463efc54d9cab5c82328454db6afce436a0484defedbed5702788416d37">PATTERN_SINE</a>
+, <a class="el" href="#a081413463efc54d9cab5c82328454db6a0b690948d8f6c2ed0a3b87e8575d7f9a">PATTERN_ZIGZAG</a>
+, <a class="el" href="#a081413463efc54d9cab5c82328454db6a22b11c79e2e2e5a954e201b17756d76a">PATTERN_CIRCLE</a>
+, <br />
+&#160;&#160;<a class="el" href="#a081413463efc54d9cab5c82328454db6adf10e441292e82184bab6fea7bbbf484">PATTERN_EIGHT</a>
+<br />
+ }</td></tr>
+<tr class="separator:a081413463efc54d9cab5c82328454db6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51261511c9054f543f87f1b2d610661d" id="r_a51261511c9054f543f87f1b2d610661d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51261511c9054f543f87f1b2d610661d">BulletPattern</a> { <br />
+&#160;&#160;<a class="el" href="#a51261511c9054f543f87f1b2d610661dada8f66415559e2ebe696edc330795a8f">BULLET_SINGLE</a>
+, <a class="el" href="#a51261511c9054f543f87f1b2d610661daa057027ac07f9ab3e95f0a8df9b95ac5">BULLET_CIRCLE</a>
+, <a class="el" href="#a51261511c9054f543f87f1b2d610661da228a367fa7a8031488fa3ef5f682f528">BULLET_SPIRAL</a>
+, <a class="el" href="#a51261511c9054f543f87f1b2d610661dac3475a35bd87a0d0f26530e19303a711">BULLET_FAN</a>
+, <br />
+&#160;&#160;<a class="el" href="#a51261511c9054f543f87f1b2d610661da4e09bbd5345205c5f6d6e6609c085a91">BULLET_WAVE</a>
+, <a class="el" href="#a51261511c9054f543f87f1b2d610661dae2ffc211ae32fc34ea91e30559c6c5c4">BULLET_AIMED</a>
+<br />
+ }</td></tr>
+<tr class="separator:a51261511c9054f543f87f1b2d610661d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a3ba161b8aff5026bd426981f28b72c93" id="r_a3ba161b8aff5026bd426981f28b72c93"><td class="memItemLeft" align="right" valign="top">const sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ba161b8aff5026bd426981f28b72c93">ENEMY_BOUND_IDLE</a> (0, 0, 32, 48)</td></tr>
+<tr class="separator:a3ba161b8aff5026bd426981f28b72c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e42417f3a0abbfb76c3387f1708b594" id="r_a2e42417f3a0abbfb76c3387f1708b594"><td class="memItemLeft" align="right" valign="top">const std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e42417f3a0abbfb76c3387f1708b594">ENEMY_SPRITE_DATA_IDLE</a> (0, 4)</td></tr>
+<tr class="separator:a2e42417f3a0abbfb76c3387f1708b594"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:abf2b746208f146c32bb53dd59c3bd02a" id="r_abf2b746208f146c32bb53dd59c3bd02a"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf2b746208f146c32bb53dd59c3bd02a">NUM_MOVEMENT_PATTERNS</a> = 5</td></tr>
+<tr class="separator:abf2b746208f146c32bb53dd59c3bd02a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7f83fa166072fc1fb01c9f402a5913f" id="r_ad7f83fa166072fc1fb01c9f402a5913f"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7f83fa166072fc1fb01c9f402a5913f">NUM_BULLET_PATTERNS</a> = 6</td></tr>
+<tr class="separator:ad7f83fa166072fc1fb01c9f402a5913f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Перечисления</h2>
+<a id="a51261511c9054f543f87f1b2d610661d" name="a51261511c9054f543f87f1b2d610661d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51261511c9054f543f87f1b2d610661d">&#9670;&#160;</a></span>BulletPattern</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a51261511c9054f543f87f1b2d610661d">BulletPattern</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a51261511c9054f543f87f1b2d610661dada8f66415559e2ebe696edc330795a8f" name="a51261511c9054f543f87f1b2d610661dada8f66415559e2ebe696edc330795a8f"></a>BULLET_SINGLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a51261511c9054f543f87f1b2d610661daa057027ac07f9ab3e95f0a8df9b95ac5" name="a51261511c9054f543f87f1b2d610661daa057027ac07f9ab3e95f0a8df9b95ac5"></a>BULLET_CIRCLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a51261511c9054f543f87f1b2d610661da228a367fa7a8031488fa3ef5f682f528" name="a51261511c9054f543f87f1b2d610661da228a367fa7a8031488fa3ef5f682f528"></a>BULLET_SPIRAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a51261511c9054f543f87f1b2d610661dac3475a35bd87a0d0f26530e19303a711" name="a51261511c9054f543f87f1b2d610661dac3475a35bd87a0d0f26530e19303a711"></a>BULLET_FAN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a51261511c9054f543f87f1b2d610661da4e09bbd5345205c5f6d6e6609c085a91" name="a51261511c9054f543f87f1b2d610661da4e09bbd5345205c5f6d6e6609c085a91"></a>BULLET_WAVE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a51261511c9054f543f87f1b2d610661dae2ffc211ae32fc34ea91e30559c6c5c4" name="a51261511c9054f543f87f1b2d610661dae2ffc211ae32fc34ea91e30559c6c5c4"></a>BULLET_AIMED&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a081413463efc54d9cab5c82328454db6" name="a081413463efc54d9cab5c82328454db6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a081413463efc54d9cab5c82328454db6">&#9670;&#160;</a></span>EnemyMovementPattern</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a081413463efc54d9cab5c82328454db6">EnemyMovementPattern</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a081413463efc54d9cab5c82328454db6aefb0ab2e2902f3b2dfcc0f59a0bf6a59" name="a081413463efc54d9cab5c82328454db6aefb0ab2e2902f3b2dfcc0f59a0bf6a59"></a>PATTERN_STRAIGHT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a081413463efc54d9cab5c82328454db6afce436a0484defedbed5702788416d37" name="a081413463efc54d9cab5c82328454db6afce436a0484defedbed5702788416d37"></a>PATTERN_SINE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a081413463efc54d9cab5c82328454db6a0b690948d8f6c2ed0a3b87e8575d7f9a" name="a081413463efc54d9cab5c82328454db6a0b690948d8f6c2ed0a3b87e8575d7f9a"></a>PATTERN_ZIGZAG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a081413463efc54d9cab5c82328454db6a22b11c79e2e2e5a954e201b17756d76a" name="a081413463efc54d9cab5c82328454db6a22b11c79e2e2e5a954e201b17756d76a"></a>PATTERN_CIRCLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a081413463efc54d9cab5c82328454db6adf10e441292e82184bab6fea7bbbf484" name="a081413463efc54d9cab5c82328454db6adf10e441292e82184bab6fea7bbbf484"></a>PATTERN_EIGHT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Функции</h2>
+<a id="a3ba161b8aff5026bd426981f28b72c93" name="a3ba161b8aff5026bd426981f28b72c93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ba161b8aff5026bd426981f28b72c93">&#9670;&#160;</a></span>ENEMY_BOUND_IDLE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const sf::IntRect ENEMY_BOUND_IDLE </td>
+          <td>(</td>
+          <td class="paramtype">0</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">0</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">32</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">48</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/d7a/Enemy_8h_a3ba161b8aff5026bd426981f28b72c93_icgraph.png" border="0" usemap="#adc/d7a/Enemy_8h_a3ba161b8aff5026bd426981f28b72c93_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a2e42417f3a0abbfb76c3387f1708b594" name="a2e42417f3a0abbfb76c3387f1708b594"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e42417f3a0abbfb76c3387f1708b594">&#9670;&#160;</a></span>ENEMY_SPRITE_DATA_IDLE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::pair&lt; int, int &gt; ENEMY_SPRITE_DATA_IDLE </td>
+          <td>(</td>
+          <td class="paramtype">0</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">4</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/d7a/Enemy_8h_a2e42417f3a0abbfb76c3387f1708b594_icgraph.png" border="0" usemap="#adc/d7a/Enemy_8h_a2e42417f3a0abbfb76c3387f1708b594_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Переменные</h2>
+<a id="ad7f83fa166072fc1fb01c9f402a5913f" name="ad7f83fa166072fc1fb01c9f402a5913f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7f83fa166072fc1fb01c9f402a5913f">&#9670;&#160;</a></span>NUM_BULLET_PATTERNS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int NUM_BULLET_PATTERNS = 6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abf2b746208f146c32bb53dd59c3bd02a" name="abf2b746208f146c32bb53dd59c3bd02a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf2b746208f146c32bb53dd59c3bd02a">&#9670;&#160;</a></span>NUM_MOVEMENT_PATTERNS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int NUM_MOVEMENT_PATTERNS = 5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

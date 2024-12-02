@@ -1,0 +1,15 @@
+digraph "Player::get_bottom"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="Player::get_bottom",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="BoundedSprite::get\l_bottom",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d2/d1f/classBoundedSprite.html#a7ce84283c832ff54665b6602397b7b90",tooltip=" "];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="BoundedSprite::get\l_height",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d2/d1f/classBoundedSprite.html#abe2338f123f6410aecdffdf62562ed9d",tooltip=" "];
+  Node2 -> Node4 [id="edge3_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="BoundedSprite::get_top",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d2/d1f/classBoundedSprite.html#aee40993514ca362913e5c54381e39873",tooltip=" "];
+}

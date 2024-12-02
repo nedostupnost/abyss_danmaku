@@ -1,0 +1,495 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Abyss Danmaku: Класс BoundedSprite</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Abyss Danmaku<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pro-attribs">Защищенные данные</a> &#124;
+<a href="../../d9/dd9/classBoundedSprite-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс BoundedSprite</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../d5/d4b/BoundedSprite_8h_source.html">BoundedSprite.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:BoundedSprite:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../de/d8a/classBoundedSprite__inherit__graph.png" border="0" usemap="#aBoundedSprite_inherit__map" alt="Inheritance graph"/></div>
+</div>
+<div class="dynheader">
+Граф связей класса BoundedSprite:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../df/d1e/classBoundedSprite__coll__graph.png" border="0" usemap="#aBoundedSprite_coll__map" alt="Collaboration graph"/></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a2f0e77f829275115e2e4b7fd8b83a5fc" id="r_a2f0e77f829275115e2e4b7fd8b83a5fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f0e77f829275115e2e4b7fd8b83a5fc">BoundedSprite</a> ()</td></tr>
+<tr class="separator:a2f0e77f829275115e2e4b7fd8b83a5fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b90406100c92fc53ab8fb953ca5340a" id="r_a7b90406100c92fc53ab8fb953ca5340a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b90406100c92fc53ab8fb953ca5340a">init_texture</a> (sf::Texture *<a class="el" href="#a2cba3bf5cbf81e74eb63cadfac8a1fa0">texture</a>)</td></tr>
+<tr class="separator:a7b90406100c92fc53ab8fb953ca5340a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b89b611ebb19901f10d0ade4d4ea01e" id="r_a9b89b611ebb19901f10d0ade4d4ea01e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b89b611ebb19901f10d0ade4d4ea01e">init</a> (sf::IntRect bound)</td></tr>
+<tr class="separator:a9b89b611ebb19901f10d0ade4d4ea01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d91736ed8e4f8ce72755e800310ff04" id="r_a6d91736ed8e4f8ce72755e800310ff04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d91736ed8e4f8ce72755e800310ff04">set_center</a> (double x, double y)</td></tr>
+<tr class="separator:a6d91736ed8e4f8ce72755e800310ff04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a622518f4924f60b75fcebc9a2dc433ec" id="r_a622518f4924f60b75fcebc9a2dc433ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a622518f4924f60b75fcebc9a2dc433ec">move</a> (double x, double y)</td></tr>
+<tr class="separator:a622518f4924f60b75fcebc9a2dc433ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f99461a416d8f4ad3f57014d79deb8e" id="r_a0f99461a416d8f4ad3f57014d79deb8e"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f99461a416d8f4ad3f57014d79deb8e">get_center</a> ()</td></tr>
+<tr class="separator:a0f99461a416d8f4ad3f57014d79deb8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb0cc08ee3722fc31f1c22b43d85070f" id="r_abb0cc08ee3722fc31f1c22b43d85070f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb0cc08ee3722fc31f1c22b43d85070f">get_left</a> ()</td></tr>
+<tr class="separator:abb0cc08ee3722fc31f1c22b43d85070f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb887a279fa3bd28ad66defd5fa2ee11" id="r_abb887a279fa3bd28ad66defd5fa2ee11"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb887a279fa3bd28ad66defd5fa2ee11">get_right</a> ()</td></tr>
+<tr class="separator:abb887a279fa3bd28ad66defd5fa2ee11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee40993514ca362913e5c54381e39873" id="r_aee40993514ca362913e5c54381e39873"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee40993514ca362913e5c54381e39873">get_top</a> ()</td></tr>
+<tr class="separator:aee40993514ca362913e5c54381e39873"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ce84283c832ff54665b6602397b7b90" id="r_a7ce84283c832ff54665b6602397b7b90"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ce84283c832ff54665b6602397b7b90">get_bottom</a> ()</td></tr>
+<tr class="separator:a7ce84283c832ff54665b6602397b7b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b2a4b21bb53ded8e9675cd6ed11afaf" id="r_a6b2a4b21bb53ded8e9675cd6ed11afaf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b2a4b21bb53ded8e9675cd6ed11afaf">get_width</a> ()</td></tr>
+<tr class="separator:a6b2a4b21bb53ded8e9675cd6ed11afaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe2338f123f6410aecdffdf62562ed9d" id="r_abe2338f123f6410aecdffdf62562ed9d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe2338f123f6410aecdffdf62562ed9d">get_height</a> ()</td></tr>
+<tr class="separator:abe2338f123f6410aecdffdf62562ed9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5334b42447f5e39d8bf2c69a8dbbbaf" id="r_ae5334b42447f5e39d8bf2c69a8dbbbaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5334b42447f5e39d8bf2c69a8dbbbaf">draw</a> (sf::RenderTarget &amp;target)</td></tr>
+<tr class="separator:ae5334b42447f5e39d8bf2c69a8dbbbaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Защищенные данные</h2></td></tr>
+<tr class="memitem:a17c695ad6cb802a62f882ec86db42afe" id="r_a17c695ad6cb802a62f882ec86db42afe"><td class="memItemLeft" align="right" valign="top">sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17c695ad6cb802a62f882ec86db42afe">s</a></td></tr>
+<tr class="separator:a17c695ad6cb802a62f882ec86db42afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cba3bf5cbf81e74eb63cadfac8a1fa0" id="r_a2cba3bf5cbf81e74eb63cadfac8a1fa0"><td class="memItemLeft" align="right" valign="top">sf::Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cba3bf5cbf81e74eb63cadfac8a1fa0">texture</a></td></tr>
+<tr class="separator:a2cba3bf5cbf81e74eb63cadfac8a1fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Конструктор(ы)</h2>
+<a id="a2f0e77f829275115e2e4b7fd8b83a5fc" name="a2f0e77f829275115e2e4b7fd8b83a5fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f0e77f829275115e2e4b7fd8b83a5fc">&#9670;&#160;</a></span>BoundedSprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BoundedSprite::BoundedSprite </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="ae5334b42447f5e39d8bf2c69a8dbbbaf" name="ae5334b42447f5e39d8bf2c69a8dbbbaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5334b42447f5e39d8bf2c69a8dbbbaf">&#9670;&#160;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoundedSprite::draw </td>
+          <td>(</td>
+          <td class="paramtype">sf::RenderTarget &amp;</td>          <td class="paramname"><span class="paramname"><em>target</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_ae5334b42447f5e39d8bf2c69a8dbbbaf_icgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_ae5334b42447f5e39d8bf2c69a8dbbbaf_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a7ce84283c832ff54665b6602397b7b90" name="a7ce84283c832ff54665b6602397b7b90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ce84283c832ff54665b6602397b7b90">&#9670;&#160;</a></span>get_bottom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double BoundedSprite::get_bottom </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_a7ce84283c832ff54665b6602397b7b90_cgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_a7ce84283c832ff54665b6602397b7b90_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_a7ce84283c832ff54665b6602397b7b90_icgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_a7ce84283c832ff54665b6602397b7b90_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a0f99461a416d8f4ad3f57014d79deb8e" name="a0f99461a416d8f4ad3f57014d79deb8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f99461a416d8f4ad3f57014d79deb8e">&#9670;&#160;</a></span>get_center()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Vector2f BoundedSprite::get_center </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_a0f99461a416d8f4ad3f57014d79deb8e_icgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_a0f99461a416d8f4ad3f57014d79deb8e_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="abe2338f123f6410aecdffdf62562ed9d" name="abe2338f123f6410aecdffdf62562ed9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe2338f123f6410aecdffdf62562ed9d">&#9670;&#160;</a></span>get_height()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double BoundedSprite::get_height </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_abe2338f123f6410aecdffdf62562ed9d_icgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_abe2338f123f6410aecdffdf62562ed9d_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="abb0cc08ee3722fc31f1c22b43d85070f" name="abb0cc08ee3722fc31f1c22b43d85070f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb0cc08ee3722fc31f1c22b43d85070f">&#9670;&#160;</a></span>get_left()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double BoundedSprite::get_left </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_abb0cc08ee3722fc31f1c22b43d85070f_icgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_abb0cc08ee3722fc31f1c22b43d85070f_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="abb887a279fa3bd28ad66defd5fa2ee11" name="abb887a279fa3bd28ad66defd5fa2ee11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb887a279fa3bd28ad66defd5fa2ee11">&#9670;&#160;</a></span>get_right()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double BoundedSprite::get_right </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_abb887a279fa3bd28ad66defd5fa2ee11_cgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_abb887a279fa3bd28ad66defd5fa2ee11_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_abb887a279fa3bd28ad66defd5fa2ee11_icgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_abb887a279fa3bd28ad66defd5fa2ee11_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="aee40993514ca362913e5c54381e39873" name="aee40993514ca362913e5c54381e39873"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee40993514ca362913e5c54381e39873">&#9670;&#160;</a></span>get_top()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double BoundedSprite::get_top </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_aee40993514ca362913e5c54381e39873_icgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_aee40993514ca362913e5c54381e39873_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a6b2a4b21bb53ded8e9675cd6ed11afaf" name="a6b2a4b21bb53ded8e9675cd6ed11afaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b2a4b21bb53ded8e9675cd6ed11afaf">&#9670;&#160;</a></span>get_width()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double BoundedSprite::get_width </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_a6b2a4b21bb53ded8e9675cd6ed11afaf_icgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_a6b2a4b21bb53ded8e9675cd6ed11afaf_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a9b89b611ebb19901f10d0ade4d4ea01e" name="a9b89b611ebb19901f10d0ade4d4ea01e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b89b611ebb19901f10d0ade4d4ea01e">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoundedSprite::init </td>
+          <td>(</td>
+          <td class="paramtype">sf::IntRect</td>          <td class="paramname"><span class="paramname"><em>bound</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b90406100c92fc53ab8fb953ca5340a" name="a7b90406100c92fc53ab8fb953ca5340a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b90406100c92fc53ab8fb953ca5340a">&#9670;&#160;</a></span>init_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoundedSprite::init_texture </td>
+          <td>(</td>
+          <td class="paramtype">sf::Texture *</td>          <td class="paramname"><span class="paramname"><em>texture</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_a7b90406100c92fc53ab8fb953ca5340a_icgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_a7b90406100c92fc53ab8fb953ca5340a_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a622518f4924f60b75fcebc9a2dc433ec" name="a622518f4924f60b75fcebc9a2dc433ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a622518f4924f60b75fcebc9a2dc433ec">&#9670;&#160;</a></span>move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoundedSprite::move </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_a622518f4924f60b75fcebc9a2dc433ec_icgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_a622518f4924f60b75fcebc9a2dc433ec_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a6d91736ed8e4f8ce72755e800310ff04" name="a6d91736ed8e4f8ce72755e800310ff04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d91736ed8e4f8ce72755e800310ff04">&#9670;&#160;</a></span>set_center()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoundedSprite::set_center </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d1f/classBoundedSprite_a6d91736ed8e4f8ce72755e800310ff04_icgraph.png" border="0" usemap="#ad2/d1f/classBoundedSprite_a6d91736ed8e4f8ce72755e800310ff04_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a17c695ad6cb802a62f882ec86db42afe" name="a17c695ad6cb802a62f882ec86db42afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17c695ad6cb802a62f882ec86db42afe">&#9670;&#160;</a></span>s</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Sprite BoundedSprite::s</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2cba3bf5cbf81e74eb63cadfac8a1fa0" name="a2cba3bf5cbf81e74eb63cadfac8a1fa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cba3bf5cbf81e74eb63cadfac8a1fa0">&#9670;&#160;</a></span>texture</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Texture* BoundedSprite::texture</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>libprojectabyss/<a class="el" href="../../d5/d4b/BoundedSprite_8h_source.html">BoundedSprite.h</a></li>
+<li>libprojectabyss/<a class="el" href="../../d4/d55/BoundedSprite_8cpp.html">BoundedSprite.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

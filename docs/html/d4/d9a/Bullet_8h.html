@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Abyss Danmaku: Файл libprojectabyss/Bullet.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Abyss Danmaku<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_11392f057e7d19d2e6807bc19a59a4b6.html">libprojectabyss</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Классы</a> &#124;
+<a href="#enum-members">Перечисления</a>  </div>
+  <div class="headertitle"><div class="title">Файл Bullet.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;SFML/Graphics.hpp&gt;</code><br />
+<code>#include &lt;SFML/Window.hpp&gt;</code><br />
+<code>#include &lt;SFML/System.hpp&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;cstdlib&gt;</code><br />
+<code>#include &lt;ctime&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для Bullet.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d5/dbe/Bullet_8h__incl.png" border="0" usemap="#alibprojectabyss_2Bullet_8h" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Граф файлов, в которые включается этот файл:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d25/Bullet_8h__dep__incl.png" border="0" usemap="#alibprojectabyss_2Bullet_8hdep" alt=""/></div>
+</div>
+</div>
+<p><a href="../../d4/d9a/Bullet_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/da1/classBullet.html">Bullet</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:af524a199c4115d84e9cc11cb9c5ffc05" id="r_af524a199c4115d84e9cc11cb9c5ffc05"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af524a199c4115d84e9cc11cb9c5ffc05">BulletType</a> { <br />
+&#160;&#160;<a class="el" href="#af524a199c4115d84e9cc11cb9c5ffc05a14c4bd9f2f42026a7ad5b9ca04941008">BULLET_SINGLE_TYPE</a> = 0
+, <a class="el" href="#af524a199c4115d84e9cc11cb9c5ffc05a9b00ff002abf8be2572ae19b50da58ee">BULLET_CIRCLE_TYPE</a> = 1
+, <a class="el" href="#af524a199c4115d84e9cc11cb9c5ffc05a19483fc7c5e78d70f462a65602f168d7">BULLET_SPIRAL_TYPE</a> = 2
+, <a class="el" href="#af524a199c4115d84e9cc11cb9c5ffc05a4d32e3c216484adb7364d7aa1d79e619">BULLET_FAN_TYPE</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="#af524a199c4115d84e9cc11cb9c5ffc05a3f8a6dcd2de8c15aa393956f8f73445e">BULLET_WAVE_TYPE</a> = 4
+, <a class="el" href="#af524a199c4115d84e9cc11cb9c5ffc05a68726def948df8df4a037e42feb7cf12">BULLET_AIMED_TYPE</a> = 5
+<br />
+ }</td></tr>
+<tr class="separator:af524a199c4115d84e9cc11cb9c5ffc05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Перечисления</h2>
+<a id="af524a199c4115d84e9cc11cb9c5ffc05" name="af524a199c4115d84e9cc11cb9c5ffc05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af524a199c4115d84e9cc11cb9c5ffc05">&#9670;&#160;</a></span>BulletType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#af524a199c4115d84e9cc11cb9c5ffc05">BulletType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="af524a199c4115d84e9cc11cb9c5ffc05a14c4bd9f2f42026a7ad5b9ca04941008" name="af524a199c4115d84e9cc11cb9c5ffc05a14c4bd9f2f42026a7ad5b9ca04941008"></a>BULLET_SINGLE_TYPE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af524a199c4115d84e9cc11cb9c5ffc05a9b00ff002abf8be2572ae19b50da58ee" name="af524a199c4115d84e9cc11cb9c5ffc05a9b00ff002abf8be2572ae19b50da58ee"></a>BULLET_CIRCLE_TYPE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af524a199c4115d84e9cc11cb9c5ffc05a19483fc7c5e78d70f462a65602f168d7" name="af524a199c4115d84e9cc11cb9c5ffc05a19483fc7c5e78d70f462a65602f168d7"></a>BULLET_SPIRAL_TYPE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af524a199c4115d84e9cc11cb9c5ffc05a4d32e3c216484adb7364d7aa1d79e619" name="af524a199c4115d84e9cc11cb9c5ffc05a4d32e3c216484adb7364d7aa1d79e619"></a>BULLET_FAN_TYPE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af524a199c4115d84e9cc11cb9c5ffc05a3f8a6dcd2de8c15aa393956f8f73445e" name="af524a199c4115d84e9cc11cb9c5ffc05a3f8a6dcd2de8c15aa393956f8f73445e"></a>BULLET_WAVE_TYPE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af524a199c4115d84e9cc11cb9c5ffc05a68726def948df8df4a037e42feb7cf12" name="af524a199c4115d84e9cc11cb9c5ffc05a68726def948df8df4a037e42feb7cf12"></a>BULLET_AIMED_TYPE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

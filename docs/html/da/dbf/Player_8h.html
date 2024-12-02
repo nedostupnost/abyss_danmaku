@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Abyss Danmaku: Файл libprojectabyss/Player.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Abyss Danmaku<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_11392f057e7d19d2e6807bc19a59a4b6.html">libprojectabyss</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Классы</a> &#124;
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle"><div class="title">Файл Player.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="../../dd/d6f/AnimatedSprite_8h_source.html">AnimatedSprite.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d4/d9a/Bullet_8h_source.html">Bullet.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для Player.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dd/de3/Player_8h__incl.png" border="0" usemap="#alibprojectabyss_2Player_8h" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Граф файлов, в которые включается этот файл:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/d03/Player_8h__dep__incl.png" border="0" usemap="#alibprojectabyss_2Player_8hdep" alt=""/></div>
+</div>
+</div>
+<p><a href="../../da/dbf/Player_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d4b/classPlayer.html">Player</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a1f4e1d2b03ea6eb7431d9b8d29ff2b3e" id="r_a1f4e1d2b03ea6eb7431d9b8d29ff2b3e"><td class="memItemLeft" align="right" valign="top">const sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f4e1d2b03ea6eb7431d9b8d29ff2b3e">BOUND_IDLE</a> (32 *4, 0, 32, 48)</td></tr>
+<tr class="separator:a1f4e1d2b03ea6eb7431d9b8d29ff2b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a7891206f8453217cb9eb27f2d0a03f" id="r_a4a7891206f8453217cb9eb27f2d0a03f"><td class="memItemLeft" align="right" valign="top">const std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a7891206f8453217cb9eb27f2d0a03f">SPRITE_DATA_IDLE</a> (0, 4)</td></tr>
+<tr class="separator:a4a7891206f8453217cb9eb27f2d0a03f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1eb63eb4dd3c45252c76f9922b099cb" id="r_ad1eb63eb4dd3c45252c76f9922b099cb"><td class="memItemLeft" align="right" valign="top">const sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1eb63eb4dd3c45252c76f9922b099cb">BOUND_FORWARD</a> (0, 0, 32, 48)</td></tr>
+<tr class="separator:ad1eb63eb4dd3c45252c76f9922b099cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771e65eabd818accee9170334c3a17f6" id="r_a771e65eabd818accee9170334c3a17f6"><td class="memItemLeft" align="right" valign="top">const std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a771e65eabd818accee9170334c3a17f6">SPRITE_DATA_FORWARD</a> (0, 4)</td></tr>
+<tr class="separator:a771e65eabd818accee9170334c3a17f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac93f0f4a8880edd936baf29b207b6b3d" id="r_ac93f0f4a8880edd936baf29b207b6b3d"><td class="memItemLeft" align="right" valign="top">const sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac93f0f4a8880edd936baf29b207b6b3d">BOUND_LEFT</a> (32 *4, 48 *1, 32, 48)</td></tr>
+<tr class="separator:ac93f0f4a8880edd936baf29b207b6b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19d77e3e3dcd963034b4d85b924e6096" id="r_a19d77e3e3dcd963034b4d85b924e6096"><td class="memItemLeft" align="right" valign="top">const std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19d77e3e3dcd963034b4d85b924e6096">SPRITE_DATA_LEFT</a> (-4, 4)</td></tr>
+<tr class="separator:a19d77e3e3dcd963034b4d85b924e6096"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f30f8d7af57fed20b93c936a05e8fcb" id="r_a5f30f8d7af57fed20b93c936a05e8fcb"><td class="memItemLeft" align="right" valign="top">const sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f30f8d7af57fed20b93c936a05e8fcb">BOUND_RIGHT</a> (32 *4, 48 *2, 32, 48)</td></tr>
+<tr class="separator:a5f30f8d7af57fed20b93c936a05e8fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5212d1e83124600f49dd9d8b689c680" id="r_ae5212d1e83124600f49dd9d8b689c680"><td class="memItemLeft" align="right" valign="top">const std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5212d1e83124600f49dd9d8b689c680">SPRITE_DATA_RIGHT</a> (-4, 4)</td></tr>
+<tr class="separator:ae5212d1e83124600f49dd9d8b689c680"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a802fbf76bd820846518afb0bbcfd3796" id="r_a802fbf76bd820846518afb0bbcfd3796"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a802fbf76bd820846518afb0bbcfd3796">SPRITE_FRAME_RATE</a> = 6</td></tr>
+<tr class="separator:a802fbf76bd820846518afb0bbcfd3796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Функции</h2>
+<a id="ad1eb63eb4dd3c45252c76f9922b099cb" name="ad1eb63eb4dd3c45252c76f9922b099cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1eb63eb4dd3c45252c76f9922b099cb">&#9670;&#160;</a></span>BOUND_FORWARD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const sf::IntRect BOUND_FORWARD </td>
+          <td>(</td>
+          <td class="paramtype">0</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">0</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">32</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">48</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/dbf/Player_8h_ad1eb63eb4dd3c45252c76f9922b099cb_icgraph.png" border="0" usemap="#ada/dbf/Player_8h_ad1eb63eb4dd3c45252c76f9922b099cb_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a1f4e1d2b03ea6eb7431d9b8d29ff2b3e" name="a1f4e1d2b03ea6eb7431d9b8d29ff2b3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f4e1d2b03ea6eb7431d9b8d29ff2b3e">&#9670;&#160;</a></span>BOUND_IDLE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const sf::IntRect BOUND_IDLE </td>
+          <td>(</td>
+          <td class="paramtype">32 *</td>          <td class="paramname"><span class="paramname"><em>4</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">0</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">32</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">48</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/dbf/Player_8h_a1f4e1d2b03ea6eb7431d9b8d29ff2b3e_icgraph.png" border="0" usemap="#ada/dbf/Player_8h_a1f4e1d2b03ea6eb7431d9b8d29ff2b3e_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ac93f0f4a8880edd936baf29b207b6b3d" name="ac93f0f4a8880edd936baf29b207b6b3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac93f0f4a8880edd936baf29b207b6b3d">&#9670;&#160;</a></span>BOUND_LEFT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const sf::IntRect BOUND_LEFT </td>
+          <td>(</td>
+          <td class="paramtype">32 *</td>          <td class="paramname"><span class="paramname"><em>4</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">48 *</td>          <td class="paramname"><span class="paramname"><em>1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">32</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">48</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/dbf/Player_8h_ac93f0f4a8880edd936baf29b207b6b3d_icgraph.png" border="0" usemap="#ada/dbf/Player_8h_ac93f0f4a8880edd936baf29b207b6b3d_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a5f30f8d7af57fed20b93c936a05e8fcb" name="a5f30f8d7af57fed20b93c936a05e8fcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f30f8d7af57fed20b93c936a05e8fcb">&#9670;&#160;</a></span>BOUND_RIGHT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const sf::IntRect BOUND_RIGHT </td>
+          <td>(</td>
+          <td class="paramtype">32 *</td>          <td class="paramname"><span class="paramname"><em>4</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">48 *</td>          <td class="paramname"><span class="paramname"><em>2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">32</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">48</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/dbf/Player_8h_a5f30f8d7af57fed20b93c936a05e8fcb_icgraph.png" border="0" usemap="#ada/dbf/Player_8h_a5f30f8d7af57fed20b93c936a05e8fcb_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a771e65eabd818accee9170334c3a17f6" name="a771e65eabd818accee9170334c3a17f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a771e65eabd818accee9170334c3a17f6">&#9670;&#160;</a></span>SPRITE_DATA_FORWARD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::pair&lt; int, int &gt; SPRITE_DATA_FORWARD </td>
+          <td>(</td>
+          <td class="paramtype">0</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">4</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/dbf/Player_8h_a771e65eabd818accee9170334c3a17f6_icgraph.png" border="0" usemap="#ada/dbf/Player_8h_a771e65eabd818accee9170334c3a17f6_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a4a7891206f8453217cb9eb27f2d0a03f" name="a4a7891206f8453217cb9eb27f2d0a03f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a7891206f8453217cb9eb27f2d0a03f">&#9670;&#160;</a></span>SPRITE_DATA_IDLE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::pair&lt; int, int &gt; SPRITE_DATA_IDLE </td>
+          <td>(</td>
+          <td class="paramtype">0</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">4</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/dbf/Player_8h_a4a7891206f8453217cb9eb27f2d0a03f_icgraph.png" border="0" usemap="#ada/dbf/Player_8h_a4a7891206f8453217cb9eb27f2d0a03f_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a19d77e3e3dcd963034b4d85b924e6096" name="a19d77e3e3dcd963034b4d85b924e6096"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19d77e3e3dcd963034b4d85b924e6096">&#9670;&#160;</a></span>SPRITE_DATA_LEFT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::pair&lt; int, int &gt; SPRITE_DATA_LEFT </td>
+          <td>(</td>
+          <td class="paramtype">-</td>          <td class="paramname"><span class="paramname"><em>4</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">4</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/dbf/Player_8h_a19d77e3e3dcd963034b4d85b924e6096_icgraph.png" border="0" usemap="#ada/dbf/Player_8h_a19d77e3e3dcd963034b4d85b924e6096_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ae5212d1e83124600f49dd9d8b689c680" name="ae5212d1e83124600f49dd9d8b689c680"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5212d1e83124600f49dd9d8b689c680">&#9670;&#160;</a></span>SPRITE_DATA_RIGHT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::pair&lt; int, int &gt; SPRITE_DATA_RIGHT </td>
+          <td>(</td>
+          <td class="paramtype">-</td>          <td class="paramname"><span class="paramname"><em>4</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">4</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/dbf/Player_8h_ae5212d1e83124600f49dd9d8b689c680_icgraph.png" border="0" usemap="#ada/dbf/Player_8h_ae5212d1e83124600f49dd9d8b689c680_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Переменные</h2>
+<a id="a802fbf76bd820846518afb0bbcfd3796" name="a802fbf76bd820846518afb0bbcfd3796"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a802fbf76bd820846518afb0bbcfd3796">&#9670;&#160;</a></span>SPRITE_FRAME_RATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int SPRITE_FRAME_RATE = 6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

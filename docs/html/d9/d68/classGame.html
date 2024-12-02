@@ -1,0 +1,983 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Abyss Danmaku: Класс Game</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Abyss Danmaku<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pro-methods">Защищенные члены</a> &#124;
+<a href="#pro-attribs">Защищенные данные</a> &#124;
+<a href="../../d9/d3f/classGame-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Game</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../d3/d5f/Game_8h_source.html">Game.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф связей класса Game:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../de/da7/classGame__coll__graph.png" border="0" usemap="#aGame_coll__map" alt="Collaboration graph"/></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:af5dd8723d76e2144f71a9bbdd74a99fb" id="r_af5dd8723d76e2144f71a9bbdd74a99fb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5dd8723d76e2144f71a9bbdd74a99fb">Game</a> (unsigned int width, unsigned int height, const std::string &amp;title)</td></tr>
+<tr class="separator:af5dd8723d76e2144f71a9bbdd74a99fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ab78f5ed0d5ea879157357cf2fb2afa" id="r_a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ab78f5ed0d5ea879157357cf2fb2afa">run</a> ()</td></tr>
+<tr class="separator:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Защищенные члены</h2></td></tr>
+<tr class="memitem:ae6200a0bffc7eb91ef49c624a9a10faf" id="r_ae6200a0bffc7eb91ef49c624a9a10faf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6200a0bffc7eb91ef49c624a9a10faf">loadResources</a> ()</td></tr>
+<tr class="separator:ae6200a0bffc7eb91ef49c624a9a10faf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79f698dda206dd7a9bed28b3f88bdc38" id="r_a79f698dda206dd7a9bed28b3f88bdc38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79f698dda206dd7a9bed28b3f88bdc38">processEvents</a> ()</td></tr>
+<tr class="separator:a79f698dda206dd7a9bed28b3f88bdc38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad18f2352a61525a9786f25f4801045d4" id="r_ad18f2352a61525a9786f25f4801045d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad18f2352a61525a9786f25f4801045d4">updatePlayer</a> ()</td></tr>
+<tr class="separator:ad18f2352a61525a9786f25f4801045d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0634553da4f33ed2c5a6f2cae6607ea5" id="r_a0634553da4f33ed2c5a6f2cae6607ea5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0634553da4f33ed2c5a6f2cae6607ea5">updateEnemies</a> ()</td></tr>
+<tr class="separator:a0634553da4f33ed2c5a6f2cae6607ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa220e79da2bd3555699f839eb94a1688" id="r_aa220e79da2bd3555699f839eb94a1688"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa220e79da2bd3555699f839eb94a1688">updateBullets</a> ()</td></tr>
+<tr class="separator:aa220e79da2bd3555699f839eb94a1688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e3fb34f2df395a6af6011ff830dae6e" id="r_a7e3fb34f2df395a6af6011ff830dae6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e3fb34f2df395a6af6011ff830dae6e">checkCollisions</a> ()</td></tr>
+<tr class="separator:a7e3fb34f2df395a6af6011ff830dae6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15ddd769261d923827a3cdf41499c843" id="r_a15ddd769261d923827a3cdf41499c843"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15ddd769261d923827a3cdf41499c843">render</a> ()</td></tr>
+<tr class="separator:a15ddd769261d923827a3cdf41499c843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15dfc22a78bb431db88b6824e4ac3b0f" id="r_a15dfc22a78bb431db88b6824e4ac3b0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15dfc22a78bb431db88b6824e4ac3b0f">spawnEnemies</a> ()</td></tr>
+<tr class="separator:a15dfc22a78bb431db88b6824e4ac3b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b011568ca1dc110382f1c2f8bc4d943" id="r_a1b011568ca1dc110382f1c2f8bc4d943"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b011568ca1dc110382f1c2f8bc4d943">initializeWaves</a> ()</td></tr>
+<tr class="separator:a1b011568ca1dc110382f1c2f8bc4d943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec40038e14b94483fd17e66d91e24dd5" id="r_aec40038e14b94483fd17e66d91e24dd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec40038e14b94483fd17e66d91e24dd5">updateWaveSystem</a> ()</td></tr>
+<tr class="separator:aec40038e14b94483fd17e66d91e24dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92dc38bc78cc5647ac3c096766adb03b" id="r_a92dc38bc78cc5647ac3c096766adb03b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d38/structWaveDescription.html">WaveDescription</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92dc38bc78cc5647ac3c096766adb03b">createWaveDescription</a> (int enemyCount, const std::vector&lt; <a class="el" href="../../dc/d7a/Enemy_8h.html#a081413463efc54d9cab5c82328454db6">EnemyMovementPattern</a> &gt; &amp;movePatterns, const std::vector&lt; <a class="el" href="../../dc/d7a/Enemy_8h.html#a51261511c9054f543f87f1b2d610661d">BulletPattern</a> &gt; &amp;shootPatterns, float spawnInterval=10.f, float enemySpeed=3.f, int enemyHP=1)</td></tr>
+<tr class="separator:a92dc38bc78cc5647ac3c096766adb03b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Защищенные данные</h2></td></tr>
+<tr class="memitem:a223de215aeb661cd423ac145756cc730" id="r_a223de215aeb661cd423ac145756cc730"><td class="memItemLeft" align="right" valign="top">sf::RenderWindow&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a223de215aeb661cd423ac145756cc730">window</a></td></tr>
+<tr class="separator:a223de215aeb661cd423ac145756cc730"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e48721b0532833b99fd5615a3628792" id="r_a6e48721b0532833b99fd5615a3628792"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d4b/classPlayer.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e48721b0532833b99fd5615a3628792">player</a></td></tr>
+<tr class="separator:a6e48721b0532833b99fd5615a3628792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5ebf8d858e27bc2995e88f05fb50774" id="r_ab5ebf8d858e27bc2995e88f05fb50774"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../da/d4a/classEnemy.html">Enemy</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5ebf8d858e27bc2995e88f05fb50774">enemies</a></td></tr>
+<tr class="separator:ab5ebf8d858e27bc2995e88f05fb50774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83f1cb8dc2a04b0b597615fdac98e694" id="r_a83f1cb8dc2a04b0b597615fdac98e694"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d6/da1/classBullet.html">Bullet</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83f1cb8dc2a04b0b597615fdac98e694">enemyBullets</a></td></tr>
+<tr class="separator:a83f1cb8dc2a04b0b597615fdac98e694"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af729561d89036f0c841bc1a428dc43cf" id="r_af729561d89036f0c841bc1a428dc43cf"><td class="memItemLeft" align="right" valign="top">sf::Font&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af729561d89036f0c841bc1a428dc43cf">font</a></td></tr>
+<tr class="separator:af729561d89036f0c841bc1a428dc43cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8413021c19dac3b7cc32aa0d87cdbc9" id="r_ac8413021c19dac3b7cc32aa0d87cdbc9"><td class="memItemLeft" align="right" valign="top">sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8413021c19dac3b7cc32aa0d87cdbc9">playerTexture</a></td></tr>
+<tr class="separator:ac8413021c19dac3b7cc32aa0d87cdbc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0913ac0e7662b4f18dcb2745dc17f7d0" id="r_a0913ac0e7662b4f18dcb2745dc17f7d0"><td class="memItemLeft" align="right" valign="top">sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0913ac0e7662b4f18dcb2745dc17f7d0">enemyTexture</a></td></tr>
+<tr class="separator:a0913ac0e7662b4f18dcb2745dc17f7d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7dcbdcc6421a171b94cda350a3a5858" id="r_ad7dcbdcc6421a171b94cda350a3a5858"><td class="memItemLeft" align="right" valign="top">sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7dcbdcc6421a171b94cda350a3a5858">bulletTexture</a></td></tr>
+<tr class="separator:ad7dcbdcc6421a171b94cda350a3a5858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c9ae85773f66ff79b77dbad14104c9c" id="r_a0c9ae85773f66ff79b77dbad14104c9c"><td class="memItemLeft" align="right" valign="top">sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c9ae85773f66ff79b77dbad14104c9c">hitboxTexture</a></td></tr>
+<tr class="separator:a0c9ae85773f66ff79b77dbad14104c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f09e06b1d1479ca645d879e1d72826" id="r_a24f09e06b1d1479ca645d879e1d72826"><td class="memItemLeft" align="right" valign="top">sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24f09e06b1d1479ca645d879e1d72826">playerBulletTexture</a></td></tr>
+<tr class="separator:a24f09e06b1d1479ca645d879e1d72826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26191d539569e46f05edab3ea58f3e37" id="r_a26191d539569e46f05edab3ea58f3e37"><td class="memItemLeft" align="right" valign="top">sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26191d539569e46f05edab3ea58f3e37">hitboxSprite</a></td></tr>
+<tr class="separator:a26191d539569e46f05edab3ea58f3e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8e4da7baf5d87da0cd37d985fcd43e7" id="r_aa8e4da7baf5d87da0cd37d985fcd43e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8e4da7baf5d87da0cd37d985fcd43e7">enemySpawnTimer</a></td></tr>
+<tr class="separator:aa8e4da7baf5d87da0cd37d985fcd43e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c37ce6728359378a12edffbd6862e65" id="r_a0c37ce6728359378a12edffbd6862e65"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c37ce6728359378a12edffbd6862e65">currentWave</a></td></tr>
+<tr class="separator:a0c37ce6728359378a12edffbd6862e65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ac18c388eda83ceb3212e099b3b8473" id="r_a6ac18c388eda83ceb3212e099b3b8473"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ac18c388eda83ceb3212e099b3b8473">enemiesSpawned</a></td></tr>
+<tr class="separator:a6ac18c388eda83ceb3212e099b3b8473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae777e9528ff8b6b4f0d3c496d8d343d9" id="r_ae777e9528ff8b6b4f0d3c496d8d343d9"><td class="memItemLeft" align="right" valign="top">std::queue&lt; <a class="el" href="../../d5/d38/structWaveDescription.html">WaveDescription</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae777e9528ff8b6b4f0d3c496d8d343d9">waveQueue</a></td></tr>
+<tr class="separator:ae777e9528ff8b6b4f0d3c496d8d343d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56950ffecb4adb4954ef63e766445456" id="r_a56950ffecb4adb4954ef63e766445456"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d38/structWaveDescription.html">WaveDescription</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56950ffecb4adb4954ef63e766445456">currentWaveDesc</a></td></tr>
+<tr class="separator:a56950ffecb4adb4954ef63e766445456"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Конструктор(ы)</h2>
+<a id="af5dd8723d76e2144f71a9bbdd74a99fb" name="af5dd8723d76e2144f71a9bbdd74a99fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5dd8723d76e2144f71a9bbdd74a99fb">&#9670;&#160;</a></span>Game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Game::Game </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>height</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>title</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_af5dd8723d76e2144f71a9bbdd74a99fb_cgraph.png" border="0" usemap="#ad9/d68/classGame_af5dd8723d76e2144f71a9bbdd74a99fb_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="a7e3fb34f2df395a6af6011ff830dae6e" name="a7e3fb34f2df395a6af6011ff830dae6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e3fb34f2df395a6af6011ff830dae6e">&#9670;&#160;</a></span>checkCollisions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::checkCollisions </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a7e3fb34f2df395a6af6011ff830dae6e_cgraph.png" border="0" usemap="#ad9/d68/classGame_a7e3fb34f2df395a6af6011ff830dae6e_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a7e3fb34f2df395a6af6011ff830dae6e_icgraph.png" border="0" usemap="#ad9/d68/classGame_a7e3fb34f2df395a6af6011ff830dae6e_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a92dc38bc78cc5647ac3c096766adb03b" name="a92dc38bc78cc5647ac3c096766adb03b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92dc38bc78cc5647ac3c096766adb03b">&#9670;&#160;</a></span>createWaveDescription()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d38/structWaveDescription.html">WaveDescription</a> Game::createWaveDescription </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>enemyCount</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="../../dc/d7a/Enemy_8h.html#a081413463efc54d9cab5c82328454db6">EnemyMovementPattern</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>movePatterns</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="../../dc/d7a/Enemy_8h.html#a51261511c9054f543f87f1b2d610661d">BulletPattern</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>shootPatterns</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>spawnInterval</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10.f</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>enemySpeed</em></span><span class="paramdefsep"> = </span><span class="paramdefval">3.f</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>enemyHP</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a92dc38bc78cc5647ac3c096766adb03b_icgraph.png" border="0" usemap="#ad9/d68/classGame_a92dc38bc78cc5647ac3c096766adb03b_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a1b011568ca1dc110382f1c2f8bc4d943" name="a1b011568ca1dc110382f1c2f8bc4d943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b011568ca1dc110382f1c2f8bc4d943">&#9670;&#160;</a></span>initializeWaves()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::initializeWaves </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a1b011568ca1dc110382f1c2f8bc4d943_cgraph.png" border="0" usemap="#ad9/d68/classGame_a1b011568ca1dc110382f1c2f8bc4d943_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a1b011568ca1dc110382f1c2f8bc4d943_icgraph.png" border="0" usemap="#ad9/d68/classGame_a1b011568ca1dc110382f1c2f8bc4d943_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ae6200a0bffc7eb91ef49c624a9a10faf" name="ae6200a0bffc7eb91ef49c624a9a10faf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6200a0bffc7eb91ef49c624a9a10faf">&#9670;&#160;</a></span>loadResources()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::loadResources </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_ae6200a0bffc7eb91ef49c624a9a10faf_icgraph.png" border="0" usemap="#ad9/d68/classGame_ae6200a0bffc7eb91ef49c624a9a10faf_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a79f698dda206dd7a9bed28b3f88bdc38" name="a79f698dda206dd7a9bed28b3f88bdc38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79f698dda206dd7a9bed28b3f88bdc38">&#9670;&#160;</a></span>processEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::processEvents </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a79f698dda206dd7a9bed28b3f88bdc38_cgraph.png" border="0" usemap="#ad9/d68/classGame_a79f698dda206dd7a9bed28b3f88bdc38_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a79f698dda206dd7a9bed28b3f88bdc38_icgraph.png" border="0" usemap="#ad9/d68/classGame_a79f698dda206dd7a9bed28b3f88bdc38_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a15ddd769261d923827a3cdf41499c843" name="a15ddd769261d923827a3cdf41499c843"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15ddd769261d923827a3cdf41499c843">&#9670;&#160;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::render </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a15ddd769261d923827a3cdf41499c843_cgraph.png" border="0" usemap="#ad9/d68/classGame_a15ddd769261d923827a3cdf41499c843_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a15ddd769261d923827a3cdf41499c843_icgraph.png" border="0" usemap="#ad9/d68/classGame_a15ddd769261d923827a3cdf41499c843_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a1ab78f5ed0d5ea879157357cf2fb2afa" name="a1ab78f5ed0d5ea879157357cf2fb2afa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ab78f5ed0d5ea879157357cf2fb2afa">&#9670;&#160;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::run </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a1ab78f5ed0d5ea879157357cf2fb2afa_cgraph.png" border="0" usemap="#ad9/d68/classGame_a1ab78f5ed0d5ea879157357cf2fb2afa_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a1ab78f5ed0d5ea879157357cf2fb2afa_icgraph.png" border="0" usemap="#ad9/d68/classGame_a1ab78f5ed0d5ea879157357cf2fb2afa_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a15dfc22a78bb431db88b6824e4ac3b0f" name="a15dfc22a78bb431db88b6824e4ac3b0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15dfc22a78bb431db88b6824e4ac3b0f">&#9670;&#160;</a></span>spawnEnemies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::spawnEnemies </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a15dfc22a78bb431db88b6824e4ac3b0f_cgraph.png" border="0" usemap="#ad9/d68/classGame_a15dfc22a78bb431db88b6824e4ac3b0f_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a15dfc22a78bb431db88b6824e4ac3b0f_icgraph.png" border="0" usemap="#ad9/d68/classGame_a15dfc22a78bb431db88b6824e4ac3b0f_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="aa220e79da2bd3555699f839eb94a1688" name="aa220e79da2bd3555699f839eb94a1688"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa220e79da2bd3555699f839eb94a1688">&#9670;&#160;</a></span>updateBullets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::updateBullets </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_aa220e79da2bd3555699f839eb94a1688_icgraph.png" border="0" usemap="#ad9/d68/classGame_aa220e79da2bd3555699f839eb94a1688_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a0634553da4f33ed2c5a6f2cae6607ea5" name="a0634553da4f33ed2c5a6f2cae6607ea5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0634553da4f33ed2c5a6f2cae6607ea5">&#9670;&#160;</a></span>updateEnemies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::updateEnemies </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a0634553da4f33ed2c5a6f2cae6607ea5_cgraph.png" border="0" usemap="#ad9/d68/classGame_a0634553da4f33ed2c5a6f2cae6607ea5_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_a0634553da4f33ed2c5a6f2cae6607ea5_icgraph.png" border="0" usemap="#ad9/d68/classGame_a0634553da4f33ed2c5a6f2cae6607ea5_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ad18f2352a61525a9786f25f4801045d4" name="ad18f2352a61525a9786f25f4801045d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad18f2352a61525a9786f25f4801045d4">&#9670;&#160;</a></span>updatePlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::updatePlayer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_ad18f2352a61525a9786f25f4801045d4_cgraph.png" border="0" usemap="#ad9/d68/classGame_ad18f2352a61525a9786f25f4801045d4_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_ad18f2352a61525a9786f25f4801045d4_icgraph.png" border="0" usemap="#ad9/d68/classGame_ad18f2352a61525a9786f25f4801045d4_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="aec40038e14b94483fd17e66d91e24dd5" name="aec40038e14b94483fd17e66d91e24dd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec40038e14b94483fd17e66d91e24dd5">&#9670;&#160;</a></span>updateWaveSystem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::updateWaveSystem </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d68/classGame_aec40038e14b94483fd17e66d91e24dd5_icgraph.png" border="0" usemap="#ad9/d68/classGame_aec40038e14b94483fd17e66d91e24dd5_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="ad7dcbdcc6421a171b94cda350a3a5858" name="ad7dcbdcc6421a171b94cda350a3a5858"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7dcbdcc6421a171b94cda350a3a5858">&#9670;&#160;</a></span>bulletTexture</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Texture Game::bulletTexture</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0c37ce6728359378a12edffbd6862e65" name="a0c37ce6728359378a12edffbd6862e65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c37ce6728359378a12edffbd6862e65">&#9670;&#160;</a></span>currentWave</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Game::currentWave</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a56950ffecb4adb4954ef63e766445456" name="a56950ffecb4adb4954ef63e766445456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56950ffecb4adb4954ef63e766445456">&#9670;&#160;</a></span>currentWaveDesc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d38/structWaveDescription.html">WaveDescription</a>* Game::currentWaveDesc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab5ebf8d858e27bc2995e88f05fb50774" name="ab5ebf8d858e27bc2995e88f05fb50774"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5ebf8d858e27bc2995e88f05fb50774">&#9670;&#160;</a></span>enemies</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../da/d4a/classEnemy.html">Enemy</a>&gt; Game::enemies</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6ac18c388eda83ceb3212e099b3b8473" name="a6ac18c388eda83ceb3212e099b3b8473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ac18c388eda83ceb3212e099b3b8473">&#9670;&#160;</a></span>enemiesSpawned</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Game::enemiesSpawned</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83f1cb8dc2a04b0b597615fdac98e694" name="a83f1cb8dc2a04b0b597615fdac98e694"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83f1cb8dc2a04b0b597615fdac98e694">&#9670;&#160;</a></span>enemyBullets</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../d6/da1/classBullet.html">Bullet</a>&gt; Game::enemyBullets</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8e4da7baf5d87da0cd37d985fcd43e7" name="aa8e4da7baf5d87da0cd37d985fcd43e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8e4da7baf5d87da0cd37d985fcd43e7">&#9670;&#160;</a></span>enemySpawnTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Game::enemySpawnTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0913ac0e7662b4f18dcb2745dc17f7d0" name="a0913ac0e7662b4f18dcb2745dc17f7d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0913ac0e7662b4f18dcb2745dc17f7d0">&#9670;&#160;</a></span>enemyTexture</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Texture Game::enemyTexture</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af729561d89036f0c841bc1a428dc43cf" name="af729561d89036f0c841bc1a428dc43cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af729561d89036f0c841bc1a428dc43cf">&#9670;&#160;</a></span>font</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Font Game::font</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26191d539569e46f05edab3ea58f3e37" name="a26191d539569e46f05edab3ea58f3e37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26191d539569e46f05edab3ea58f3e37">&#9670;&#160;</a></span>hitboxSprite</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Sprite Game::hitboxSprite</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0c9ae85773f66ff79b77dbad14104c9c" name="a0c9ae85773f66ff79b77dbad14104c9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c9ae85773f66ff79b77dbad14104c9c">&#9670;&#160;</a></span>hitboxTexture</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Texture Game::hitboxTexture</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6e48721b0532833b99fd5615a3628792" name="a6e48721b0532833b99fd5615a3628792"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e48721b0532833b99fd5615a3628792">&#9670;&#160;</a></span>player</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/d4b/classPlayer.html">Player</a> Game::player</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24f09e06b1d1479ca645d879e1d72826" name="a24f09e06b1d1479ca645d879e1d72826"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24f09e06b1d1479ca645d879e1d72826">&#9670;&#160;</a></span>playerBulletTexture</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Texture Game::playerBulletTexture</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac8413021c19dac3b7cc32aa0d87cdbc9" name="ac8413021c19dac3b7cc32aa0d87cdbc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8413021c19dac3b7cc32aa0d87cdbc9">&#9670;&#160;</a></span>playerTexture</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Texture Game::playerTexture</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae777e9528ff8b6b4f0d3c496d8d343d9" name="ae777e9528ff8b6b4f0d3c496d8d343d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae777e9528ff8b6b4f0d3c496d8d343d9">&#9670;&#160;</a></span>waveQueue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::queue&lt;<a class="el" href="../../d5/d38/structWaveDescription.html">WaveDescription</a>&gt; Game::waveQueue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a223de215aeb661cd423ac145756cc730" name="a223de215aeb661cd423ac145756cc730"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a223de215aeb661cd423ac145756cc730">&#9670;&#160;</a></span>window</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::RenderWindow Game::window</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>libprojectabyss/<a class="el" href="../../d3/d5f/Game_8h_source.html">Game.h</a></li>
+<li>libprojectabyss/<a class="el" href="../../d0/dc4/Game_8cpp.html">Game.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

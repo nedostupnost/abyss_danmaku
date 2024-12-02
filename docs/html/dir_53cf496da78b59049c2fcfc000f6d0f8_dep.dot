@@ -1,0 +1,11 @@
+digraph "projectabyss"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  dir_53cf496da78b59049c2fcfc000f6d0f8 [label="projectabyss", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_53cf496da78b59049c2fcfc000f6d0f8.html",tooltip=""];
+  dir_11392f057e7d19d2e6807bc19a59a4b6 [label="libprojectabyss", fillcolor="#edf0f7", color="grey25", style="filled", URL="dir_11392f057e7d19d2e6807bc19a59a4b6.html",tooltip=""];
+  dir_53cf496da78b59049c2fcfc000f6d0f8->dir_11392f057e7d19d2e6807bc19a59a4b6 [headlabel="1", labeldistance=1.5 headhref="dir_000001_000000.html" href="dir_000001_000000.html" color="steelblue1" fontcolor="steelblue1"];
+}

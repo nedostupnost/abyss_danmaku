@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Abyss Danmaku: Файл libprojectabyss/Player.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Abyss Danmaku<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_11392f057e7d19d2e6807bc19a59a4b6.html">libprojectabyss</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#enum-members">Перечисления</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle"><div class="title">Файл Player.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="../../da/dbf/Player_8h_source.html">Player.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для Player.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d4/d07/Player_8cpp__incl.png" border="0" usemap="#alibprojectabyss_2Player_8cpp" alt=""/></div>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a8c8d699f77e19d867cfadeb034c8b069" id="r_a8c8d699f77e19d867cfadeb034c8b069"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c8d699f77e19d867cfadeb034c8b069">AnimationState</a> { <a class="el" href="#a8c8d699f77e19d867cfadeb034c8b069aaade5e53e88cf231292cd1142cce2afe">STATE_IDLE</a>
+, <a class="el" href="#a8c8d699f77e19d867cfadeb034c8b069a43fe075058a378f6cf86d1a868f99d32">STATE_FORWARD</a>
+, <a class="el" href="#a8c8d699f77e19d867cfadeb034c8b069aa6955d1d58ca6b3db6f5c93c0e40072d">STATE_LEFT</a>
+, <a class="el" href="#a8c8d699f77e19d867cfadeb034c8b069aa47c9106173566634a6ff6d6d93f27a6">STATE_RIGHT</a>
+ }</td></tr>
+<tr class="separator:a8c8d699f77e19d867cfadeb034c8b069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a224b9163917ac32fc95a60d8c1eec3aa" id="r_a224b9163917ac32fc95a60d8c1eec3aa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a> { <a class="el" href="#a224b9163917ac32fc95a60d8c1eec3aaa0b76fb863426c07c6c997a8d9523257b">DIR_UP</a>
+, <a class="el" href="#a224b9163917ac32fc95a60d8c1eec3aaa5dd21ef3d450f62c44082756cab8f6f8">DIR_RIGHT</a>
+, <a class="el" href="#a224b9163917ac32fc95a60d8c1eec3aaab1bf68da897d09488069dd40e54f442d">DIR_DOWN</a>
+, <a class="el" href="#a224b9163917ac32fc95a60d8c1eec3aaa1307dc42d06472935155dcbe283bc660">DIR_LEFT</a>
+ }</td></tr>
+<tr class="separator:a224b9163917ac32fc95a60d8c1eec3aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:ad7b4369f81252227d6cc911b518d740c" id="r_ad7b4369f81252227d6cc911b518d740c"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7b4369f81252227d6cc911b518d740c">MOVE_VECTOR</a> [4][2]</td></tr>
+<tr class="separator:ad7b4369f81252227d6cc911b518d740c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Перечисления</h2>
+<a id="a8c8d699f77e19d867cfadeb034c8b069" name="a8c8d699f77e19d867cfadeb034c8b069"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c8d699f77e19d867cfadeb034c8b069">&#9670;&#160;</a></span>AnimationState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a8c8d699f77e19d867cfadeb034c8b069">AnimationState</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a8c8d699f77e19d867cfadeb034c8b069aaade5e53e88cf231292cd1142cce2afe" name="a8c8d699f77e19d867cfadeb034c8b069aaade5e53e88cf231292cd1142cce2afe"></a>STATE_IDLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8c8d699f77e19d867cfadeb034c8b069a43fe075058a378f6cf86d1a868f99d32" name="a8c8d699f77e19d867cfadeb034c8b069a43fe075058a378f6cf86d1a868f99d32"></a>STATE_FORWARD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8c8d699f77e19d867cfadeb034c8b069aa6955d1d58ca6b3db6f5c93c0e40072d" name="a8c8d699f77e19d867cfadeb034c8b069aa6955d1d58ca6b3db6f5c93c0e40072d"></a>STATE_LEFT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8c8d699f77e19d867cfadeb034c8b069aa47c9106173566634a6ff6d6d93f27a6" name="a8c8d699f77e19d867cfadeb034c8b069aa47c9106173566634a6ff6d6d93f27a6"></a>STATE_RIGHT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a224b9163917ac32fc95a60d8c1eec3aa" name="a224b9163917ac32fc95a60d8c1eec3aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a224b9163917ac32fc95a60d8c1eec3aa">&#9670;&#160;</a></span>Direction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a224b9163917ac32fc95a60d8c1eec3aaa0b76fb863426c07c6c997a8d9523257b" name="a224b9163917ac32fc95a60d8c1eec3aaa0b76fb863426c07c6c997a8d9523257b"></a>DIR_UP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a224b9163917ac32fc95a60d8c1eec3aaa5dd21ef3d450f62c44082756cab8f6f8" name="a224b9163917ac32fc95a60d8c1eec3aaa5dd21ef3d450f62c44082756cab8f6f8"></a>DIR_RIGHT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a224b9163917ac32fc95a60d8c1eec3aaab1bf68da897d09488069dd40e54f442d" name="a224b9163917ac32fc95a60d8c1eec3aaab1bf68da897d09488069dd40e54f442d"></a>DIR_DOWN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a224b9163917ac32fc95a60d8c1eec3aaa1307dc42d06472935155dcbe283bc660" name="a224b9163917ac32fc95a60d8c1eec3aaa1307dc42d06472935155dcbe283bc660"></a>DIR_LEFT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Переменные</h2>
+<a id="ad7b4369f81252227d6cc911b518d740c" name="ad7b4369f81252227d6cc911b518d740c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7b4369f81252227d6cc911b518d740c">&#9670;&#160;</a></span>MOVE_VECTOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float MOVE_VECTOR[4][2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Инициализатор</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {0.0f, -1.0f},  </div>
+<div class="line">    {1.0f, 0.0f},   </div>
+<div class="line">    {0.0f, 1.0f},   </div>
+<div class="line">    {-1.0f, 0.0f}   </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>
