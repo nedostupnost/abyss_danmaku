@@ -9,7 +9,7 @@ Bullet::Bullet(Texture *texture, Vector2f pos, BulletType bulletType, bool playe
     // Устанавливаем нужную часть текстуры в зависимости от типа пули и владельца
     if (isPlayerBullet) {
         speed = 10.f;  // Скорость пуль игрока
-        shape.setTextureRect(IntRect(0, 0, 16, 16));  // Используем спрайт игрока
+        shape.setTextureRect(IntRect(0, 0, 16, 16)); 
     } else {
         speed = 5.f;
         // Используем разные спрайты для разных паттернов выстрелов противников

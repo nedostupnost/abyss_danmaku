@@ -50,7 +50,9 @@ public:
 
     Enemy(Texture* texture, Vector2f pos, 
           EnemyMovementPattern movePattern = PATTERN_STRAIGHT,
-          BulletPattern shootPattern = BULLET_SINGLE);
+          BulletPattern shootPattern = BULLET_SINGLE,
+          float enemySpeed = 3.0f,
+          int enemyHP = 1);
 
     void update() override; // Добавляем базовый метод update
     void shoot(Texture* bulletTexture) override; // Добавляем базовый метод shoot

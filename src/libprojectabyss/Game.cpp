@@ -31,32 +31,53 @@ void Game::initializeWaves()
 {
     // Волна 1: Простые враги с прямым движением и одиночными выстрелами
     waveQueue.push(createWaveDescription(
-        20,  // количество врагов
-        {PATTERN_STRAIGHT},
-        {BULLET_SINGLE},
-        50.f,  // интервал спавна
+        10,  // количество врагов
+        {PATTERN_STRAIGHT},  // только прямое движение
+        {BULLET_SPIRAL},     // только одиночные выстрелы
+        10.f,  // интервал спавн
         2.f    // скорость
     ));
 
-    // Волна 2: Смешанные враги с синусоидальным движением и круговыми выстрелами
-    waveQueue.push(createWaveDescription(
-        20,
-        {PATTERN_SINE, PATTERN_ZIGZAG},
-        {BULLET_CIRCLE, BULLET_FAN},
-        50.f,
-        2.5f,
-        2  // HP
-    ));
+    for (int i = 0; i < 5; i++)
+    {
+        // Волна 2: Враги с синусоидальным движением
+        waveQueue.push(createWaveDescription(
+            20,
+            {PATTERN_SINE},      // синусоидальное движение
+            {BULLET_FAN},        // веерная стрельба
+            30.f,
+            2.5f,
+            2  // HP
+        ));
 
-    // Волна 3: Сложные враги с разными паттернами
-    waveQueue.push(createWaveDescription(
-        20,
-        {PATTERN_CIRCLE, PATTERN_EIGHT, PATTERN_SINE},
-        {BULLET_SPIRAL, BULLET_WAVE, BULLET_AIMED},
-        50.f,
-        3.f,
-        3
-    ));
+        // Волна 3: Враги с круговым движением
+        waveQueue.push(createWaveDescription(
+            30,
+            {PATTERN_CIRCLE},    // круговое движение
+            {BULLET_CIRCLE},     // круговая стрельба
+            30.f,
+            3.f,
+            3  // HP
+        ));
+
+        // Волна 4: Сложные враги с разными паттернами
+        waveQueue.push(createWaveDescription(
+            30,
+            {PATTERN_EIGHT, PATTERN_ZIGZAG},  // движение восьмеркой и зигзагом
+            {BULLET_SPIRAL, BULLET_AIMED},    // спиральная и прицельная стрельба
+            30.f,  // более частый спавн
+            3.5f,  // быстрее двигаются
+            4      // больше HP
+        ));
+
+        // Устанавливаем первую волну как текущую
+        if (!waveQueue.empty()) {
+            currentWaveDesc = new WaveDescription(waveQueue.front());
+            waveQueue.pop();
+            enemiesSpawned = 0;
+            enemySpawnTimer = 0;
+        }
+    }
 }
 
 WaveDescription Game::createWaveDescription(
@@ -96,20 +117,30 @@ void Game::updateWaveSystem()
 
 void Game::spawnEnemies()
 {
+    // Если нет текущей волны или все враги уже созданы, не спавним новых
+    if (!currentWaveDesc || enemiesSpawned >= currentWaveDesc->enemyCount)
+        return;
+
     // Увеличиваем таймер спавна
     enemySpawnTimer++;
 
-    // Спавним нового врага каждые 60 кадров (примерно 1 секунда)
-    if (enemySpawnTimer >= 15)
+    // Спавним нового врага с учетом интервала текущей волны
+    if (enemySpawnTimer >= currentWaveDesc->spawnInterval)
     {
-        // Рандомизируем паттерны движения и стрельбы
-        EnemyMovementPattern movePattern = static_cast<EnemyMovementPattern>(rand() % NUM_MOVEMENT_PATTERNS);
-        BulletPattern shootPattern = static_cast<BulletPattern>(rand() % NUM_BULLET_PATTERNS);
+        // Выбираем случайные паттерны из доступных для текущей волны
+        int movePatternIdx = rand() % currentWaveDesc->movePatterns.size();
+        int shootPatternIdx = rand() % currentWaveDesc->shootPatterns.size();
+        
+        EnemyMovementPattern movePattern = currentWaveDesc->movePatterns[movePatternIdx];
+        BulletPattern shootPattern = currentWaveDesc->shootPatterns[shootPatternIdx];
 
         // Создаем нового врага
-        enemies.emplace_back(&enemyTexture, Vector2f(rand() % window.getSize().x, 0), movePattern, shootPattern);
-
-        // Сбрасываем таймер спавна
+        enemies.emplace_back(&enemyTexture, Vector2f(rand() % window.getSize().x, 0), 
+                           movePattern, shootPattern,
+                           currentWaveDesc->enemySpeed,
+                           currentWaveDesc->enemyHP);
+        
+        enemiesSpawned++;
         enemySpawnTimer = 0;
     }
 }
@@ -324,4 +355,9 @@ void Game::run()
         
         render();
     }
+}
+
+Game::~Game()
+{
+    delete currentWaveDesc;  // Освобождаем память
 }

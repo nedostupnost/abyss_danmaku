@@ -1,9 +1,10 @@
 #include "Enemy.h"
 
 Enemy::Enemy(Texture* texture, Vector2f pos, 
-            EnemyMovementPattern movePattern, BulletPattern shootPattern)
+            EnemyMovementPattern movePattern, BulletPattern shootPattern,
+            float enemySpeed, int enemyHP)
     : Entity(texture, pos) {
-    this->HP = 1;
+    this->HP = enemyHP;
     this->damageTimer = 10;
     this->shootInterval = 40;
     
@@ -21,7 +22,7 @@ Enemy::Enemy(Texture* texture, Vector2f pos,
     
     // Инициализация параметров движения
     this->movementPattern = movePattern;
-    this->speed = 3.0f;
+    this->speed = enemySpeed;
     this->time = 0.0f;
     this->direction = Vector2f(0.f, 1.f);
     this->amplitude = 100.0f;  // Амплитуда волновых движений
@@ -33,6 +34,7 @@ void Enemy::updateMovement() {
     float x = sprite.get_center().x;
     float y = sprite.get_center().y;
 
+    // Применяем выбранный паттерн движения
     switch (movementPattern) {
         case PATTERN_STRAIGHT:
             y += speed;
@@ -69,46 +71,68 @@ void Enemy::updateMovement() {
         }
     }
 
+    // Проверяем границы экрана
+    float minX = get_width() / 2.0f;
+    float maxX = 800.0f - get_width() / 2.0f;
+    x = std::max(minX, std::min(x, maxX));
+    
     sprite.set_center(x, y);
 }
 
 void Enemy::shoot(Texture* bulletTexture, const Vector2f& playerPos) {
     Vector2f pos = sprite.get_center();
-    pos.x += sprite.get_width() / 2.f;
-    pos.y += sprite.get_height() / 2.f;
 
     switch (bulletPattern) {
-        case BULLET_SINGLE:
-            bullets.push_back(Bullet(bulletTexture, pos, BULLET_SINGLE_TYPE, false));
+        case BULLET_SINGLE: {
+            // Одиночный выстрел направлен в игрока
+            Bullet b(bulletTexture, pos, BULLET_SINGLE_TYPE, false);
+            Vector2f targetDir = playerPos - pos;
+            float length = std::sqrt(targetDir.x * targetDir.x + targetDir.y * targetDir.y);
+            b.direction = Vector2f(targetDir.x / length, targetDir.y / length);
+            bullets.push_back(b);
             break;
+        }
 
-        case BULLET_CIRCLE:
-            for (int i = 0; i < 8; ++i) {
+        case BULLET_CIRCLE: {
+            // Круговой паттерн с 16 пулями для более плотного круга
+            const int numBullets = 16;
+            for (int i = 0; i < numBullets; ++i) {
                 Bullet b(bulletTexture, pos, BULLET_CIRCLE_TYPE, false);
-                float angle = i * 45.f * 3.14159f / 180.f;
+                float angle = (i * 360.f / numBullets) * 3.14159f / 180.f;
                 b.direction = Vector2f(std::cos(angle), std::sin(angle));
                 bullets.push_back(b);
             }
             break;
+        }
 
-        case BULLET_SPIRAL:
-            {
+        case BULLET_SPIRAL: {
+            // Спиральный паттерн с 3 пулями для создания спирали
+            const int arms = 3;
+            for (int i = 0; i < arms; ++i) {
                 Bullet b(bulletTexture, pos, BULLET_SPIRAL_TYPE, false);
-                float angle = shootTimer * 10.f * 3.14159f / 180.f;
+                float baseAngle = shootTimer * 180.f * 3.14159f / 180.f;
+                float angle = baseAngle + (i * 360.f / arms) * 3.14159f / 180.f;
                 b.direction = Vector2f(std::cos(angle), std::sin(angle));
                 bullets.push_back(b);
             }
             break;
+        }
 
-        case BULLET_FAN:
-            for (int i = -2; i <= 2; ++i) {
+        case BULLET_FAN: {
+            // Веерный паттерн с 7 пулями в широком секторе
+            const int numBullets = 7;
+            const float spreadAngle = 90.f; // Общий угол веера в градусах
+            for (int i = 0; i < numBullets; ++i) {
                 Bullet b(bulletTexture, pos, BULLET_FAN_TYPE, false);
-                float angle = i * 15.f * 3.14159f / 180.f;
-                b.direction = Vector2f(std::sin(angle), 1.f);
-                b.direction /= std::sqrt(b.direction.x * b.direction.x + b.direction.y * b.direction.y);
+                float angle = (-spreadAngle/2 + i * spreadAngle/(numBullets-1)) * 3.14159f / 180.f;
+                Vector2f baseDir = playerPos - pos;
+                float baseAngle = std::atan2(baseDir.y, baseDir.x);
+                float finalAngle = baseAngle + angle;
+                b.direction = Vector2f(std::cos(finalAngle), std::sin(finalAngle));
                 bullets.push_back(b);
             }
             break;
+        }
 
         case BULLET_WAVE:
             {
@@ -118,16 +142,24 @@ void Enemy::shoot(Texture* bulletTexture, const Vector2f& playerPos) {
             }
             break;
 
-        case BULLET_AIMED:
-            {
+        case BULLET_AIMED: {
+            // Прицельный выстрел в игрока с небольшим разбросом
+            const int numBullets = 3;
+            Vector2f targetDir = playerPos - pos;
+            float baseAngle = std::atan2(targetDir.y, targetDir.x);
+            
+            for (int i = 0; i < numBullets; ++i) {
                 Bullet b(bulletTexture, pos, BULLET_AIMED_TYPE, false);
-                Vector2f direction = playerPos - pos;
-                float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
-                b.direction = direction / length;
+                float angleOffset = (i - numBullets/2) * 10.f * 3.14159f / 180.f;
+                float finalAngle = baseAngle + angleOffset;
+                b.direction = Vector2f(std::cos(finalAngle), std::sin(finalAngle));
                 bullets.push_back(b);
             }
             break;
+        }
     }
+
+    shootTimer++;
 }
 
 void Enemy::update(const Vector2f& playerPos, sf::Texture* bulletTexture) {
@@ -147,6 +179,7 @@ void Enemy::update(const Vector2f& playerPos, sf::Texture* bulletTexture) {
 void Enemy::update() {
     // Базовая реализация - просто обновляем спрайт и пули
     sprite.tick();
+    updateMovement();
     updateBullets();
 }
 

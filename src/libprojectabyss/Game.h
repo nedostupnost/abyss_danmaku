@@ -53,5 +53,6 @@ protected:
 
 public:
     Game(unsigned int width, unsigned int height, const std::string& title);
+    ~Game(); // Добавляем деструктор
     void run();
 };
