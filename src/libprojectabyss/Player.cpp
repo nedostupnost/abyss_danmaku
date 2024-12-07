@@ -58,12 +58,9 @@ void Player::check_animation_state()
         newState = STATE_RIGHT;
     }
     
-    if (newState != currentState)
-    {
+    if (newState != currentState) {
         currentState = newState;
-        
-        switch (currentState)
-        {
+        switch (currentState) {
             case STATE_IDLE:
                 sprite.init(BOUND_IDLE, SPRITE_DATA_IDLE.first, SPRITE_DATA_IDLE.second, SPRITE_FRAME_RATE);
                 break;
@@ -79,7 +76,7 @@ void Player::check_animation_state()
         }
     }
     
-    // Обновляем масштаб в зависимости от текущего состояния
+    // Устанавливаем масштаб в зависимости от направления движения
     float scaleX = (currentState == STATE_LEFT) ? -1.0f : 1.0f;
     sprite.setScale(scaleX, 1.0f);
 }
