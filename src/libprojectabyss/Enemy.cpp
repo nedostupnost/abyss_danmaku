@@ -37,36 +37,49 @@ void Enemy::updateMovement() {
     // Применяем выбранный паттерн движения
     switch (movementPattern) {
         case PATTERN_STRAIGHT:
+            // Прямое движение вниз с небольшим случайным отклонением
+            x += std::sin(time * 0.5f) * speed * 0.1f;
             y += speed;
             break;
             
         case PATTERN_SINE:
-            x = startPos.x + amplitude * sin(time * frequency);
+            // Синусоидальное движение с прогрессивным увеличением амплитуды
+            x = startPos.x + (amplitude * (1.0f + time * 0.05f)) * std::sin(time * frequency);
             y += speed * 0.5f;
             break;
             
         case PATTERN_ZIGZAG: {
+            // Зигзаг с постепенным увеличением скорости
             float period = 2.0f;
-            float t = fmod(time, period);
+            float t = std::fmod(time, period);
+            float speedMod = 1.0f + time * 0.02f;  // Постепенное ускорение
+            
             if (t < period/2)
-                x += speed;
+                x += speed * speedMod;
             else
-                x -= speed;
-            y += speed * 0.5f;
+                x -= speed * speedMod;
+            y += speed * 0.3f;  // Уменьшаем вертикальную скорость для лучшего эффекта
             break;
         }
             
         case PATTERN_CIRCLE: {
-            float radius = 50.0f;
-            x = startPos.x + radius * cos(time * frequency);
-            y = startPos.y + radius * sin(time * frequency) + time * speed * 0.5f;
+            // Спиральное движение с увеличивающимся радиусом
+            float baseRadius = 50.0f;
+            float growingRadius = baseRadius * (1.0f + time * 0.1f);
+            float angle = time * frequency;
+            
+            x = startPos.x + growingRadius * std::cos(angle);
+            y = startPos.y + growingRadius * std::sin(angle) + time * speed * 0.3f;
             break;
         }
 
         case PATTERN_EIGHT: {
+            // Фигура восьмерки с изменяющейся скоростью
             float t = time * frequency;
-            x = startPos.x + amplitude * sin(t);
-            y = startPos.y + (amplitude/2) * sin(2 * t) + time * speed * 0.3f;
+            float speedMod = std::sin(time * 0.5f) * 0.5f + 1.5f;  // Пульсирующая скорость
+            
+            x = startPos.x + amplitude * std::sin(t * speedMod);
+            y = startPos.y + (amplitude/2) * std::sin(2 * t * speedMod) + time * speed * 0.2f;
             break;
         }
     }
