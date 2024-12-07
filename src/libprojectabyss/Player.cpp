@@ -22,40 +22,24 @@ Player::Player(Texture* texture, Vector2u windowSize)
 
 void Player::update()
 {
-    // Обработка движения
-    float totalX = 0.0f;
-    float totalY = 0.0f;
+    // Обновляем позицию
+    Vector2f newPos = sprite.get_center();
+    if (moveStates[DIR_UP]) newPos.y -= move_velocity;
+    if (moveStates[DIR_DOWN]) newPos.y += move_velocity;
+    if (moveStates[DIR_LEFT]) newPos.x -= move_velocity;
+    if (moveStates[DIR_RIGHT]) newPos.x += move_velocity;
     
-    for (int i = 0; i < 4; ++i) {
-        if (moveStates[i]) {
-            totalX += MOVE_VECTOR[i][0] * move_velocity;
-            totalY += MOVE_VECTOR[i][1] * move_velocity;
-        }
-    }
-    
-    // Применяем движение с учетом границ экрана
-    Vector2f newPos = get_center();
-    newPos.x += totalX;
-    newPos.y += totalY;
-    
-    // Проверка границ экрана
+    // Ограничиваем движение в пределах окна
     float halfWidth = get_width() / 2.0f;
     float halfHeight = get_height() / 2.0f;
+    newPos.x = std::max(halfWidth, std::min<float>(newPos.x, 800.0f - halfWidth));
+    newPos.y = std::max(halfHeight, std::min<float>(newPos.y, 600.0f - halfHeight));
     
-    // Ограничиваем позицию в пределах экрана
-    newPos.x = std::max(halfWidth, std::min(newPos.x, 800.0f - halfWidth));
-    newPos.y = std::max(halfHeight, std::min(newPos.y, 600.0f - halfHeight));
-    
-    // Устанавливаем новую позицию
     set_center(newPos.x, newPos.y);
     
     // Обновляем пули и анимацию
     updateBullets();
     sprite.tick();
-    
-    // Сохраняем текущий масштаб
-    float scaleX = (currentState == STATE_LEFT) ? -1.0f : 1.0f;
-    sprite.setScale(scaleX, 1.0f);
     
     check_animation_state();
 }
@@ -64,19 +48,22 @@ void Player::check_animation_state()
 {
     AnimationState newState = STATE_IDLE;
     
+    if (moveStates[DIR_UP] || moveStates[DIR_DOWN]) {
+        newState = STATE_FORWARD;
+    }
     if (moveStates[DIR_LEFT]) {
         newState = STATE_LEFT;
     }
-    else if (moveStates[DIR_RIGHT]) {
+    if (moveStates[DIR_RIGHT]) {
         newState = STATE_RIGHT;
     }
-    else if (moveStates[DIR_UP] || moveStates[DIR_DOWN]) {
-        newState = STATE_FORWARD;
-    }
     
-    if (newState != currentState) {
+    if (newState != currentState)
+    {
         currentState = newState;
-        switch (currentState) {
+        
+        switch (currentState)
+        {
             case STATE_IDLE:
                 sprite.init(BOUND_IDLE, SPRITE_DATA_IDLE.first, SPRITE_DATA_IDLE.second, SPRITE_FRAME_RATE);
                 break;
@@ -84,14 +71,17 @@ void Player::check_animation_state()
                 sprite.init(BOUND_FORWARD, SPRITE_DATA_FORWARD.first, SPRITE_DATA_FORWARD.second, SPRITE_FRAME_RATE);
                 break;
             case STATE_LEFT:
+                sprite.init(BOUND_LEFT, SPRITE_DATA_LEFT.first, SPRITE_DATA_LEFT.second, SPRITE_FRAME_RATE);
+                break;
             case STATE_RIGHT:
-                sprite.init(BOUND_SIDE, SPRITE_DATA_SIDE.first, SPRITE_DATA_SIDE.second, SPRITE_FRAME_RATE);
+                sprite.init(BOUND_RIGHT, SPRITE_DATA_RIGHT.first, SPRITE_DATA_RIGHT.second, SPRITE_FRAME_RATE);
                 break;
         }
-        // Восстанавливаем масштаб после инициализации спрайта
-        float scaleX = (currentState == STATE_LEFT) ? -1.0f : 1.0f;
-        sprite.setScale(scaleX, 1.0f);
     }
+    
+    // Обновляем масштаб в зависимости от текущего состояния
+    float scaleX = (currentState == STATE_LEFT) ? -1.0f : 1.0f;
+    sprite.setScale(scaleX, 1.0f);
 }
 
 void Player::set_move_state(int direction, bool state)
