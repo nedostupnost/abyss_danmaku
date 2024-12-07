@@ -1,10 +1,10 @@
 #include "Enemy.h"
 
 Enemy::Enemy(Texture* texture, Vector2f pos, 
-            EnemyMovementPattern movePattern, BulletPattern shootPattern) {
+            EnemyMovementPattern movePattern, BulletPattern shootPattern)
+    : Entity(texture, pos) {
     this->HP = 1;
     this->damageTimer = 10;
-    this->shootTimer = 0;
     this->shootInterval = 40;
     
     // Инициализация параметров стрельбы
@@ -12,13 +12,11 @@ Enemy::Enemy(Texture* texture, Vector2f pos,
     this->bulletSpeed = 5.f;
     
     // Инициализация анимированного спрайта
-    sprite.init_texture(texture);
     sprite.init(ENEMY_BOUND_IDLE, 
                ENEMY_SPRITE_DATA_IDLE.first, 
                ENEMY_SPRITE_DATA_IDLE.second, 
                SPRITE_FRAME_RATE);
     
-    sprite.set_center(pos.x, pos.y);
     startPos = pos;
     
     // Инициализация параметров движения
@@ -143,17 +141,21 @@ void Enemy::update(const Vector2f& playerPos, sf::Texture* bulletTexture) {
         shootTimer = 0;
     }
 
-    // Обновление пуль
-    for (size_t i = 0; i < bullets.size(); i++) {
-        bullets[i].update();
+    updateBullets();
+}
 
-        // Удаление пуль за пределами экрана
-        Vector2f pos = bullets[i].shape.getPosition();
-        if (pos.y > 600 || pos.y < 0 || pos.x < 0 || pos.x > 800) {
-            bullets.erase(bullets.begin() + i);
-            i--;
-        }
-    }
+void Enemy::update() {
+    // Базовая реализация - просто обновляем спрайт и пули
+    sprite.tick();
+    updateBullets();
+}
+
+void Enemy::shoot(Texture* bulletTexture) {
+    // Базовая реализация - стреляем прямо вниз
+    Vector2f pos = sprite.get_center();
+    Bullet b(bulletTexture, pos, BULLET_SINGLE_TYPE, false);
+    b.direction = Vector2f(0.f, 1.f);
+    bullets.push_back(b);
 }
 
 void Enemy::draw(sf::RenderTarget& target) {

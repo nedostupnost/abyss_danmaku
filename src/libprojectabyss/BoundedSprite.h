@@ -22,4 +22,5 @@ public:
     double get_height();
     
     void draw(sf::RenderTarget& target);
+    void setScale(float scaleX, float scaleY);
 };

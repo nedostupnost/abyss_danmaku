@@ -1,6 +1,6 @@
 #pragma once
 #include <cmath>
-#include "AnimatedSprite.h"
+#include "Entity.h"
 #include "Bullet.h"
 #include "Player.h"
 
@@ -31,46 +31,33 @@ enum BulletPattern {
     BULLET_AIMED        // Прицельный выстрел в игрока
 };
 
-class Enemy {
+class Enemy : public Entity {
 private:
-    AnimatedSprite sprite;
     Vector2f direction;
     float speed;
     float time;              // Время для расчета движения
     EnemyMovementPattern movementPattern;
     BulletPattern bulletPattern;
-    float bulletAngle;       // Текущий угол для спирального и кругового паттернов
+    // Удалены неиспользуемые переменные bulletAngle и bulletsPerShot
     float bulletSpeed;       // Скорость пуль
-    int bulletsPerShot;     // Количество пуль за один выстрел
     Vector2f startPos;       // Начальная позиция для расчета движения
     float amplitude;         // Амплитуда для волновых движений
     float frequency;         // Частота для волновых движений
 
 public:
-    int HP;
-    int HPMax;
     int damageTimer;
-    int shootTimer;
     int shootInterval; // Интервал между выстрелами
-
-    std::vector<Bullet> bullets;
 
     Enemy(Texture* texture, Vector2f pos, 
           EnemyMovementPattern movePattern = PATTERN_STRAIGHT,
           BulletPattern shootPattern = BULLET_SINGLE);
 
-    void update(const Vector2f& playerPos, sf::Texture* bulletTexture);  // Добавляем позицию игрока и текстуру пули для передачи в метод
-    void updateMovement();
+    void update() override; // Добавляем базовый метод update
+    void shoot(Texture* bulletTexture) override; // Добавляем базовый метод shoot
+    
+    // Специализированные методы для врага
+    void update(const Vector2f& playerPos, sf::Texture* bulletTexture);
     void shoot(Texture* bulletTexture, const Vector2f& playerPos);
-    void draw(sf::RenderTarget& target);
-
-    // Методы доступа к позиции и размерам
-    double get_left() { return sprite.get_left(); }
-    double get_right() { return sprite.get_right(); }
-    double get_top() { return sprite.get_top(); }
-    double get_bottom() { return sprite.get_bottom(); }
-    double get_width() { return sprite.get_width(); }
-    double get_height() { return sprite.get_height(); }
-    sf::Vector2f get_center() { return sprite.get_center(); }
-
+    void updateMovement();
+    void draw(sf::RenderTarget& target) override;
 };

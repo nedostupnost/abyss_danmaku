@@ -50,6 +50,10 @@ double BoundedSprite::get_height() {
     return s.getTextureRect().height;
 }
 
+void BoundedSprite::setScale(float scaleX, float scaleY) {
+    s.setScale(scaleX, scaleY);
+}
+
 void BoundedSprite::draw(sf::RenderTarget& target) {
     target.draw(s);
 }

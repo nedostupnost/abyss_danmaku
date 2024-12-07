@@ -112,37 +112,13 @@ void Game::spawnEnemies()
         // Сбрасываем таймер спавна
         enemySpawnTimer = 0;
     }
-
-    // Обновляем всех врагов
-    for (auto& enemy : enemies)
-    {
-        enemy.update(player.get_center(), &bulletTexture);  // Передаем текстуру пули
-
-
-        // Таймер выстрелов врага
-        if (enemy.shootTimer < 15)  // Примерно каждые 2 секунды
-            enemy.shootTimer++;
-
-        // Если таймер достиг лимита, враг стреляет
-        if (enemy.shootTimer >= 100)
-        {
-            enemy.shoot(&bulletTexture, player.get_center());
-            enemy.shootTimer = 0;
-        }
-    }
 }
 
 void Game::updateEnemies()
 {
     Vector2f playerPos = player.get_center();
     for (auto it = enemies.begin(); it != enemies.end();) {
-        it->update(playerPos, &bulletTexture);  // Передаем текстуру пули
-
-        // Добавляем пули врагов в общий вектор
-        enemyBullets.insert(enemyBullets.end(), 
-                          it->bullets.begin(), 
-                          it->bullets.end());
-        it->bullets.clear();
+        it->update(playerPos, &bulletTexture);
 
         // Удаляем врагов, вышедших за пределы экрана
         if (it->get_top() > window.getSize().y) {
@@ -156,35 +132,11 @@ void Game::updateEnemies()
 void Game::updateBullets()
 {
     // Обновление пуль игрока
-    for (size_t i = 0; i < player.bullets.size();)
-    {
-        player.bullets[i].update();
-        
-        if (player.bullets[i].shape.getPosition().y < 0)
-        {
-            player.bullets.erase(player.bullets.begin() + i);
-        }
-        else
-        {
-            ++i;
-        }
-    }
+    player.updateBullets();
 
     // Обновление пуль врагов
-    for (size_t i = 0; i < enemyBullets.size();)
-    {
-        enemyBullets[i].update();
-        
-        Vector2f pos = enemyBullets[i].shape.getPosition();
-        if (pos.y > window.getSize().y || pos.y < 0 ||
-            pos.x < 0 || pos.x > window.getSize().x)
-        {
-            enemyBullets.erase(enemyBullets.begin() + i);
-        }
-        else
-        {
-            ++i;
-        }
+    for (auto& enemy : enemies) {
+        enemy.updateBullets();
     }
 }
 
@@ -241,19 +193,17 @@ void Game::processEvents()
 void Game::updatePlayer()
 {
     player.update();
-    player.move();
-
-    // Таймер стрельбы
-    if (player.shootTimer < 5)
-        player.shootTimer++;
 
     // Стрельба игрока
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && player.shootTimer >= 5)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && player.getShootTimer() >= 5)
     {
-        sf::Vector2f playerPos = player.get_center();
-        player.bullets.push_back(Bullet(&playerBulletTexture, playerPos, BULLET_SINGLE_TYPE, true));  // Добавляем true для пуль игрока
-        player.shootTimer = 0;
+        player.shoot(&playerBulletTexture);
+        player.setShootTimer(0);
     }
+    
+    // Увеличиваем таймер стрельбы
+    if (player.getShootTimer() < 5)
+        player.incrementShootTimer();
 }
 
 void Game::checkCollisions()
@@ -266,28 +216,29 @@ void Game::checkCollisions()
     );
 
     // Проверка коллизии пуль игрока с противниками
-    for (size_t i = 0; i < player.bullets.size();)
+    auto& playerBullets = player.getBullets();
+    for (size_t i = 0; i < playerBullets.size();)
     {
         bool bulletDestroyed = false;
         for (size_t k = 0; k < enemies.size();)
         {
-            sf::FloatRect bulletBounds = player.bullets[i].shape.getGlobalBounds();
+            sf::FloatRect bulletBounds = playerBullets[i].shape.getGlobalBounds();
             sf::FloatRect enemyBounds(enemies[k].get_left(), enemies[k].get_top(),
                                     enemies[k].get_width(), enemies[k].get_height());
 
             if (bulletBounds.intersects(enemyBounds))
             {
                 // Уменьшаем HP врага
-                enemies[k].HP--;
+                enemies[k].takeDamage(1);
                 
                 // Если HP врага достиг нуля, удаляем его
-                if (enemies[k].HP <= 0) {
+                if (!enemies[k].isAlive()) {
                     enemies.erase(enemies.begin() + k);
                 } else {
                     ++k;
                 }
                 
-                player.bullets.erase(player.bullets.begin() + i);
+                playerBullets.erase(playerBullets.begin() + i);
                 bulletDestroyed = true;
                 break;
             }
@@ -312,26 +263,29 @@ void Game::checkCollisions()
         if (enemyBounds.intersects(hitboxBounds))
         {
             enemies.erase(enemies.begin() + i);
-            player.HP--;
+            player.takeDamage(1);
             continue;
         }
         ++i;
     }
 
-    // Проверка коллизии пуль врага с игроком
-    for (size_t j = 0; j < enemyBullets.size();)
-    {
-        sf::FloatRect bulletBounds = enemyBullets[j].shape.getGlobalBounds();
-        
-        // Проверка столкновения с хитбоксом
-        if (bulletBounds.intersects(hitboxBounds))
+    // Проверка коллизии пуль врагов с игроком
+    for (auto& enemy : enemies) {
+        auto& enemyBullets = enemy.getBullets();
+        for (size_t j = 0; j < enemyBullets.size();)
         {
-            enemyBullets.erase(enemyBullets.begin() + j);
-            player.HP--;
-        }
-        else
-        {
-            ++j;
+            sf::FloatRect bulletBounds = enemyBullets[j].shape.getGlobalBounds();
+            
+            // Проверка столкновения с хитбоксом
+            if (bulletBounds.intersects(hitboxBounds))
+            {
+                enemyBullets.erase(enemyBullets.begin() + j);
+                player.takeDamage(1);
+            }
+            else
+            {
+                ++j;
+            }
         }
     }
 }
@@ -340,17 +294,11 @@ void Game::render()
 {
     window.clear();
 
-    // Отрисовка игрока и его пуль
+    // Отрисовка игрока и врагов
     player.draw(window);
-    for (auto &bullet : player.bullets)
-        window.draw(bullet.shape);
-
-    // Отрисовка врагов и их пуль
-    for (auto &enemy : enemies)
+    for (auto &enemy : enemies) {
         enemy.draw(window);
-
-    for (auto &bullet : enemyBullets)
-        window.draw(bullet.shape);
+    }
 
     // Отрисовка хитбокса
     hitboxSprite.setPosition(

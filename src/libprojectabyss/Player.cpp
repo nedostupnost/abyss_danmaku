@@ -1,21 +1,5 @@
 #include "Player.h"
 
-// Состояния анимации
-enum AnimationState {
-    STATE_IDLE,
-    STATE_FORWARD,
-    STATE_LEFT,
-    STATE_RIGHT
-};
-
-// Направления движения
-enum Direction {
-    DIR_UP,
-    DIR_RIGHT,
-    DIR_DOWN,
-    DIR_LEFT
-};
-
 // Векторы движения для каждого направления
 const float MOVE_VECTOR[4][2] = {
     {0.0f, -1.0f},  // UP
@@ -24,82 +8,75 @@ const float MOVE_VECTOR[4][2] = {
     {-1.0f, 0.0f}   // LEFT
 };
 
-Player::Player(Texture* texture, Vector2u windowSize) {
-    this->shootTimer = 10;
-    this->HPMax = 3;
-    this->HP = this->HPMax;
+Player::Player(Texture* texture, Vector2u windowSize)
+    : Entity(texture, Vector2f(windowSize.x / 2.0f, windowSize.y * 0.8f))
+{
+    HP = 5;
+    HPMax = 5;
     
     // Инициализация анимированного спрайта
     sprite.init_texture(texture);
     sprite.init(BOUND_IDLE, SPRITE_DATA_IDLE.first, SPRITE_DATA_IDLE.second, SPRITE_FRAME_RATE);
-    
-    // Установка начальной позиции
-    sprite.set_center(windowSize.x / 2.0f, windowSize.y - sprite.get_height());
-    
-    // Инициализация параметров движения
-    animation_state = STATE_IDLE;
-    move_velocity = 3.0f;
-    for (int i = DIR_UP; i <= DIR_LEFT; i++) {
-        movement_direction[i] = false;
-    }
+    sprite.setScale(1.0f, 1.0f);
 }
 
-void Player::update() {
-    // Обновление анимации
-    sprite.tick();
+void Player::update()
+{
+    // Обработка движения
+    float totalX = 0.0f;
+    float totalY = 0.0f;
     
-    // Обновление позиции
-    move();
-    
-    // Проверка и обновление состояния анимации
-    check_animation_state();
-}
-
-void Player::move() {
-    // Движение игрока
-    for (int i = DIR_UP; i <= DIR_LEFT; i++) {
-        if (movement_direction[i]) {
-            sprite.move(MOVE_VECTOR[i][0] * move_velocity, 
-                       MOVE_VECTOR[i][1] * move_velocity);
+    for (int i = 0; i < 4; ++i) {
+        if (moveStates[i]) {
+            totalX += MOVE_VECTOR[i][0] * move_velocity;
+            totalY += MOVE_VECTOR[i][1] * move_velocity;
         }
     }
     
+    // Применяем движение с учетом границ экрана
+    Vector2f newPos = get_center();
+    newPos.x += totalX;
+    newPos.y += totalY;
+    
     // Проверка границ экрана
-    const float sizeMultiplier = 0.15f;
-    if (sprite.get_left() < -sprite.get_width() * sizeMultiplier) {
-        sprite.set_center(sprite.get_width() / 2.0f - sprite.get_width() * sizeMultiplier,
-                         sprite.get_center().y);
-    }
-    else if (sprite.get_right() > 800 + sprite.get_width() * sizeMultiplier) {
-        sprite.set_center(800 - sprite.get_width() / 2.0f + sprite.get_width() * sizeMultiplier,
-                         sprite.get_center().y);
-    }
-    if (sprite.get_top() < -sprite.get_height() * sizeMultiplier) {
-        sprite.set_center(sprite.get_center().x,
-                         sprite.get_height() / 2.0f - sprite.get_height() * sizeMultiplier);
-    }
-    else if (sprite.get_bottom() > 600 + sprite.get_height() * sizeMultiplier) {
-        sprite.set_center(sprite.get_center().x,
-                         600 - sprite.get_height() / 2.0f + sprite.get_height() * sizeMultiplier);
-    }
+    float halfWidth = get_width() / 2.0f;
+    float halfHeight = get_height() / 2.0f;
+    
+    // Ограничиваем позицию в пределах экрана
+    newPos.x = std::max(halfWidth, std::min(newPos.x, 800.0f - halfWidth));
+    newPos.y = std::max(halfHeight, std::min(newPos.y, 600.0f - halfHeight));
+    
+    // Устанавливаем новую позицию
+    set_center(newPos.x, newPos.y);
+    
+    // Обновляем пули и анимацию
+    updateBullets();
+    sprite.tick();
+    
+    // Сохраняем текущий масштаб
+    float scaleX = (currentState == STATE_LEFT) ? -1.0f : 1.0f;
+    sprite.setScale(scaleX, 1.0f);
+    
+    check_animation_state();
 }
 
-void Player::check_animation_state() {
-    int new_state = STATE_IDLE;
+void Player::check_animation_state()
+{
+    AnimationState newState = STATE_IDLE;
     
-    if (movement_direction[DIR_LEFT]) {
-        new_state = STATE_LEFT;
+    if (moveStates[DIR_LEFT]) {
+        newState = STATE_LEFT;
     }
-    else if (movement_direction[DIR_RIGHT]) {
-        new_state = STATE_RIGHT;
+    else if (moveStates[DIR_RIGHT]) {
+        newState = STATE_RIGHT;
     }
-    else if (movement_direction[DIR_UP] || movement_direction[DIR_DOWN]) {
-        new_state = STATE_FORWARD;
+    else if (moveStates[DIR_UP] || moveStates[DIR_DOWN]) {
+        newState = STATE_FORWARD;
     }
     
-    if (new_state != animation_state) {
-        animation_state = new_state;
-        switch (animation_state) {
+    if (newState != currentState) {
+        currentState = newState;
+        switch (currentState) {
             case STATE_IDLE:
                 sprite.init(BOUND_IDLE, SPRITE_DATA_IDLE.first, SPRITE_DATA_IDLE.second, SPRITE_FRAME_RATE);
                 break;
@@ -107,21 +84,25 @@ void Player::check_animation_state() {
                 sprite.init(BOUND_FORWARD, SPRITE_DATA_FORWARD.first, SPRITE_DATA_FORWARD.second, SPRITE_FRAME_RATE);
                 break;
             case STATE_LEFT:
-                sprite.init(BOUND_LEFT, SPRITE_DATA_LEFT.first, SPRITE_DATA_LEFT.second, SPRITE_FRAME_RATE);
-                break;
             case STATE_RIGHT:
-                sprite.init(BOUND_RIGHT, SPRITE_DATA_RIGHT.first, SPRITE_DATA_RIGHT.second, SPRITE_FRAME_RATE);
+                sprite.init(BOUND_SIDE, SPRITE_DATA_SIDE.first, SPRITE_DATA_SIDE.second, SPRITE_FRAME_RATE);
                 break;
         }
+        // Восстанавливаем масштаб после инициализации спрайта
+        float scaleX = (currentState == STATE_LEFT) ? -1.0f : 1.0f;
+        sprite.setScale(scaleX, 1.0f);
     }
 }
 
-void Player::set_move_state(int dir, bool state) {
-    if (dir >= DIR_UP && dir <= DIR_LEFT) {
-        movement_direction[dir] = state;
+void Player::set_move_state(int direction, bool state)
+{
+    if (direction >= 0 && direction < 4) {
+        moveStates[direction] = state;
     }
 }
 
-void Player::draw(sf::RenderTarget& target) {
-    sprite.draw(target);
+void Player::shoot(Texture* bulletTexture)
+{
+    Vector2f pos = get_center();
+    bullets.emplace_back(bulletTexture, pos, BULLET_SINGLE_TYPE, true);
 }
