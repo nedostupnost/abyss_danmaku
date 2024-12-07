@@ -34,7 +34,7 @@ void Game::initializeWaves()
         20,  // количество врагов
         {PATTERN_STRAIGHT},
         {BULLET_SINGLE},
-        5.f,  // интервал спавна
+        50.f,  // интервал спавна
         2.f    // скорость
     ));
 
@@ -43,7 +43,7 @@ void Game::initializeWaves()
         20,
         {PATTERN_SINE, PATTERN_ZIGZAG},
         {BULLET_CIRCLE, BULLET_FAN},
-        5.f,
+        50.f,
         2.5f,
         2  // HP
     ));
@@ -53,7 +53,7 @@ void Game::initializeWaves()
         20,
         {PATTERN_CIRCLE, PATTERN_EIGHT, PATTERN_SINE},
         {BULLET_SPIRAL, BULLET_WAVE, BULLET_AIMED},
-        5.f,
+        50.f,
         3.f,
         3
     ));
@@ -100,7 +100,7 @@ void Game::spawnEnemies()
     enemySpawnTimer++;
 
     // Спавним нового врага каждые 60 кадров (примерно 1 секунда)
-    if (enemySpawnTimer >= 10)
+    if (enemySpawnTimer >= 15)
     {
         // Рандомизируем паттерны движения и стрельбы
         EnemyMovementPattern movePattern = static_cast<EnemyMovementPattern>(rand() % NUM_MOVEMENT_PATTERNS);
@@ -120,11 +120,11 @@ void Game::spawnEnemies()
 
 
         // Таймер выстрелов врага
-        if (enemy.shootTimer < 40)  // Примерно каждые 2 секунды
+        if (enemy.shootTimer < 15)  // Примерно каждые 2 секунды
             enemy.shootTimer++;
 
         // Если таймер достиг лимита, враг стреляет
-        if (enemy.shootTimer >= 40)
+        if (enemy.shootTimer >= 100)
         {
             enemy.shoot(&bulletTexture, player.get_center());
             enemy.shootTimer = 0;
@@ -244,11 +244,11 @@ void Game::updatePlayer()
     player.move();
 
     // Таймер стрельбы
-    if (player.shootTimer < 10)
+    if (player.shootTimer < 5)
         player.shootTimer++;
 
     // Стрельба игрока
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && player.shootTimer >= 10)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && player.shootTimer >= 5)
     {
         sf::Vector2f playerPos = player.get_center();
         player.bullets.push_back(Bullet(&playerBulletTexture, playerPos, BULLET_SINGLE_TYPE, true));  // Добавляем true для пуль игрока
