@@ -84,10 +84,12 @@ void Enemy::updateMovement() {
         }
     }
 
-    // Проверяем границы экрана
-    float minX = get_width() / 2.0f;
-    float maxX = 800.0f - get_width() / 2.0f;
-    x = std::max(minX, std::min(x, maxX));
+    // Проверяем только горизонтальные границы экрана
+    float halfWidth = get_width() / 2.0f;
+    float screenWidth = 800.0f;
+    
+    // Ограничиваем только по горизонтали, позволяя врагам выходить за верхнюю и нижнюю границы
+    x = std::max(halfWidth, std::min(x, screenWidth - halfWidth));
     
     sprite.set_center(x, y);
 }

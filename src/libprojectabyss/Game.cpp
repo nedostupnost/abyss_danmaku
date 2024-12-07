@@ -34,7 +34,7 @@ void Game::initializeWaves()
         10,  // количество врагов
         {PATTERN_STRAIGHT},  // только прямое движение
         {BULLET_SPIRAL},     // только одиночные выстрелы
-        10.f,  // интервал спавн
+        10.f,  // интервал спавна
         2.f    // скорость
     ));
 
@@ -69,14 +69,14 @@ void Game::initializeWaves()
             3.5f,  // быстрее двигаются
             4      // больше HP
         ));
+    }
 
-        // Устанавливаем первую волну как текущую
-        if (!waveQueue.empty()) {
-            currentWaveDesc = new WaveDescription(waveQueue.front());
-            waveQueue.pop();
-            enemiesSpawned = 0;
-            enemySpawnTimer = 0;
-        }
+    // Устанавливаем первую волну как текущую
+    if (!waveQueue.empty()) {
+        currentWaveDesc = new WaveDescription(waveQueue.front());
+        waveQueue.pop();
+        enemiesSpawned = 0;
+        enemySpawnTimer = 0;
     }
 }
 
