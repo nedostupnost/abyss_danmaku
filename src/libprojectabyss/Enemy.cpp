@@ -33,40 +33,73 @@ void Enemy::updateMovement() {
     time += 0.016f; // Примерно 60 FPS
     float x = sprite.get_center().x;
     float y = sprite.get_center().y;
+    float halfWidth = get_width() / 2.0f;
+    float screenWidth = 800.0f;
+    bool hitWall = false;
+    
+    // Проверяем столкновение со стенами до обновления позиции
+    if (x <= halfWidth || x >= screenWidth - halfWidth) {
+        hitWall = true;
+        if (x <= halfWidth) {
+            x = halfWidth;
+        } else {
+            x = screenWidth - halfWidth;
+        }
+    }
 
     // Применяем выбранный паттерн движения
     switch (movementPattern) {
-        case PATTERN_STRAIGHT:
-            // Прямое движение вниз с небольшим случайным отклонением
-            x += std::sin(time * 0.5f) * speed * 0.1f;
+        case PATTERN_STRAIGHT: {
+            if (hitWall) {
+                // При столкновении меняем направление синусоидального отклонения
+                frequency = -frequency;
+            }
+            x += std::sin(time * 0.5f) * speed * 0.1f * frequency;
             y += speed;
             break;
+        }
             
-        case PATTERN_SINE:
-            // Синусоидальное движение с прогрессивным увеличением амплитуды
-            x = startPos.x + (amplitude * (1.0f + time * 0.05f)) * std::sin(time * frequency);
+        case PATTERN_SINE: {
+            if (hitWall) {
+                // При столкновении меняем направление синусоиды
+                frequency = -frequency;
+                startPos.x = x;  // Обновляем точку отсчета
+            }
+            float currentAmplitude = amplitude * (1.0f + time * 0.05f);
+            x = startPos.x + currentAmplitude * std::sin(time * frequency);
             y += speed * 0.5f;
             break;
+        }
             
         case PATTERN_ZIGZAG: {
-            // Зигзаг с постепенным увеличением скорости
             float period = 2.0f;
             float t = std::fmod(time, period);
             float speedMod = 1.0f + time * 0.02f;  // Постепенное ускорение
+            
+            if (hitWall) {
+                // При столкновении мгновенно меняем направление
+                time = (t < period/2) ? period/2 : 0;
+                t = std::fmod(time, period);
+            }
             
             if (t < period/2)
                 x += speed * speedMod;
             else
                 x -= speed * speedMod;
-            y += speed * 0.3f;  // Уменьшаем вертикальную скорость для лучшего эффекта
+            y += speed * 0.3f;
             break;
         }
             
         case PATTERN_CIRCLE: {
-            // Спиральное движение с увеличивающимся радиусом
             float baseRadius = 50.0f;
             float growingRadius = baseRadius * (1.0f + time * 0.1f);
             float angle = time * frequency;
+            
+            if (hitWall) {
+                // При столкновении меняем направление вращения
+                frequency = -frequency;
+                startPos.x = x;  // Обновляем центр вращения
+            }
             
             x = startPos.x + growingRadius * std::cos(angle);
             y = startPos.y + growingRadius * std::sin(angle) + time * speed * 0.3f;
@@ -74,9 +107,15 @@ void Enemy::updateMovement() {
         }
 
         case PATTERN_EIGHT: {
-            // Фигура восьмерки с изменяющейся скоростью
             float t = time * frequency;
-            float speedMod = std::sin(time * 0.5f) * 0.5f + 1.5f;  // Пульсирующая скорость
+            float speedMod = std::sin(time * 0.5f) * 0.5f + 1.5f;
+            
+            if (hitWall) {
+                // При столкновении меняем направление движения и фазу
+                frequency = -frequency;
+                startPos.x = x;
+                time = 3.14159f / (2 * std::abs(frequency));  // Переход в следующую четверть периода
+            }
             
             x = startPos.x + amplitude * std::sin(t * speedMod);
             y = startPos.y + (amplitude/2) * std::sin(2 * t * speedMod) + time * speed * 0.2f;
@@ -84,11 +123,7 @@ void Enemy::updateMovement() {
         }
     }
 
-    // Проверяем только горизонтальные границы экрана
-    float halfWidth = get_width() / 2.0f;
-    float screenWidth = 800.0f;
-    
-    // Ограничиваем только по горизонтали, позволяя врагам выходить за верхнюю и нижнюю границы
+    // Финальная проверка горизонтальных границ
     x = std::max(halfWidth, std::min(x, screenWidth - halfWidth));
     
     sprite.set_center(x, y);
